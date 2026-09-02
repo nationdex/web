@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en" :class="{ 'dark': $store.theme.isDark }" x-cloak x-data>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service | Nationdex</title>
+    <meta name="description" content="Read about Nationdex's Terms of Service that govern your use of the bot and all associated products.">
+    <meta name="keywords" content="Nationdex terms of service, Nationdex tos, Nationdex discord bot terms">
+    <meta name="author" content="Nationdex Team">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="application-name" content="Nationdex">
+    <meta name="apple-mobile-web-app-title" content="Nationdex">
+    <link rel="canonical" href="https://nationdex.com/terms/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nationdex.com/terms/">
+    <meta property="og:title" content="Terms of Service | Nationdex">
+    <meta property="og:description" content="Read about Nationdex's Terms of Service that govern your use of the bot and all associated products.">
+    <meta property="og:image" content="https://nationdex.com/assets/bg/ndexguide.jpg">
+    <meta property="og:image:alt" content="Nationdex Terms of Service Preview">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Nationdex">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://nationdex.com/terms/">
+    <meta name="twitter:title" content="Terms of Service | Nationdex">
+    <meta name="twitter:description" content="Read about Nationdex's Terms of Service that govern your use of the bot and all associated products.">
+    <meta name="twitter:image" content="https://nationdex.com/assets/bg/ndexguide.jpg">
+    <meta name="twitter:creator" content="@NationdexBot">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Terms of Service",
+      "url": "https://nationdex.com/terms/",
+      "description": "Read about Nationdex's Terms of Service that govern your use of the bot and all associated products.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Nationdex",
+        "url": "https://nationdex.com/"
+      }
+    }
+    </script>
+    <link rel="icon" href="/assets/ndexlogo.png">
+    <link rel="apple-touch-icon" href="/assets/ndexlogo.png">
+    <meta name="theme-color" content="#1b2d48">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        pagebg: '#1b2d48',
+                        textgray: '#71717a',
+                        textblack: '#18181b',
+                        brand: '#8B5CF6',
+                    }
+                }
+            }
+        }
+    </script>
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.store('theme', {
+                isDark: localStorage.getItem('theme') === 'dark' ||
+                    (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches),
+                toggle() {
+                    this.isDark = !this.isDark;
+                    localStorage.setItem('theme', this.isDark ? 'dark' : 'light');
+                }
+            });
+
+            Alpine.store('windowMode', {
+                isFull: localStorage.getItem('ndex_window_full') === 'true',
+                init() {
+                    this.apply();
+                },
+                toggle() {
+                    this.isFull = !this.isFull;
+                    localStorage.setItem('ndex_window_full', this.isFull);
+                    this.apply();
+                },
+                apply() {
+                    if (this.isFull) {
+                        document.body.classList.add('is-window-full');
+                    } else {
+                        document.body.classList.remove('is-window-full');
+                    }
+                }
+            });
+            Alpine.store('windowMode').init();
+        });
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #1b2d48;
+            min-height: 100vh;
+            padding: 0;
+        }
+
+        @media (min-width: 768px) {
+            body {
+                padding: 2.5rem;
+            }
+
+            body.is-window-full {
+                padding: 0 !important;
+            }
+
+            body.is-window-full #app-container {
+                max-width: 100% !important;
+                border-radius: 0 !important;
+                min-height: 100vh !important;
+            }
+
+            body.is-window-full #main-header {
+                top: 0 !important;
+                border-top-left-radius: 0 !important;
+                border-top-right-radius: 0 !important;
+            }
+
+            body.is-window-full #top-fixed-bar {
+                display: none !important;
+            }
+
+            body.is-window-full .corner-mask-tl,
+            body.is-window-full .corner-mask-tr {
+                display: none !important;
+            }
+        }
+
+        html,
+        body {
+            -ms-overflow-style: none !important;
+            scrollbar-width: none !important;
+        }
+
+        ::-webkit-scrollbar {
+            display: none !important;
+            width: 0 !important;
+            height: 0 !important;
+        }
+
+        .corner-mask-tl {
+            background-image: radial-gradient(circle at 100% 100%, transparent calc(1.5rem - 0.5px), #1b2d48 1.5rem);
+        }
+
+        .corner-mask-tr {
+            background-image: radial-gradient(circle at 0 100%, transparent calc(2.5rem - 0.5px), #1b2d48 2.5rem);
+        }
+
+        @media (min-width: 768px) {
+            .corner-mask-tl {
+                background-image: radial-gradient(circle at 100% 100%, transparent calc(2.5rem - 0.5px), #1b2d48 2.5rem);
+            }
+
+            .corner-mask-tr {
+                background-image: radial-gradient(circle at 0 100%, transparent calc(2.5rem - 0.5px), #1b2d48 2.5rem);
+            }
+        }
+
+        .page-title {
+            letter-spacing: -0.03em;
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            bottom: 100%;
+            right: 0;
+            background: white;
+            border-radius: 8px;
+            padding: 8px 0;
+            margin-bottom: 8px;
+            display: none;
+            z-index: 3000;
+            min-width: 160px;
+        }
+
+        .lang-dropdown.show {
+            display: block;
+        }
+
+        .lang-option {
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #3c4043;
+        }
+
+        .lang-option:hover {
+            background: #f1f3f4;
+        }
+
+        [x-cloak] {
+            display: none !important;
+        }
+
+        .dark .lang-dropdown {
+            background: #1a2436;
+        }
+
+        .dark .lang-option {
+            color: #cbd5e1;
+        }
+
+        .dark .lang-option:hover {
+            background: #253248;
+        }
+
+        html {
+            margin-top: 0px !important;
+        }
+
+        body {
+            top: 0px !important;
+            position: static !important;
+        }
+
+        .goog-te-banner-frame,
+        .goog-te-banner-frame.skiptranslate,
+        .goog-te-balloon-frame,
+        #goog-gt-tt,
+        .goog-te-spinner-pos,
+        #goog-gt-vt,
+        .goog-te-menu-frame,
+        .goog-te-menu2,
+        .goog-tooltip,
+        .goog-tooltip:hover {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+        }
+
+        /* Keep worker iframe active in DOM for Google Translate JS engine, but render 0px off-screen */
+        iframe[class*="VIpgJd"],
+        iframe[id*=":"],
+        iframe.skiptranslate,
+        .VIpgJd-ZVi9od-ORHb-OEVmcd {
+            position: absolute !important;
+            top: -9999px !important;
+            left: -9999px !important;
+            width: 0px !important;
+            height: 0px !important;
+            border: none !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+
+        .goog-text-highlight {
+            background-color: transparent !important;
+            box-shadow: none !important;
+            border: none !important;
+        }
+
+        #google_translate_element {
+            display: none !important;
+        }
+
+        font[style*="vertical-align: inherit;"] {
+            vertical-align: inherit !important;
+        }
+
+        .slash-command {
+            display: inline-flex;
+            align-items: center;
+            height: 22px;
+            padding: 0 6px;
+            border-radius: 4px;
+            background: #3b3f66;
+            color: #ccd6ff;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 22px;
+            letter-spacing: -0.1px;
+            box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .18);
+        }
+
+        .slash-command .slash {
+            opacity: .9;
+            margin-right: 1px;
+        }
+    </style>
+</head>
+
+<body
+    class="text-textblack dark:text-[#f3f4f6] antialiased font-sans flex justify-center w-full m-0 box-border transition-all duration-300 ease-in-out">
+
+    <div id="top-fixed-bar" class="hidden md:block fixed top-0 left-0 w-full h-[2.5rem] bg-[#1b2d48] z-[80]"></div>
+
+    <div id="app-container"
+        class="bg-white dark:bg-[#101929] w-full max-w-[1200px] rounded-none md:rounded-[2.5rem] shadow-[0_4px_24px_rgba(0,0,0,0.02)] flex flex-col min-h-screen md:min-h-[calc(100vh-5rem)] pb-6 transition-all duration-300 ease-in-out">
+
+        <header id="main-header"
+            class="sticky top-0 md:top-10 z-[60] flex flex-wrap justify-between items-center px-4 pt-4 pb-4 md:px-16 lg:px-24 md:pt-8 md:pb-6 lg:pt-10 mb-4 md:mb-8 bg-white dark:bg-[#101929] rounded-t-none md:rounded-t-[2.5rem] transition-all duration-300 ease-in-out">
+            <div class="hidden md:block absolute top-0 left-0 w-[2.5rem] h-[2.5rem] corner-mask-tl pointer-events-none">
+            </div>
+            <div
+                class="hidden md:block absolute top-0 right-0 w-[2.5rem] h-[2.5rem] corner-mask-tr pointer-events-none">
+            </div>
+
+            <div class="flex items-center w-full justify-between">
+                <a href="/"
+                    class="font-bold text-xl md:text-2xl tracking-tighter cursor-pointer flex items-center gap-2 text-[#18181b] dark:text-white">
+                    <img src="/assets/ndexlogo.png" alt="Nationdex Logo" class="w-8 h-8 rounded-full object-cover">
+                    Nationdex
+                </a>
+
+                <div class="flex items-center gap-2 md:gap-3">
+                    <div id="header-nav"
+                        class="hidden md:flex gap-6 items-center transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]">
+                        <a href="//discord.gg/tKh3n5uVnm"
+                            class="w-full sm:w-auto bg-[#8B5CF6] hover:bg-[#7c3aed] text-white px-2 py-2 md:px-4 rounded-[2rem] font-bold text-[15px] md:text-[16px] tracking-wide transition-colors duration-300 flex items-center justify-center gap-2">
+                            Nationdex HQ <span class="material-icons-outlined text-[1rem]">arrow_outward</span>
+                        </a>
+                        <a href="//discord.com/api/oauth2/authorize?client_id=1207017704096141312&scope=bot+applications.commands&permissions=537259009"
+                            class="w-full sm:w-auto bg-[#8B5CF6] hover:bg-[#7c3aed] text-white px-2 py-2 md:px-4 rounded-[2rem] font-bold text-[15px] md:text-[16px] tracking-wide transition-colors duration-300 flex items-center justify-center gap-2">
+                            Invite Me <span class="material-icons-outlined text-[1rem]">arrow_outward</span>
+                        </a>
+                    </div>
+
+                    <button
+                        class="hidden md:inline-flex items-center justify-center rounded-full transition p-2.5 w-10 h-10 hover:bg-gray-200 dark:hover:bg-[#253248] dark:text-[#cbd5e1] text-gray-700"
+                        type="button" @click="$store.windowMode.toggle()" title="Toggle full window layout">
+                        <span class="sr-only">Toggle full window layout</span>
+                        <i class="text-xl"
+                            :class="$store.windowMode.isFull ? 'ri-collapse-diagonal-line' : 'ri-expand-diagonal-line'"></i>
+                    </button>
+
+                    <button
+                        class="items-center inline-flex justify-center rounded-full transition p-2.5 hover:bg-gray-200 dark:hover:bg-[#253248] dark:text-[#cbd5e1] text-gray-700"
+                        type="button" @click="$store.theme.toggle()">
+                        <span class="sr-only">Toggle theme mode</span>
+                        <svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg" :class="{ 'hidden': !($store.theme.isDark) }" x-cloak>
+                            <path
+                                d="M12 18C8.68629 18 6 15.3137 6 12C6 8.68629 8.68629 6 12 6C15.3137 6 18 8.68629 18 12C18 15.3137 15.3137 18 12 18ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16ZM11 1H13V4H11V1ZM11 20H13V23H11V20ZM3.51472 4.92893L4.92893 3.51472L7.05025 5.63604L5.63604 7.05025L3.51472 4.92893ZM16.9497 18.364L18.364 16.9497L20.4853 19.0711L19.0711 20.4853L16.9497 18.364ZM19.0711 3.51472L20.4853 4.92893L18.364 7.05025L16.9497 5.63604L19.0711 3.51472ZM5.63604 16.9497L7.05025 18.364L4.92893 20.4853L3.51472 19.0711L5.63604 16.9497ZM23 11V13H20V11H23ZM4 11V13H1V11H4Z">
+                            </path>
+                        </svg>
+                        <svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg" :class="{ 'hidden': $store.theme.isDark }" x-cloak>
+                            <path
+                                d="M10 6C10 10.4183 13.5817 14 18 14C19.4386 14 20.7885 13.6203 21.9549 12.9556C21.4738 18.0302 17.2005 22 12 22C6.47715 22 2 17.5228 2 12C2 6.79948 5.9698 2.52616 11.0444 2.04507C10.3797 3.21152 10 4.56142 10 6ZM4 12C4 16.4183 7.58172 20 12 20C14.9654 20 17.5757 18.3788 18.9571 15.9546C18.6407 15.9848 18.3214 16 18 16C12.4772 16 8 11.5228 8 6C8 5.67863 8.01524 5.35933 8.04536 5.04293C5.62119 6.42426 4 9.03458 4 12ZM18.1642 2.29104L19 2.5V3.5L18.1642 3.70896C17.4476 3.8881 16.8881 4.4476 16.709 5.16417L16.5 6H15.5L15.291 5.16417C15.1119 4.4476 14.5524 3.8881 13.8358 3.70896L13 3.5V2.5L13.8358 2.29104C14.5524 2.1119 15.1119 1.5524 15.291 0.835829L15.5 0H16.5L16.709 0.835829C16.8881 1.5524 17.4476 2.1119 18.1642 2.29104ZM23.1642 7.29104L24 7.5V8.5L23.1642 8.70896C22.4476 8.8881 21.8881 9.4476 21.709 10.1642L21.5 11H20.5L20.291 10.1642C20.1119 9.4476 19.5524 8.8881 18.8358 8.70896L18 8.5V7.5L18.8358 7.29104C19.5524 7.1119 20.1119 6.5524 20.291 5.83583L20.5 5H21.5L21.709 5.83583C21.8881 6.5524 22.4476 7.1119 23.1642 7.29104Z">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div id="header-fade"
+                class="absolute top-[99%] left-0 w-full h-16 md:h-24 bg-gradient-to-b from-white dark:from-[#101929] to-white/0 dark:to-transparent pointer-events-none z-[-1] opacity-0 transition-opacity duration-300">
+            </div>
+        </header>
+
+        <div class="px-6 md:px-16 lg:px-24 flex-1 flex flex-col pb-2 md:pb-4 lg:pb-6 w-full">
+
+            <div class="mb-12 md:mb-20 text-left md:text-center w-full max-w-4xl mx-auto">
+                <h1
+                    class="page-title text-[3rem] md:text-6xl lg:text-[4.5rem] leading-[1.05] font-bold mb-3 md:mb-5 dark:text-white">
+                    Terms of Service</h1>
+                <p class="text-md md:text-sm text-center pt-4 font-semibold text-textblack dark:text-white">Effective:
+                    March 28th, 2026
+                </p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-12 lg:gap-24 w-full">
+
+                <div class="lg:w-[35%] lg:order-2">
+                    <div id="desktop-toc" class="sticky top-[120px] md:top-[160px] pb-8 pr-2">
+                        <h3
+                            class="text-[1.15rem] font-bold mb-4 border-b border-gray-100 dark:border-[#223047] pb-3 dark:text-white">
+                            Table of contents</h3>
+                        <nav>
+                            <ol
+                                class="space-y-3 px-0 text-[13px] md:text-sm font-medium text-textblack dark:text-[#cbd5e1] list-decimal list-inside marker:text-textblack marker:dark:text-white marker:font-semibold [&_a]:underline [&_a]:underline-offset-[3px] [&_a]:decoration-gray-300 dark:[&_a]:decoration-zinc-700 hover:[&_a]:decoration-gray-600 dark:hover:[&_a]:decoration-zinc-400 [&_a]:transition-colors">
+                                <li><a href="#glossary">Glossary</a></li>
+                                <li><a href="#open-source">Open source</a></li>
+                                <li><a href="#1">Usage Agreement</a></li>
+                                <li><a href="#2">Bot Functionality</a></li>
+                                <li><a href="#3">User Conduct</a></li>
+                                <li><a href="#4">Trading Guidelines</a></li>
+                                <li><a href="#5">Privacy and Data</a></li>
+                                <li><a href="#6">Moderation</a></li>
+                                <li><a href="#7">Changes to Terms and Rules</a></li>
+                                <li><a href="#8">Liability</a></li>
+                                <li><a href="#9">Availability</a></li>
+                                <li><a href="#10">Reporting Violations</a></li>
+                                <li><a href="#contesting">Contesting a sanction</a></li>
+                                <li><a href="#contact">Contact</a></li>
+                            </ol>
+                        </nav>
+                        <div class="mt-8 border-t border-gray-100 dark:border-[#223047] pt-6 hidden lg:block">
+                            <a href="#"
+                                class="text-xs font-semibold text-textblack dark:text-[#cbd5e1] hover:text-gray-500 dark:hover:text-white transition-colors flex items-center gap-1">
+                                Back to top <span class="material-icons-outlined text-[14px]">arrow_upward</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="lg:w-[65%] lg:order-1 prose dark:prose-invert max-w-none prose-h2:text-[1.125rem] prose-h2:font-bold prose-h2:text-textblack dark:prose-h2:text-white prose-h2:mt-10 prose-h2:mb-3 prose-h2:scroll-mt-[140px] prose-h3:text-[1rem] prose-h3:font-semibold prose-h3:text-textblack dark:prose-h3:text-white prose-h3:mt-6 prose-h3:mb-2 prose-p:text-[0.9375rem] prose-p:text-[#71717a] dark:prose-p:text-[#94a3b8] prose-p:leading-relaxed prose-p:mb-5 prose-li:text-[0.9375rem] prose-li:text-[#71717a] dark:prose-li:text-[#94a3b8] prose-li:leading-relaxed prose-li:mb-2 prose-a:text-textblack dark:prose-a:text-white prose-a:underline prose-a:decoration-zinc-300 dark:prose-a:decoration-zinc-700 hover:prose-a:decoration-zinc-500 dark:hover:prose-a:decoration-zinc-400 prose-a:underline-offset-2 prose-a:transition-colors">
+                    <p
+                        class="!text-[1.15rem] !md:text-[1.35rem] !font-medium !text-textblack dark:!text-white !mb-8 !leading-[1.5] !tracking-tight">
+                        Welcome to Nationdex, the interactive countryball-catching and trading Discord bot! Before you
+                        start using Nationdex, please carefully read and agree to the following Terms of Service and
+                        Rules. By using Nationdex, you indicate your acceptance of these terms and your commitment to
+                        adhere to the rules.
+                    </p>
+
+                    <h2 id="glossary" class="!mt-0">Glossary</h2>
+                    <ul>
+                        <li><span class="font-bold text-textblack dark:text-white">Collectible:</span> any virtual
+                            object that is meant
+                            to be collected through the bot, such as countryballs or other means like virtual currency.
+                        </li>
+                        <li><span class="font-bold text-textblack dark:text-white">Nationdex team:</span> the
+                            administrators of
+                            Nationdex, possessing the "Nationdex Team" role on the official Discord server. They have
+                            full control over the bot.</li>
+                        <li><span class="font-bold text-textblack dark:text-white">Staff:</span> Discord users
+                            possessing the staff
+                            status on the official Discord server: Support, Moderator, Nationdex Team, Trial staff.</li>
+                    </ul>
+
+                    <h2 id="open-source">Open source</h2>
+                    <p>The code of Nationdex is open source and available at <a
+                            href="https://github.com/nationdex/bot">github.com/nationdex/bot</a>.
+                        It is using the <a href="https://github.com/nationdex/bot/blob/main/LICENSE">Apache
+                            2.0</a>
+                        licence which should be
+                        respected when using the bot. Most
+                        notably,
+                        it comes
+                        without warranty and liability.</p>
+
+                    <h2 id="1">1. Usage Agreement</h2>
+                    <p>By using the Nationdex Discord bot, you agree to follow these terms and rules. If you do not
+                        agree, please refrain from using the bot. Servers are responsible for their members and access
+                        may be revoked if deemed necessary.</p>
+
+                    <h2 id="2">2. Bot Functionality</h2>
+                    <p>Nationdex allows you to catch, collect, and trade virtual countryballs, referred to as
+                        "collectibles" in these terms. The bot's primary purpose is entertainment, and it is not
+                        intended for any real-world transactions.</p>
+
+                    <h2 id="3">3. User Conduct</h2>
+
+                    <h3>Cheating and Unfair Advantage</h3>
+                    <ul>
+                        <li>The use of third-party tools, exploits, macros, bots, or any other method to gain an unfair
+                            advantage is strictly prohibited.</li>
+                        <li>Any attempts to modify or manipulate the game mechanics to bypass intended gameplay are
+                            considered cheating.</li>
+                    </ul>
+
+                    <h3>Exploits and Bugs</h3>
+                    <ul>
+                        <li>If you discover a bug or exploit, you are required to report it to the Nationdex team
+                            immediately.</li>
+                        <li>Using known exploits or bugs for personal gain is prohibited and will be penalized.</li>
+                    </ul>
+
+                    <h3>Account Sharing</h3>
+                    <ul>
+                        <li>Sharing your account with others is not allowed. Each user is responsible for the actions
+                            taken on their account.</li>
+                        <li>Creating or using multiple accounts for the purpose of gaining an advantage (e.g., farming
+                            items or collectibles) is also prohibited.</li>
+                    </ul>
+
+                    <h3>Farming</h3>
+                    <ul>
+                        <li>Abusing the spawn mechanics, such as repeatedly engaging in actions designed to force or
+                            accelerate spawns for items or collectibles, is not allowed.</li>
+                        <li>Any behavior that disrupts the natural balance of the game mechanics to gain items or
+                            collectibles faster than normal is prohibited.</li>
+                    </ul>
+
+                    <h3>Staff Impersonation</h3>
+                    <ul>
+                        <li>Impersonating Nationdex staff, moderators, or administrators is strictly forbidden.</li>
+                        <li>This includes, but is not limited to, using similar usernames, profile pictures, or any
+                            other methods intended to deceive other users.</li>
+                    </ul>
+
+                    <h3>User Behaviour</h3>
+                    <ul>
+                        <li>Users must treat all members of the Nationdex community with respect. Engaging in
+                            harassment, bullying, or any form of abusive behavior is strictly prohibited.</li>
+                    </ul>
+
+                    <h2 id="4">4. Trading Guidelines</h2>
+
+                    <h3>Finality of Trades</h3>
+                    <ul>
+                        <li>All trades (<div class="slash-command"><span class="slash">/</span>nations
+                                gift</div>) are final. Once
+                            completed, they cannot be reversed except under specific circumstances outlined below.</li>
+                    </ul>
+
+                    <h3>Built-in Trade Safeguards</h3>
+                    <ul>
+                        <li>The trading system includes a <strong>lock and confirm</strong> mechanism, along with a
+                            timer, to ensure all parties have adequate time to review and verify the details of the
+                            trade. Users are responsible for double-checking all trade details before confirming.</li>
+                    </ul>
+
+                    <h3>Reversal of Trades</h3>
+                    <p>Trades can only be reversed under the following conditions, with staff discretion.</p>
+                    <ul>
+                        <li><strong>Staff Impersonation:</strong> If a user falsely claims to be staff and uses this to
+                            coerce a trade.</li>
+                    </ul>
+                    <p>No other scam reports or trade disputes will be honored. Users are encouraged to exercise caution
+                        and verify all details before confirming trades.</p>
+
+                    <h3>Cross Trading</h3>
+                    <p>Cross-trading refers to the act of trading Nationdex collectibles, items, or assets for:</p>
+                    <ul>
+                        <li>Items, currency, or assets that do not belong to the bot.</li>
+                        <li>Real-world money or financial transactions.</li>
+                        <li>Exclusive access to a place.</li>
+                        <li>Entrance to events or giveaways.</li>
+                        <li>Any item or asset outside of the Nationdex ecosystem.</li>
+                    </ul>
+                    <p>Cross-trading is strictly forbidden <strong>for any user with no exception</strong> and will be
+                        severly punished.</p>
+
+                    <h2 id="5">5. Privacy and Data</h2>
+                    <ul>
+                        <li>Nationdex collects minimal user data necessary for its functionality. We do not share this
+                            data with third parties.</li>
+                        <li>Do not share personal information, including passwords, addresses, or financial details,
+                            through the bot.</li>
+                    </ul>
+                    <p>A more detailed privacy policy that details what data is collected is available at <a
+                            href="/privacy">this link</a>.</p>
+
+                    <h2 id="6">6. Moderation</h2>
+
+                    <h3>Authority of Bot Administrators and Moderators</h3>
+                    <p>Bot administrators and moderators have the right to enforce these rules to maintain a fair and
+                        enjoyable environment for all users. Enforcement actions may include, but are not limited to:
+                    </p>
+                    <ul>
+                        <li>Issuing warnings.</li>
+                        <li>Temporary or permanent bans.</li>
+                        <li>Blacklisting users from the bot or the server where the offense occurred.</li>
+                    </ul>
+
+                    <h3>Consequences for Rule Violations</h3>
+                    <ul>
+                        <li>Violations involving collectible items may result in the deletion or removal of those items
+                            from the user's account or a predefined percentage of a users collectibles.</li>
+                        <li>Severe or repeated offenses can lead to broader restrictions, including bans from using the
+                            bot entirely.</li>
+                    </ul>
+
+                    <h3>Discretion of Enforcement</h3>
+                    <p>The severity of actions taken will be determined by the bot administrators and moderators based
+                        on the nature and impact of the violation.</p>
+
+                    <h2 id="7">7. Changes to Terms and Rules</h2>
+                    <p>The terms of service and rules might be updated at any time. Users will be notified of changes
+                        through the <a href="https://discord.gg/tKh3n5uVnm">Discord server</a>'s announcements channels,
+                        and continued use of the bot will imply agreement to the modified terms.</p>
+
+                    <h2 id="8">8. Liability</h2>
+                    <p>The Nationdex team is not responsible for any loss, damage, or inconvenience caused by the use of
+                        the bot. Use the bot at your own risk.</p>
+
+                    <h2 id="9">9. Availability</h2>
+                    <ul>
+                        <li>Nationdex is provided as-is. There are no guarantees that it will be available in the
+                            future, and its purpose or availability may be changed at any time.</li>
+                        <li>User related data including backups may be deleted at any time.</li>
+                        <li>User related data including backups is non-transferable between discord accounts.</li>
+                        <li>The Nationdex Team reserve the right to restrict usage of the bot or certain features to a
+                            user at any time, for any given reason.</li>
+                    </ul>
+
+                    <h2 id="10">10. Reporting Violations</h2>
+                    <p>If you witness any violations of these terms and rules, please report them to the bot
+                        administrators or moderators. Failure to do so may result in possible action, not limited to
+                        blacklisting.</p>
+                    <p>By using Nationdex, you agree to abide by these terms and rules. Failure to comply with these
+                        rules may result in warnings, temporary or permanent bans, or other appropriate actions
+                        determined by the bot administrators and moderators. Remember that Nationdex is meant to be a
+                        fun and engaging experience for everyone. Enjoy catching and trading countryballs responsibly!
+                    </p>
+
+                    <h2 id="contesting">Contesting a sanction</h2>
+                    <p>If you want a re-evaluation of your case, you may do so by submitting a thread in the <a
+                            href="https://discord.gg/tKh3n5uVnm">Discord server</a>
+                        (<span class="slash-command"><span class="slash">#</span>‎ forum</span>
+                        channel) or sending
+                        an email to <a href="mailto:contact@nationdex.com">contact@nationdex.com</a>. You must follow
+                        these rules:
+                    </p>
+                    <ul>
+                        <li>Do not send an appeal twice</li>
+                        <li>Do not send an appeal for someone else, only the concerned user may do so</li>
+                        <li>Do not send troll requests, as that may result in a ban</li>
+                        <li>Denied requests are permanent, unless specified otherwise by the Nationdex moderation team.
+                            Do not send more requests afterwards.</li>
+                    </ul>
+                    <p>The Nationdex moderation team has the right to accept, deny or ignore any request, with or
+                        without
+                        reason. You may not be notified about the decision of the team. The availability of the appeals,
+                        including the Google Forms, is not guaranteed.</p>
+
+                    <h2 id="contact">Contact</h2>
+                    <p>You may contact us using the following means:</p>
+                    <ul>
+                        <li>The <a href="https://discord.gg/tKh3n5uVnm">Discord server</a> through thread
+                            (<div class="slash-command"><span class="slash">#</span>‎ forum</div> channel)</li>
+                        <li>Sending a mail to <a href="mailto:contact@nationdex.com">contact@nationdex.com</a>.</li>
+                    </ul>
+
+                    <p class="mt-16"><i>This page was written and edited by <img
+                                src="https://avatars.githubusercontent.com/u/105863819"
+                                class="w-6 h-6 object-cover rounded-full inline-block align-middle ml-1"><a
+                                href="https://adityaa.xyz" class="font-semibold ml-1">aditya</a></i>
+                    </p>
+
+                    <div
+                        class="mt-16 border-t border-gray-100 dark:border-[#223047] pt-8 flex justify-between items-center lg:hidden">
+                        <a href="/"
+                            class="text-[15px] font-semibold text-textblack dark:text-[#cbd5e1] hover:text-gray-500 dark:hover:text-white transition-colors block pb-2">Home</a>
+                        <a href="#"
+                            class="text-xs font-semibold text-textblack dark:text-[#cbd5e1] hover:text-gray-500 no-underline transition-colors flex items-center gap-1">
+                            Back to top <span class="material-icons-outlined text-[14px]">arrow_upward</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="mt-auto pt-12 w-full px-4 md:px-12">
+                <div
+                    class="flex flex-wrap items-center justify-center md:justify-start gap-3 md:gap-4 font-medium pt-4 mb-10 w-full">
+                    <span class="font-semibold text-lg whitespace-nowrap" data-t="follow_us">Follow us</span>
+                    <a href="//www.youtube.com/@nationdexbot"><i
+                            class="ri-youtube-fill text-3xl text-gray-700 dark:text-[#94a3b8] cursor-pointer"></i></a>
+                    <a href="//github.com/nationdex"><i
+                            class="ri-github-fill text-3xl text-gray-700 dark:text-[#94a3b8] cursor-pointer"></i></a>
+                    <a href="//discord.gg/hVvD8gUXjQ"><i
+                            class="ri-discord-fill text-3xl text-gray-700 dark:text-[#94a3b8] cursor-pointer"></i></a>
+                </div>
+
+                <div
+                    class="border-t border-gray-200 dark:border-[#223047] pt-10 pb-12 grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-6 text-left w-full px-2 md:px-0">
+                    <div class="space-y-5">
+                        <h2 class="font-bold text-textblack dark:text-white text-lg tracking-tight">Resources</h2>
+                        <ul class="space-y-4 font-semibold text-[15px] text-gray-500 dark:text-[#94a3b8]">
+                            <li><a href="/commands"
+                                    class="hover:text-black dark:hover:text-white transition-colors block">Commands</a>
+                            </li>
+                            <li><a href="/changelog"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Changelog</a>
+                            </li>
+                            <li><a href="/guides"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Guides</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-5">
+                        <h2 class="font-bold text-textblack dark:text-white text-lg tracking-tight">Community</h2>
+                        <ul class="space-y-4 font-semibold text-[15px] text-gray-500 dark:text-[#94a3b8]">
+                            <li><a href="//discord.gg/tKh3n5uVnm"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Discord</a>
+                            </li>
+                            <li><a href="/newsroom"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">News</a>
+                            </li>
+                            <li><a href="//www.youtube.com/@nationdexbot"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Youtube</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-5">
+                        <h2 class="font-bold text-textblack dark:text-white text-lg tracking-tight">Team</h2>
+                        <ul class="space-y-4 font-semibold text-[15px] text-gray-500 dark:text-[#94a3b8]">
+                            <li><a href="/team"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Developers</a>
+                            </li>
+                            <li><a href="/privacy"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Privacy</a>
+                            </li>
+                            <li><a href="/terms"
+                                    class="hover:text-black dark:hover:text-white transition-colors block">Terms</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-5">
+                        <h2 class="font-bold text-textblack dark:text-white text-lg tracking-tight">Support</h2>
+                        <ul class="space-y-4 font-semibold text-[15px] text-gray-500 dark:text-[#94a3b8]">
+                            <li><a href="//github.com/nationdex/bot/issues"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Report
+                                    Issue</a></li>
+                            <li><a href="//discord.gg/tKh3n5uVnm"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div
+                    class="border-t border-gray-200 dark:border-[#223047] pt-6 pb-8 flex flex-col lg:flex-row items-center justify-between gap-6 text-[14px] md:text-[15px] text-gray-500 dark:text-[#94a3b8] font-semibold tracking-tight px-2 md:px-0 w-full">
+                    <div class="flex flex-wrap items-center justify-center gap-4 md:gap-6">
+                        <div class="flex items-center gap-2 mr-2 shrink-0">
+                            <img src="https://cdn.soloist.ai/a0b2d163-78b6-4db3-9381-96d7635d18b1/logo/1210c387-b5e7-4bee-bf84-451755fe908c.png"
+                                class="w-6 h-6 rounded-full p-0.5 grayscale">
+                            <span class="font-bold text-textblack dark:text-white">Nationdex Team <span> &copy;
+                                    2022-2026</span></span>
+                        </div>
+                    </div>
+
+                    <div class="relative flex bg-white/90 dark:bg-[#1a2436]/90 rounded-lg p-2 border dark:border-none items-center gap-2 cursor-pointer dark:text-[#cbd5e1]"
+                        id="langSelector">
+                        <i class="ri-global-line"></i>
+                        <span id="currentLang">English (United States)</span>
+                        <i class="ri-arrow-down-s-line"></i>
+                        <div class="lang-dropdown" id="langDropdown">
+                            <div class="lang-option" data-lang="en">English (United States)</div>
+                            <div class="lang-option" data-lang="hi">Hindi (नमस्ते)</div>
+                            <div class="lang-option" data-lang="pt-br">Brazilian (Português)</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="google_translate_element" style="display:none;"></div>
+            </footer>
+        </div>
+
+    </div>
+
+    <script>
+        const sections = document.querySelectorAll('.prose-content h2');
+        const tocLinks = document.querySelectorAll('#desktop-toc nav ol li a');
+        const headerFade = document.getElementById('header-fade');
+        const translations = {
+            en: { follow_us: "Follow us" },
+            hi: { follow_us: "हमारा अनुसरण करें" },
+            es: { follow_us: "Síguenos" },
+            fr: { follow_us: "Suivez-nous" },
+            "pt-br": { follow_us: "Siga-nos" },
+            zh: { follow_us: "关注我们" }
+        };
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 15) {
+                headerFade.classList.remove('opacity-0');
+                headerFade.classList.add('opacity-100');
+            } else {
+                headerFade.classList.remove('opacity-100');
+                headerFade.classList.add('opacity-0');
+            }
+
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.scrollY >= sectionTop - 180) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            tocLinks.forEach(link => {
+                link.classList.remove('decoration-zinc-900', 'dark:decoration-white', 'underline-offset-4', 'font-bold');
+                link.classList.add('decoration-gray-300', 'dark:decoration-zinc-700');
+                if (current && link.getAttribute('href') === `#${current}`) {
+                    link.classList.remove('decoration-gray-300', 'dark:decoration-zinc-700');
+                    link.classList.add('decoration-zinc-900', 'dark:decoration-white', 'underline-offset-4', 'font-bold');
+                }
+            });
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+            anchor.addEventListener('click', function (e) {
+                var targetId = this.getAttribute('href');
+                if (targetId === '#') {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    return;
+                }
+                var target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,hi,pt',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+
+        (function initLanguageSelector() {
+            document.querySelectorAll('i, .material-icons-outlined, [class^="ri-"], [class*=" ri-"], .slash-command, code, svg').forEach(el => {
+                el.classList.add('notranslate');
+                el.setAttribute('translate', 'no');
+            });
+
+            const langSelector = document.getElementById('langSelector');
+            const langDropdown = document.getElementById('langDropdown');
+            const currentLangSpan = document.getElementById('currentLang');
+
+            const langNames = {
+                'en': 'English (United States)',
+                'hi': 'Hindi (नमस्ते)',
+                'pt': 'Brazilian (Português)',
+                'pt-br': 'Brazilian (Português)'
+            };
+
+            const savedLang = localStorage.getItem('ndex_lang') || 'en';
+            if (currentLangSpan && langNames[savedLang]) {
+                currentLangSpan.textContent = langNames[savedLang];
+            }
+
+            if (langSelector && langDropdown) {
+                langSelector.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    langDropdown.classList.toggle('show');
+                });
+
+                document.addEventListener('click', () => {
+                    langDropdown.classList.remove('show');
+                });
+
+                document.querySelectorAll('.lang-option').forEach(opt => {
+                    opt.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const rawLang = opt.getAttribute('data-lang');
+                        const targetLang = (rawLang === 'pt-br' || rawLang === 'pt') ? 'pt' : rawLang;
+
+                        localStorage.setItem('ndex_lang', rawLang);
+
+                        if (targetLang === 'en') {
+                            document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                            document.cookie = "googtrans=/en/en; path=/;";
+                        } else {
+                            document.cookie = "googtrans=/en/" + targetLang + "; path=/;";
+                            document.cookie = "googtrans=/en/" + targetLang + "; path=/; domain=" + window.location.hostname + ";";
+                        }
+
+                        langDropdown.classList.remove('show');
+                        window.location.reload();
+                    });
+                });
+            }
+        })();
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="../assets/js/cookies.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,311 @@
+[
+  {
+    "name": "/about",
+    "description": "About the bot.",
+    "category": "misc",
+    "isDM": true,
+    "usage": "/about",
+    "parameters": [],
+    "details": "Nationdex is a countryball/nation collector bot for Discord. Collect, trade, and compete with friends to see who can collect the most countryballs!"
+  },
+  {
+    "name": "/foils",
+    "description": "",
+    "category": "foils",
+    "isDM": true,
+    "subcommands": [
+      {
+        "name": "balance",
+        "description": "View the amount of foils you have.",
+        "usage": "/foils balance",
+        "parameters": []
+      },
+      {
+        "name": "give",
+        "description": "Give foils to another user.",
+        "usage": "/foils give user:<@903681538842054686> amount:100",
+        "parameters": [
+          {
+            "name": "user",
+            "type": "User",
+            "required": true,
+            "description": "The user to give foils to."
+          },
+          {
+            "name": "amount",
+            "type": "Number",
+            "required": true,
+            "description": "The amount of foils to give."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "/help",
+    "description": "Shows all available commands.",
+    "category": "misc",
+    "isDM": true,
+    "usage": "/help",
+    "parameters": [],
+    "details": "Displays all available commands with their descriptions, categories, usage, and parameters. An interactive menu allows you to click through pages."
+  },
+  {
+    "name": "/leaderboards",
+    "description": "",
+    "category": "leaderboards",
+    "isDM": true,
+    "subcommands": [
+      {
+        "name": "foils",
+        "description": "View the leaderboard of foils.",
+        "usage": "/leaderboards foils",
+        "parameters": []
+      },
+      {
+        "name": "nations",
+        "description": "View the leaderboard of nations.",
+        "usage": "/leaderboards nations",
+        "parameters": [
+          {
+            "name": "class",
+            "type": "String",
+            "required": true,
+            "description": "The rarity class to view the leaderboard of."
+          }
+        ]
+      },
+      {
+        "name": "value",
+        "description": "View the leaderboard of total nations value.",
+        "usage": "/leaderboards value",
+        "parameters": []
+      }
+    ]
+  },
+  {
+    "name": "/nations",
+    "description": "",
+    "category": "nations",
+    "isDM": true,
+    "subcommands": [
+      {
+        "name": "compare",
+        "description": "Compare your nations progress with another user.",
+        "usage": "/nations compare user:<@903681538842054686> class:Common",
+        "parameters": [
+          {
+            "name": "user",
+            "type": "User",
+            "required": true,
+            "description": "The user whom you want to compare to."
+          },
+          {
+            "name": "class",
+            "type": "String",
+            "required": false,
+            "description": "Compare the nations of a specific rarity class."
+          }
+        ]
+      },
+      {
+        "name": "duplicates",
+        "description": "View your most duplicate nations.",
+        "usage": "/nations duplicates class:Common",
+        "parameters": [
+          {
+            "name": "class",
+            "type": "String",
+            "required": false,
+            "description": "The class whose nations to show."
+          }
+        ]
+      },
+      {
+        "name": "gift",
+        "description": "Gift a nation to another user.",
+        "usage": "/nations gift user:<@903681538842054686> nation:LL0100",
+        "parameters": [
+          {
+            "name": "user",
+            "type": "User",
+            "required": true,
+            "description": "The user whom you want to gift."
+          },
+          {
+            "name": "nation",
+            "type": "String",
+            "required": true,
+            "description": "The nation you want to give."
+          }
+        ]
+      },
+      {
+        "name": "info",
+        "description": "View info of your nations.",
+        "usage": "/nations info nation:",
+        "parameters": [
+          {
+            "name": "nation",
+            "type": "String",
+            "required": false,
+            "description": "The nation to view the info card of."
+          }
+        ]
+      },
+      {
+        "name": "last",
+        "description": "View info of the last nation you caught.",
+        "usage": "/nations last",
+        "parameters": [
+          {
+            "name": "user",
+            "type": "User",
+            "required": false,
+            "description": "The user whose last nation to check."
+          },
+          {
+            "name": "class",
+            "type": "String",
+            "required": false,
+            "description": "View info of the last nation you caught of a specific rarity class."
+          }
+        ]
+      },
+      {
+        "name": "progress",
+        "description": "View your nations progress.",
+        "usage": "/nations progress",
+        "parameters": [
+          {
+            "name": "user",
+            "type": "User",
+            "required": false,
+            "description": "The user whose nation progress to view."
+          },
+          {
+            "name": "class",
+            "type": "String",
+            "required": false,
+            "description": "The rarity class to view."
+          }
+        ]
+      },
+      {
+        "name": "sell",
+        "description": "Sell a nation for foils.",
+        "usage": "/nations sell",
+        "parameters": [
+          {
+            "name": "nation",
+            "type": "String",
+            "required": true,
+            "description": "The nation you want to sell."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "/player",
+    "description": "",
+    "category": "player",
+    "isDM": true,
+    "subcommands": [
+      {
+        "name": "settings",
+        "description": "View or customize your player settings.",
+        "usage": "/player settings",
+        "parameters": []
+      }
+    ]
+  },
+  {
+    "name": "/rarity",
+    "description": "",
+    "category": "rarity",
+    "isDM": true,
+    "subcommands": [
+      {
+        "name": "collectibles",
+        "description": "View rarity list of nations.",
+        "usage": "/rarity collectibles",
+        "parameters": [
+          {
+            "name": "class",
+            "type": "String",
+            "required": true,
+            "description": "The rarity class whose nations' rarity to view."
+          },
+          {
+            "name": "sort_type",
+            "type": "String",
+            "required": true,
+            "description": "Sort type of the list."
+          }
+        ]
+      },
+      {
+        "name": "info",
+        "description": "View rarity info of a nation.",
+        "usage": "/rarity info nation:",
+        "parameters": [
+          {
+            "name": "nation",
+            "type": "String",
+            "required": true,
+            "description": "The nation whose rarity info to view."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "/spawn",
+    "description": "",
+    "category": "spawn",
+    "isDM": false,
+    "subcommands": [
+      {
+        "name": "channel",
+        "description": "Set a channel for nations to spawn in.",
+        "usage": "/spawn channel channel:",
+        "parameters": [
+          {
+            "name": "channel",
+            "type": "Channel",
+            "required": false,
+            "description": "The channel to spawn nations in, leave empty to reset."
+          }
+        ]
+      },
+      {
+        "name": "configs",
+        "description": "Check server's spawn configuration.",
+        "usage": "/spawn configs",
+        "parameters": []
+      },
+      {
+        "name": "toggle",
+        "description": "Toggle on/off nations spawning in the server.",
+        "usage": "/spawn toggle",
+        "parameters": []
+      }
+    ]
+  },
+  {
+    "name": "/utils",
+    "description": "",
+    "category": "misc",
+    "isDM": true,
+    "subcommands": [
+      {
+        "name": "ping",
+        "description": "Test the bot's current API latency and gateway connection speeds.",
+        "usage": "/utils ping",
+        "parameters": [],
+        "details": "Useful for diagnostic checks if messages seem delayed or if Discord is experiencing performance issues."
+      }
+    ]
+  }
+]

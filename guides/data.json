@@ -1,0 +1,32 @@
+[
+    {
+        "id": "how-to-setup-nationdex",
+        "slug": "how-to-setup-nationdex",
+        "url": "/guides/how-to-setup-nationdex/",
+        "title": "How to Setup Nationdex",
+        "category": "getting-started",
+        "readTime": "2 min read",
+        "date": "August 11, 2026",
+        "author": {
+            "name": "adi",
+            "avatar": "https://avatars.githubusercontent.com/u/105863819"
+        },
+        "previewImage": "https://cdn.soloist.ai/a0b2d163-78b6-4db3-9381-96d7635d18b1/logo/1210c387-b5e7-4bee-bf84-451755fe908c.png",
+        "excerpt": "A complete step-by-step walkthrough on inviting Nationdex to your Discord server, configuring spawn channels, and setting manager permissions."
+    },
+    {
+        "id": "leaderboards-and-foils",
+        "slug": "leaderboards-and-foils",
+        "url": "/guides/leaderboards-and-foils/",
+        "title": "Leaderboards & Foils",
+        "category": "economy",
+        "readTime": "1 min read",
+        "date": "August 28, 2026",
+        "author": {
+            "name": "adi",
+            "avatar": "https://avatars.githubusercontent.com/u/105863819"
+        },
+        "previewImage": "https://cdn.soloist.ai/a0b2d163-78b6-4db3-9381-96d7635d18b1/logo/1210c387-b5e7-4bee-bf84-451755fe908c.png",
+        "excerpt": "Explore server and global leaderboards, learn how foil currency works, and maximize your ranking among top collectors."
+    }
+]

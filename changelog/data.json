@@ -1,0 +1,126 @@
+[
+    {
+        "version": "1.1.1-beta",
+        "title": "Database Update",
+        "date": "August 25, 2026",
+        "category": "fixes",
+        "author": {
+            "name": "Ayansh",
+            "role": "Lead Developer",
+            "avatar": "https://avatars.githubusercontent.com/u/179485733"
+        },
+        "isBeta": "true",
+        "description": "Another database reset since Ariel used AI to create a function for transferring the old SQLite database to SurrealDB and everything got... corrupted",
+        "changes": []
+    },
+    {
+        "version": "1.1.0-beta",
+        "title": "Downtime Update",
+        "date": "July 30, 2026",
+        "category": "fixes",
+        "author": {
+            "name": "Aditya",
+            "role": "Web Developer",
+            "avatar": "https://avatars.githubusercontent.com/u/105863819"
+        },
+        "isBeta": "true",
+        "description": "The bot is back up from a long downtime, it was caused due to mainly hosting provider issues.",
+        "changes": []
+    },
+    {
+        "version": "1.0.3-beta",
+        "title": "Leaderboards Update",
+        "date": "June 29, 2026",
+        "category": "features",
+        "isBeta": true,
+        "author": {
+            "name": "Ayansh",
+            "role": "Lead Developer",
+            "avatar": "https://avatars.githubusercontent.com/u/179485733"
+        },
+        "description": "",
+        "changes": [
+            {
+                "text": "Added </leaderboards nations> (1/3)"
+            },
+            {
+                "text": "Added </leaderboards value> (2/3)"
+            },
+            {
+                "text": "Added </leaderboards foils> (3/3)"
+            },
+            {
+                "text": "Added </foils balance> (1/2)"
+            },
+            {
+                "text": "Added </foils give> (2/2)"
+            },
+            {
+                "text": "Added </nations sell>"
+            },
+            {
+                "text": "Fixed </nations duplicates> throwing errors"
+            },
+            {
+                "text": "Fixed duration parsing in multiple interactions"
+            }
+        ]
+    },
+    {
+        "version": "1.0.2-beta",
+        "title": "Bug Fixing",
+        "date": "June 16, 2026",
+        "category": "fixes",
+        "isBeta": true,
+        "author": {
+            "name": "Ayansh",
+            "role": "Lead Developer",
+            "avatar": "https://avatars.githubusercontent.com/u/179485733"
+        },
+        "description": "",
+        "changes": [
+            {
+                "text": "Fixed nations not showing up by searching their ID in </nations info> command"
+            },
+            {
+                "text": "Added nations info cards"
+            },
+            {
+                "text": "Changed some keywords"
+            },
+            {
+                "text": "Added better collectible names configuration"
+            },
+            {
+                "text": "Temporarily removed </nations compare> command"
+            },
+            {
+                "text": "Database **Corrupted** (*all the nations that you caught via @NationBeta are gone, I highly apologise for this but there's nothing we can do*)"
+            }
+        ]
+    },
+    {
+        "version": "1.0.1-beta",
+        "title": "Nationdex BETA",
+        "date": "May 26, 2026",
+        "category": "major",
+        "isBeta": true,
+        "author": {
+            "name": "Ayansh",
+            "role": "Lead Developer",
+            "avatar": "https://avatars.githubusercontent.com/u/179485733"
+        },
+        "description": "The official public release of Nationdex BETA Discord bot! and newly added commands.",
+        "changes": [
+            {
+                "text": "Added </nations gift>."
+            },
+            {
+                "text": "Added </nations duplicates>."
+            },
+            {
+                "text": "Fixed some bugs"
+            }
+        ]
+    }
+]

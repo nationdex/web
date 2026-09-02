@@ -1,0 +1,67 @@
+{
+    "developers": [
+        {
+            "name": "Ariel Aram (AA)",
+            "role": "Founder",
+            "avatar": "https://avatars.githubusercontent.com/u/119354967",
+            "bio": "The Main Founder behind this Project Nationdex 26, I'm managing every aspect of it, keeping track of the server, members and overall development.",
+            "github": "https://github.com/ariel-aram",
+            "discord": "https://discord.com/users/525421785001361408"
+        },
+        {
+            "name": "Aditya (adi)",
+            "role": "Lead Developer",
+            "avatar": "https://avatars.githubusercontent.com/u/105863819",
+            "bio": "hey! this site was designed and developed by me. I'm frontend designer aswell as Lead Developer for the project, I manage the overall changes happening within the project.",
+            "github": "https://github.com/Clyders",
+            "discord": "https://discord.com/users/903681538842054686"
+        },
+        {
+            "name": "Ayansh (ayau)",
+            "role": "Backend Developer",
+            "avatar": "https://avatars.githubusercontent.com/u/179485733",
+            "bio": "hey! im the one behind Nationdex bot backend, database and infrastructure. Every backend data goes through me, I manage the bot, settings, database etc.",
+            "github": "https://github.com/ayanshfr",
+            "discord": "https://discord.com/users/1421877908456083578"
+        }
+    ],
+    "contributors": [
+        {
+            "name": "Luka22r",
+            "pfp": "https://cdn.discordapp.com/embed/avatars/0.png",
+            "discord": "https://discord.com/users/1391819955208454218"
+        },
+        {
+            "name": "MetroKitten",
+            "pfp": "https://cdn.discordapp.com/avatars/877557616094638112/a414cc4c0f80b7e6d5c5eecff5293877.png",
+            "discord": "https://discord.com/users/877557616094638112"
+        }
+    ],
+    "staff": [
+        {
+            "name": "Mr. Lore",
+            "pfp": "https://cdn.discordapp.com/avatars/1093162537312329738/9b04e79072ea47a7e269ed373b553490.png",
+            "discord": "https://discord.com/users/1093162537312329738"
+        },
+        {
+            "name": "BloxyBlitz",
+            "pfp": "https://cdn.discordapp.com/avatars/727209921338277919/7b603fb5cc82e5860942c9ea6c407033.png",
+            "discord": "https://discord.com/users/727209921338277919"
+        },
+        {
+            "name": "F.m.e",
+            "pfp": "https://cdn.discordapp.com/avatars/1192610041564500060/ea283de68f382d9b2a7539aafaf8d71f.png",
+            "discord": "https://discord.com/users/1192610041564500060"
+        },
+        {
+            "name": "Hiboman",
+            "pfp": "https://cdn.discordapp.com/avatars/692006179957637132/9cc3b72cb7acf024dd4b481062916f8e.png",
+            "discord": "https://discord.com/users/692006179957637132"
+        },
+        {
+            "name": "AhmedTheWarrior",
+            "pfp": "https://cdn.discordapp.com/avatars/799067298643050497/dab0e560d484ff0518af5a45cabcac87.png",
+            "discord": "https://discord.com/users/799067298643050497"
+        }
+    ]
+}

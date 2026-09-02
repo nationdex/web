@@ -1,0 +1,56 @@
+[
+    {
+        "id": "downtime-postmortem",
+        "slug": "downtime-postmortem",
+        "url": "/newsroom/downtime-postmortem/",
+        "title": "July 2026 Outage Postmortem & Hosting Upgrade",
+        "category": "announcement",
+        "categoryLabel": "Announcement",
+        "year": "2026",
+        "isFeatured": true,
+        "date": "July 31, 2026",
+        "author": {
+            "name": "Aditya",
+            "role": "Web Developer",
+            "avatar": "https://avatars.githubusercontent.com/u/105863819"
+        },
+        "previewImage": "/assets/bg/announce.svg",
+        "excerpt": "A detailed explanation regarding the infrastructure outage experienced in late July, our hosting provider migration, and safeguards put in place."
+    },
+    {
+        "id": "how-to-setup-nationdex-news",
+        "slug": "how-to-setup-nationdex-news",
+        "url": "/guides/how-to-setup-nationdex/",
+        "title": "New Official Guide: Setting Up Nationdex in Discord",
+        "category": "guide",
+        "categoryLabel": "Guide",
+        "year": "2026",
+        "isFeatured": false,
+        "date": "August 11, 2026",
+        "author": {
+            "name": "adi",
+            "role": "Lead Developer",
+            "avatar": "https://avatars.githubusercontent.com/u/105863819"
+        },
+        "previewImage": "/assets/bg/guide.jpg",
+        "excerpt": "We published a complete step-by-step setup guide covering server permissions, channel bindings, and basic catching mechanics."
+    },
+    {
+        "id": "leaderboards-and-foils",
+        "slug": "leaderboards-and-foils",
+        "url": "/guides/leaderboards-and-foils/",
+        "title": "Guide: Leaderboards, Foils - Flex on Servers & Friends",
+        "category": "guide",
+        "categoryLabel": "Guide",
+        "year": "2026",
+        "isFeatured": false,
+        "date": "August 05, 2026",
+        "author": {
+            "name": "adi",
+            "role": "Lead Developer",
+            "avatar": "https://avatars.githubusercontent.com/u/179485733"
+        },
+        "previewImage": "https://cdn.soloist.ai/a0b2d163-78b6-4db3-9381-96d7635d18b1/logo/1210c387-b5e7-4bee-bf84-451755fe908c.png",
+        "excerpt": "Explore server and global leaderboards, learn how foil currency works, and maximize your ranking among top collectors."
+    }
+]

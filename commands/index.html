@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en" :class="{ 'dark': $store.theme.isDark }" x-cloak x-data>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commands | Nationdex</title>
+    <meta name="description"
+        content="Explore the full list of Nationdex commands to catch, trade, and manage your nation card collection in Discord.">
+    <meta name="keywords"
+        content="Nationdex commands, Nationdex bot commands, discord nationdex slash commands, countryball bot commands">
+    <meta name="author" content="Nationdex Team">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="application-name" content="Nationdex">
+    <meta name="apple-mobile-web-app-title" content="Nationdex">
+    <link rel="canonical" href="https://nationdex.com/commands/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nationdex.com/commands/">
+    <meta property="og:title" content="Nationdex Commands — Discord Bot Command List">
+    <meta property="og:description"
+        content="Explore the full list of Nationdex commands to catch, trade, and manage your nation card collection in Discord.">
+    <meta property="og:image" content="https://nationdex.com/assets/bg/ndexguide.jpg">
+    <meta property="og:image:alt" content="Nationdex Commands Preview">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Nationdex">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://nationdex.com/commands/">
+    <meta name="twitter:title" content="Nationdex Commands — Discord Bot Command List">
+    <meta name="twitter:description"
+        content="Explore the full list of Nationdex commands to catch, trade, and manage your nation card collection in Discord.">
+    <meta name="twitter:image" content="https://nationdex.com/assets/bg/ndexguide.jpg">
+    <meta name="twitter:creator" content="@NationdexBot">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Commands",
+      "url": "https://nationdex.com/commands/",
+      "description": "Explore the full list of Nationdex commands to catch, trade, and manage your collection.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Nationdex",
+        "url": "https://nationdex.com/"
+      }
+    }
+    </script>
+    <link rel="icon" href="/assets/ndexlogo.png">
+    <link rel="apple-touch-icon" href="/assets/ndexlogo.png">
+    <meta name="theme-color" content="#1b2d48">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        pagebg: '#1b2d48',
+                        textgray: '#71717a',
+                        textblack: '#18181b',
+                        brand: '#1c92ff',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #1b2d48;
+            min-height: 100vh;
+            padding: 0;
+        }
+
+        @media (min-width: 768px) {
+            body {
+                padding: 2.5rem;
+            }
+
+            body.is-window-full {
+                padding: 0 !important;
+            }
+
+            body.is-window-full #app-container {
+                max-width: 100% !important;
+                border-radius: 0 !important;
+                min-height: 100vh !important;
+            }
+
+            body.is-window-full #main-header {
+                top: 0 !important;
+                border-top-left-radius: 0 !important;
+                border-top-right-radius: 0 !important;
+            }
+
+            body.is-window-full #top-fixed-bar {
+                display: none !important;
+            }
+
+            body.is-window-full .corner-mask-tl,
+            body.is-window-full .corner-mask-tr {
+                display: none !important;
+            }
+        }
+
+        html,
+        body {
+            -ms-overflow-style: none !important;
+            scrollbar-width: none !important;
+        }
+
+        ::-webkit-scrollbar {
+            display: none !important;
+            width: 0 !important;
+            height: 0 !important;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .corner-mask-tl {
+            background-image: radial-gradient(circle at 100% 100%, transparent calc(1.5rem - 0.5px), #1b2d48 1.5rem);
+        }
+
+        .corner-mask-tr {
+            background-image: radial-gradient(circle at 0 100%, transparent calc(1.5rem - 0.5px), #1b2d48 1.5rem);
+        }
+
+        @media (min-width: 768px) {
+            .corner-mask-tl {
+                background-image: radial-gradient(circle at 100% 100%, transparent calc(2.5rem - 0.5px), #1b2d48 2.5rem);
+            }
+
+            .corner-mask-tr {
+                background-image: radial-gradient(circle at 0 100%, transparent calc(2.5rem - 0.5px), #1b2d48 2.5rem);
+            }
+        }
+
+        .page-title {
+            letter-spacing: -0.03em;
+        }
+
+        .category-btn.active {
+            background-color: #1c92ff !important;
+            color: white !important;
+        }
+
+        .scrollbar-none::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scrollbar-none {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            bottom: 100%;
+            right: 0;
+            background: white;
+            border: 1px solid #dadce0;
+            border-radius: 8px;
+            padding: 8px 0;
+            margin-bottom: 8px;
+            display: none;
+            z-index: 3000;
+            min-width: 160px;
+        }
+
+        .lang-dropdown.show {
+            display: block;
+        }
+
+        .lang-option {
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #3c4043;
+        }
+
+        .lang-option:hover {
+            background: #f1f3f4;
+        }
+
+        html {
+            margin-top: 0px !important;
+        }
+
+        body {
+            top: 0px !important;
+            position: static !important;
+        }
+
+        .goog-te-banner-frame,
+        .goog-te-banner-frame.skiptranslate,
+        .goog-te-balloon-frame,
+        #goog-gt-tt,
+        .goog-te-spinner-pos,
+        #goog-gt-vt,
+        .goog-te-menu-frame,
+        .goog-te-menu2,
+        .goog-tooltip,
+        .goog-tooltip:hover {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+        }
+
+        /* Keep worker iframe active in DOM for Google Translate JS engine, but render 0px off-screen */
+        iframe[class*="VIpgJd"],
+        iframe[id*=":"],
+        iframe.skiptranslate,
+        .VIpgJd-ZVi9od-ORHb-OEVmcd {
+            position: absolute !important;
+            top: -9999px !important;
+            left: -9999px !important;
+            width: 0px !important;
+            height: 0px !important;
+            border: none !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+
+        .goog-text-highlight {
+            background-color: transparent !important;
+            box-shadow: none !important;
+            border: none !important;
+        }
+
+        #google_translate_element {
+            display: none !important;
+        }
+
+        font[style*="vertical-align: inherit;"] {
+            vertical-align: inherit !important;
+        }
+
+        .toast-notification {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #18181b;
+            color: #ffffff;
+            padding: 0.75rem 1.25rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            z-index: 9999;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(1rem);
+            opacity: 0;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .toast-notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        [x-cloak] {
+            display: none !important;
+        }
+
+        .dark .category-btn.active {
+            background-color: #8B5CF6 !important;
+        }
+
+        .dark .lang-dropdown {
+            background: #1a2436;
+            border-color: #223047;
+        }
+
+        .dark .lang-option {
+            color: #cbd5e1;
+        }
+
+        .dark .lang-option:hover {
+            background: #253248;
+        }
+    </style>
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.store('theme', {
+                isDark: localStorage.getItem('theme') === 'dark' ||
+                    (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches),
+                toggle() {
+                    this.isDark = !this.isDark;
+                    localStorage.setItem('theme', this.isDark ? 'dark' : 'light');
+                }
+            });
+
+            Alpine.store('windowMode', {
+                isFull: localStorage.getItem('ndex_window_full') === 'true',
+                init() {
+                    this.apply();
+                },
+                toggle() {
+                    this.isFull = !this.isFull;
+                    localStorage.setItem('ndex_window_full', this.isFull);
+                    this.apply();
+                },
+                apply() {
+                    if (this.isFull) {
+                        document.body.classList.add('is-window-full');
+                    } else {
+                        document.body.classList.remove('is-window-full');
+                    }
+                }
+            });
+            Alpine.store('windowMode').init();
+        });
+    </script>
+</head>
+
+<body
+    class="text-textblack dark:text-[#f3f4f6] antialiased font-sans flex justify-center w-full m-0 box-border transition-all duration-300 ease-in-out">
+
+    <div id="top-fixed-bar" class="hidden md:block fixed top-0 left-0 w-full h-[2.5rem] bg-[#1b2d48] z-[80]"></div>
+
+    <div id="app-container"
+        class="bg-white dark:bg-[#101929] w-full max-w-[1200px] rounded-none md:rounded-[2.5rem] shadow-[0_4px_24px_rgba(0,0,0,0.02)] flex flex-col min-h-screen md:min-h-[calc(100vh-5rem)] pb-6 transition-all duration-300 ease-in-out">
+
+        <header id="main-header"
+            class="sticky top-0 md:top-10 z-[60] flex flex-wrap justify-between items-center px-4 pt-4 pb-4 md:px-16 lg:px-24 md:pt-8 md:pb-6 lg:pt-10 mb-4 md:mb-8 bg-white dark:bg-[#101929] rounded-t-none md:rounded-t-[2.5rem] transition-all duration-300 ease-in-out">
+            <div class="hidden md:block absolute top-0 left-0 w-[2.5rem] h-[2.5rem] corner-mask-tl pointer-events-none">
+            </div>
+            <div
+                class="hidden md:block absolute top-0 right-0 w-[2.5rem] h-[2.5rem] corner-mask-tr pointer-events-none">
+            </div>
+
+            <div class="flex items-center w-full justify-between">
+                <a href="/"
+                    class="font-bold text-xl md:text-2xl tracking-tighter cursor-pointer flex items-center gap-2 text-[#18181b] dark:text-white">
+                    <img src="/assets/ndexlogo.png" alt="Nationdex Logo" class="w-8 h-8 rounded-full object-cover">
+                    Nationdex
+                </a>
+
+                <div class="flex items-center gap-2 md:gap-3">
+                    <div id="header-nav"
+                        class="hidden md:flex gap-6 items-center transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]">
+                        <a href="//discord.gg/tKh3n5uVnm"
+                            class="w-full sm:w-auto bg-[#8B5CF6] hover:bg-[#7c3aed] text-white px-2 py-2 md:px-4 rounded-[2rem] font-bold text-[15px] md:text-[16px] tracking-wide transition-colors duration-300 flex items-center justify-center gap-2">
+                            Nationdex HQ <span class="material-icons-outlined text-[1rem]">arrow_outward</span>
+                        </a>
+                        <a href="//discord.com/api/oauth2/authorize?client_id=1207017704096141312&scope=bot+applications.commands&permissions=537259009"
+                            class="w-full sm:w-auto bg-[#8B5CF6] hover:bg-[#7c3aed] text-white px-2 py-2 md:px-4 rounded-[2rem] font-bold text-[15px] md:text-[16px] tracking-wide transition-colors duration-300 flex items-center justify-center gap-2">
+                            Invite Me <span class="material-icons-outlined text-[1rem]">arrow_outward</span>
+                        </a>
+                    </div>
+
+                    <button
+                        class="hidden md:inline-flex items-center justify-center rounded-full transition p-2.5 w-10 h-10 hover:bg-gray-200 dark:hover:bg-[#253248] dark:text-[#cbd5e1] text-gray-700"
+                        type="button" @click="$store.windowMode.toggle()" title="Toggle full window layout">
+                        <span class="sr-only">Toggle full window layout</span>
+                        <i class="text-xl"
+                            :class="$store.windowMode.isFull ? 'ri-collapse-diagonal-line' : 'ri-expand-diagonal-line'"></i>
+                    </button>
+
+                    <button
+                        class="items-center inline-flex justify-center rounded-full transition p-2.5 hover:bg-gray-200 dark:hover:bg-[#253248] dark:text-[#cbd5e1] text-gray-700"
+                        type="button" @click="$store.theme.toggle()">
+                        <span class="sr-only">Toggle theme mode</span>
+                        <svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg" :class="{ 'hidden': !($store.theme.isDark) }" x-cloak>
+                            <path
+                                d="M12 18C8.68629 18 6 15.3137 6 12C6 8.68629 8.68629 6 12 6C15.3137 6 18 8.68629 18 12C18 15.3137 15.3137 18 12 18ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16ZM11 1H13V4H11V1ZM11 20H13V23H11V20ZM3.51472 4.92893L4.92893 3.51472L7.05025 5.63604L5.63604 7.05025L3.51472 4.92893ZM16.9497 18.364L18.364 16.9497L20.4853 19.0711L19.0711 20.4853L16.9497 18.364ZM19.0711 3.51472L20.4853 4.92893L18.364 7.05025L16.9497 5.63604L19.0711 3.51472ZM5.63604 16.9497L7.05025 18.364L4.92893 20.4853L3.51472 19.0711L5.63604 16.9497ZM23 11V13H20V11H23ZM4 11V13H1V11H4Z">
+                            </path>
+                        </svg>
+                        <svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg" :class="{ 'hidden': $store.theme.isDark }" x-cloak>
+                            <path
+                                d="M10 6C10 10.4183 13.5817 14 18 14C19.4386 14 20.7885 13.6203 21.9549 12.9556C21.4738 18.0302 17.2005 22 12 22C6.47715 22 2 17.5228 2 12C2 6.79948 5.9698 2.52616 11.0444 2.04507C10.3797 3.21152 10 4.56142 10 6ZM4 12C4 16.4183 7.58172 20 12 20C14.9654 20 17.5757 18.3788 18.9571 15.9546C18.6407 15.9848 18.3214 16 18 16C12.4772 16 8 11.5228 8 6C8 5.67863 8.01524 5.35933 8.04536 5.04293C5.62119 6.42426 4 9.03458 4 12ZM18.1642 2.29104L19 2.5V3.5L18.1642 3.70896C17.4476 3.8881 16.8881 4.4476 16.709 5.16417L16.5 6H15.5L15.291 5.16417C15.1119 4.4476 14.5524 3.8881 13.8358 3.70896L13 3.5V2.5L13.8358 2.29104C14.5524 2.1119 15.1119 1.5524 15.291 0.835829L15.5 0H16.5L16.709 0.835829C16.8881 1.5524 17.4476 2.1119 18.1642 2.29104ZM23.1642 7.29104L24 7.5V8.5L23.1642 8.70896C22.4476 8.8881 21.8881 9.4476 21.709 10.1642L21.5 11H20.5L20.291 10.1642C20.1119 9.4476 19.5524 8.8881 18.8358 8.70896L18 8.5V7.5L18.8358 7.29104C19.5524 7.1119 20.1119 6.5524 20.291 5.83583L20.5 5H21.5L21.709 5.83583C21.8881 6.5524 22.4476 7.1119 23.1642 7.29104Z">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div id="header-fade"
+                class="absolute top-[99%] left-0 w-full h-16 md:h-24 bg-gradient-to-b from-white dark:from-[#101929] to-white/0 dark:to-transparent pointer-events-none z-[-1] opacity-0 transition-opacity duration-300">
+            </div>
+        </header>
+
+        <div class="px-6 md:px-16 lg:px-24 flex-1 flex flex-col w-full">
+
+            <div class="pt-4 pb-2">
+                <h1 id="page-category-title"
+                    class="page-title text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#18181b] dark:text-white tracking-tight">
+                    Commands
+                </h1>
+            </div>
+
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between pt-4 pb-4 mb-6 gap-4 relative">
+
+                <nav id="category-nav" class="flex items-center gap-2 overflow-x-auto scrollbar-none text-sm font-medium select-none">
+                </nav>
+
+                <div class="flex items-center gap-4 shrink-0 flex-wrap select-none text-sm font-medium">
+
+                    <div class="relative w-56 sm:w-72 md:w-80">
+                        <span class="absolute inset-y-0 left-3.5 flex items-center text-gray-400">
+                            <i class="ri-search-line text-base"></i>
+                        </span>
+                        <input type="text" id="command-search" placeholder="Search commands..."
+                            class="w-full pl-10 pr-8 py-2.5 bg-[#f4f4f5] dark:bg-[#1a2436] focus:bg-gray-200 dark:focus:bg-[#222e42] outline-none rounded-xl font-medium text-sm dark:text-white dark:placeholder-[#64748b] transition-all">
+                        <button id="clear-search"
+                            class="absolute inset-y-0 right-3 flex items-center text-gray-400 hover:text-gray-700 hidden">
+                            <i class="ri-close-circle-fill text-sm"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="empty-state" class="hidden flex flex-col items-center justify-center py-16 text-center">
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white"> <i
+                        class="ri-search-eye-line text-3xl text-gray-300 mb-2"></i> No command(s)
+                    found</h3>
+                <p class="text-2xl text-gray-500">We couldn't find any command(s) matching "<span id="search-query-text"
+                        class="font-semibold"></span>"</p>
+            </div>
+
+            <div id="commands-list" class="flex flex-col gap-3.5 w-full mt-4">
+            </div>
+
+            <footer class="mt-auto pt-12 w-full px-4 md:px-12">
+                <div
+                    class="flex flex-wrap items-center justify-center md:justify-start gap-3 md:gap-4 font-medium pt-4 mb-10 w-full">
+                    <span class="font-semibold text-lg whitespace-nowrap" data-t="follow_us">Follow us</span>
+                    <a href="//www.youtube.com/@nationdexbot"><i
+                            class="ri-youtube-fill text-3xl text-gray-700 dark:text-[#94a3b8] cursor-pointer"></i></a>
+                    <a href="//github.com/nationdex"><i
+                            class="ri-github-fill text-3xl text-gray-700 dark:text-[#94a3b8] cursor-pointer"></i></a>
+                    <a href="//discord.gg/hVvD8gUXjQ"><i
+                            class="ri-discord-fill text-3xl text-gray-700 dark:text-[#94a3b8] cursor-pointer"></i></a>
+                </div>
+
+                <div
+                    class="border-t border-gray-200 dark:border-[#223047] pt-10 pb-12 grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-6 text-left w-full px-2 md:px-0">
+                    <div class="space-y-5">
+                        <h2 class="font-bold text-textblack dark:text-white text-lg tracking-tight">Resources</h2>
+                        <ul class="space-y-4 font-semibold text-[15px] text-gray-500 dark:text-[#94a3b8]">
+                            <li><a href="/commands"
+                                    class="hover:text-black dark:hover:text-white transition-colors block">Commands</a>
+                            </li>
+                            <li><a href="/changelog"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Changelog</a>
+                            </li>
+                            <li><a href="/guides"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Guides</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-5">
+                        <h2 class="font-bold text-textblack dark:text-white text-lg tracking-tight">Community</h2>
+                        <ul class="space-y-4 font-semibold text-[15px] text-gray-500 dark:text-[#94a3b8]">
+                            <li><a href="//discord.gg/tKh3n5uVnm"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Discord</a>
+                            </li>
+                            <li><a href="/newsroom"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">News</a>
+                            </li>
+                            <li><a href="//www.youtube.com/@nationdexbot"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Youtube</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-5">
+                        <h2 class="font-bold text-textblack dark:text-white text-lg tracking-tight">Team</h2>
+                        <ul class="space-y-4 font-semibold text-[15px] text-gray-500 dark:text-[#94a3b8]">
+                            <li><a href="/team"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Developers</a>
+                            </li>
+                            <li><a href="/privacy"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Privacy</a>
+                            </li>
+                            <li><a href="/terms"
+                                    class="hover:text-black dark:hover:text-white transition-colors block">Terms</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-5">
+                        <h2 class="font-bold text-textblack dark:text-white text-lg tracking-tight">Support</h2>
+                        <ul class="space-y-4 font-semibold text-[15px] text-gray-500 dark:text-[#94a3b8]">
+                            <li><a href="//github.com/nationdex/bot/issues"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Report
+                                    Issue</a></li>
+                            <li><a href="//discord.gg/tKh3n5uVnm"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div
+                    class="border-t border-gray-200 dark:border-[#223047] pt-6 pb-8 flex flex-col lg:flex-row items-center justify-between gap-6 text-[14px] md:text-[15px] text-gray-500 dark:text-[#94a3b8] font-semibold tracking-tight px-2 md:px-0 w-full">
+                    <div class="flex flex-wrap items-center justify-center gap-4 md:gap-6">
+                        <div class="flex items-center gap-2 mr-2 shrink-0">
+                            <img src="https://cdn.soloist.ai/a0b2d163-78b6-4db3-9381-96d7635d18b1/logo/1210c387-b5e7-4bee-bf84-451755fe908c.png"
+                                class="w-6 h-6 rounded-full p-0.5 grayscale">
+                            <span class="font-bold text-textblack dark:text-white">Nationdex Team <span> &copy;
+                                    2022-2026</span></span>
+                        </div>
+                    </div>
+
+                    <div class="relative flex bg-white/90 dark:bg-[#1a2436]/90 rounded-lg p-2 border dark:border-none items-center gap-2 cursor-pointer dark:text-[#cbd5e1]"
+                        id="langSelector">
+                        <i class="ri-global-line"></i>
+                        <span id="currentLang">English (United States)</span>
+                        <i class="ri-arrow-down-s-line"></i>
+                        <div class="lang-dropdown" id="langDropdown">
+                            <div class="lang-option" data-lang="en">English (United States)</div>
+                            <div class="lang-option" data-lang="hi">Hindi (नमस्ते)</div>
+                            <div class="lang-option" data-lang="pt-br">Brazilian (Português)</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="google_translate_element" style="display:none;"></div>
+            </footer>
+        </div>
+    </div>
+
+    <div id="toast" class="toast-notification">Copied to clipboard!</div>
+
+    <script>
+        const headerFade = document.getElementById('header-fade');
+        const floatingNav = document.getElementById('floating-nav');
+        const toast = document.getElementById('toast');
+
+        let commandsData = [];
+        let currentCategory = 'all';
+
+        const categoryMap = {
+            'nations': { label: 'Nations', style: 'bg-orange-400 text-black' },
+            'player': { label: 'Player', style: 'bg-blue-200 text-blue-800 dark:bg-blue-950 dark:text-blue-200' },
+            'spawn': { label: 'Spawn', style: 'bg-purple-200 text-purple-800 dark:bg-purple-950 dark:text-purple-200' },
+            'rarity': { label: 'Rarity', style: 'bg-pink-200 text-pink-800 dark:bg-pink-950 dark:text-pink-200' },
+            'foils': { label: 'Foils', style: 'bg-amber-300 text-amber-950 dark:bg-amber-950 dark:text-amber-200' },
+            'leaderboards': { label: 'Leaderboards', style: 'bg-indigo-200 text-indigo-800 dark:bg-indigo-950 dark:text-indigo-200' },
+            'misc': { label: 'Misc', style: 'bg-emerald-200 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-200' }
+        };
+
+        const dynamicPalette = [
+            'bg-sky-200 text-sky-800 dark:bg-sky-950 dark:text-sky-200',
+            'bg-rose-200 text-rose-800 dark:bg-rose-950 dark:text-rose-200',
+            'bg-teal-200 text-teal-800 dark:bg-teal-950 dark:text-teal-200',
+            'bg-violet-200 text-violet-800 dark:bg-violet-950 dark:text-violet-200',
+            'bg-lime-200 text-lime-800 dark:bg-lime-950 dark:text-lime-200'
+        ];
+
+        function getCategoryData(catKey) {
+            if (!catKey) return { label: 'General', style: 'bg-gray-200 text-gray-800' };
+            const lowerKey = catKey.toLowerCase().trim();
+            if (categoryMap[lowerKey]) {
+                return categoryMap[lowerKey];
+            }
+            const formattedLabel = lowerKey.charAt(0).toUpperCase() + lowerKey.slice(1);
+            let hash = 0;
+            for (let i = 0; i < lowerKey.length; i++) {
+                hash = lowerKey.charCodeAt(i) + ((hash << 5) - hash);
+            }
+            const colorStyle = dynamicPalette[Math.abs(hash) % dynamicPalette.length];
+            return { label: formattedLabel, style: colorStyle };
+        }
+
+        function renderCategoryNav() {
+            const navEl = document.getElementById('category-nav');
+            if (!navEl) return;
+
+            const categoriesInUse = [];
+            commandsData.forEach(cmd => {
+                if (cmd.category && !categoriesInUse.includes(cmd.category)) {
+                    categoriesInUse.push(cmd.category);
+                }
+            });
+
+            const allCats = ['all', ...categoriesInUse];
+
+            navEl.innerHTML = allCats.map(catKey => {
+                const catData = catKey === 'all' ? { label: 'All' } : getCategoryData(catKey);
+                const isActive = currentCategory === catKey;
+
+                const activeClasses = "font-bold text-black dark:text-white bg-[#f4f4f5] dark:bg-[#1a2436]";
+                const inactiveClasses = "text-gray-500 hover:text-black dark:text-[#94a3b8] dark:hover:text-white hover:bg-gray-100 dark:hover:bg-[#1a2436]/50";
+
+                return `<button data-category="${catKey}" class="nav-category-link ${isActive ? activeClasses : inactiveClasses} px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap cursor-pointer">${catData.label}</button>`;
+            }).join('');
+
+            navEl.querySelectorAll('.nav-category-link').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    currentCategory = btn.getAttribute('data-category');
+                    renderCategoryNav();
+                    renderCommands();
+                });
+            });
+        }
+
+        async function fetchCommands() {
+            try {
+                const response = await fetch('data.json');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                commandsData = await response.json();
+                renderCategoryNav();
+                renderCommands();
+            } catch (error) {
+                console.error('Error fetching commands data:', error);
+                const listEl = document.getElementById('commands-list');
+                listEl.innerHTML = `<div class="p-5 text-center text-red-500 font-semibold bg-red-50 rounded-lg">Failed to load commands data. Please try again.</div>`;
+            }
+        }
+
+        function showToast(message) {
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
+        }
+
+        function copyCommand(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast(`Copied ${text}!`);
+            }).catch(err => {
+                console.error('Copy failed', err);
+            });
+        }
+
+        function renderCommands() {
+            const listEl = document.getElementById('commands-list');
+            const searchInput = document.getElementById('command-search');
+            const query = searchInput.value.toLowerCase().trim();
+            const emptyState = document.getElementById('empty-state');
+            const querySpan = document.getElementById('search-query-text');
+            const clearBtn = document.getElementById('clear-search');
+
+            listEl.innerHTML = '';
+
+            if (query.length > 0) {
+                clearBtn.classList.remove('hidden');
+            } else {
+                clearBtn.classList.add('hidden');
+            }
+
+            const filtered = commandsData.filter(cmd => {
+                const matchesCategory = currentCategory === 'all' || cmd.category === currentCategory;
+                const matchesSearch = cmd.name.toLowerCase().includes(query) ||
+                    cmd.description.toLowerCase().includes(query) ||
+                    (cmd.subcommands && cmd.subcommands.some(s =>
+                        (cmd.name + ' ' + s.name).toLowerCase().includes(query) ||
+                        s.description.toLowerCase().includes(query)
+                    ));
+                return matchesCategory && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                emptyState.classList.remove('hidden');
+                querySpan.textContent = searchInput.value;
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+
+            const sortedCommands = [...filtered].sort((a, b) =>
+                a.name.localeCompare(b.name, undefined, { sensitivity: 'base', numeric: true })
+            );
+
+            sortedCommands.forEach(cmd => {
+                const card = document.createElement('div');
+
+                card.className = "bg-[#f4f4f5] dark:bg-[#1a2436] rounded-xl p-5 border-none shadow-none flex flex-col gap-3 select-text relative transition-colors duration-200";
+
+                const catInfo = getCategoryData(cmd.category);
+                const catBadgeStyle = catInfo.style;
+                const catLabel = catInfo.label;
+
+                const hasSubcommands = cmd.subcommands && cmd.subcommands.length > 0;
+                const SHOW_INITIAL = 2;
+
+                let subcommandsHTML = '';
+
+                if (hasSubcommands) {
+                    const cardId = 'subcmd-' + cmd.name.replace(/\s+/g, '-');
+
+                    const total = cmd.subcommands.length;
+                    const hidden = total - SHOW_INITIAL;
+
+                    const renderSubCmd = (sub, idx) => {
+
+                        const subParamsHTML = sub.parameters && sub.parameters.length > 0
+                            ? sub.parameters.map(p => `
+                                        <div class="relative group inline-block">
+
+                                            <span class="bg-[#e4e4e7] dark:bg-[#253248] text-gray-700 dark:text-[#cbd5e1] text-xs font-semibold px-2 py-0.5 rounded-md inline-block select-all">
+                                                ${p.name}
+                                            </span>
+
+                                            <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 hidden group-hover:block bg-black text-white text-[12px] font-semibold px-3 py-1.5 rounded-lg whitespace-nowrap z-50 pointer-events-none transition-all duration-200">
+                    
+                                                ${p.description}
+                    
+                                                <div class="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-black"></div>
+
+                                            </div>
+
+                                        </div>`).join(' ')
+                            : '';
+
+                        return `
+                <div class="subcmd-row flex flex-col gap-0.5 ${idx >= SHOW_INITIAL ? 'subcmd-extra hidden' : ''}" data-card="${cardId}">
+                    
+                    <div class="flex items-center gap-2 flex-wrap">
+                        
+                        <span class="font-bold text-[#18181b] dark:text-white text-[17px] tracking-tight select-all">
+                            ${cmd.name} ${sub.name}
+                        </span>
+
+                        ${subParamsHTML}
+
+                        <div class="relative group inline-block">
+
+                <button class="copy-btn text-gray-400 hover:text-gray-700 dark:hover:text-white transition-colors ml-1 p-0.5 flex items-center shrink-0" onclick="copyCommand('${sub.usage}')" title="Copy to clipboard">
+                        <i class="ri-file-copy-line text-sm"></i>
+                    </button>
+
+                <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 hidden group-hover:block bg-black text-white text-[12px] font-semibold px-3 py-1.5 rounded-lg whitespace-nowrap z-50 pointer-events-none transition-all duration-200">
+                    
+                    Copy to Clipboard
+                    
+                    <div class="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-black"></div>
+
+                </div>
+
+            </div>
+
+                    </div>
+
+                    <p class="text-sm font-semibold text-gray-500 dark:text-[#94a3b8] leading-relaxed">
+                        ${sub.description}
+                    </p>
+
+                </div>
+            `;
+                    };
+
+                    const sortedSubcommands = [...cmd.subcommands].sort((a, b) =>
+                        a.name.localeCompare(b.name, undefined, { sensitivity: 'base', numeric: true })
+                    );
+
+                    let subcmdsMarkup = sortedSubcommands
+                        .map((sub, idx) => renderSubCmd(sub, idx))
+                        .join('');
+
+                    const toggleBtn = hidden > 0
+                        ? `
+                <button class="subcmd-toggle mt-3 flex items-center gap-1 text-[13px] font-semibold text-gray-500 dark:text-[#94a3b8] hover:text-gray-700 dark:hover:text-white transition-colors select-none" data-card="${cardId}" data-total="${total}" data-shown="false" onclick="toggleSubcmds(this)">
+                    
+                    <i class="ri-arrow-down-s-line text-base" style="transition: transform 0.2s;"></i>
+
+                    <span>Show ${hidden} more</span>
+
+                </button>
+            `
+                        : '';
+
+                    subcommandsHTML = `
+                ${subcmdsMarkup}
+                ${toggleBtn}
+        `;
+                }
+
+                const paramsHTML = !hasSubcommands && cmd.parameters && cmd.parameters.length > 0
+                    ? cmd.parameters.map(p => `
+            <span class="bg-[#e4e4e7] dark:bg-[#253248] text-gray-700 dark:text-[#cbd5e1] text-xs font-semibold px-2 py-0.5 rounded-md inline-block select-all">
+                ${p.name}
+            </span>
+        `).join(' ')
+                    : '';
+
+                const copyUsage = cmd.usage || cmd.name;
+
+                card.innerHTML = `
+
+        ${!hasSubcommands ? `
+        
+            <div class="flex items-center justify-between gap-3 w-full flex-wrap">
+
+                <div class="flex items-center gap-2 flex-wrap">
+
+                    <span class="font-bold text-[#18181b] dark:text-white text-[17px] tracking-tight select-all">
+                        ${cmd.name}
+                    </span>
+
+                    ${paramsHTML}
+
+                    <div class="relative group inline-block">
+
+                <button class="copy-btn text-gray-400 hover:text-gray-700 dark:hover:text-white transition-colors ml-1 p-0.5 flex items-center shrink-0" onclick="copyCommand('${copyUsage}')" title="Copy to clipboard">
+                        <i class="ri-file-copy-line text-sm"></i>
+                    </button>
+
+                <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 hidden group-hover:block bg-black text-white text-[12px] font-semibold px-3 py-1.5 rounded-lg whitespace-nowrap z-50 pointer-events-none transition-all duration-200">
+                    
+                    Copy to Clipboard
+                    
+                    <div class="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-black"></div>
+
+                </div>
+
+            </div>
+
+                </div>
+
+            </div>
+
+            <p class="text-sm font-semibold text-gray-500 dark:text-[#94a3b8] leading-relaxed -mt-1 select-all">
+                ${cmd.description}
+            </p>
+
+        ` : ''}
+
+        ${subcommandsHTML}
+
+        <div class="flex flex-wrap items-center gap-2 mt-1 select-none">
+
+            <div class="relative group inline-block">
+                
+                <span class="text-[11px] font-bold px-3 py-1 rounded-full ${catBadgeStyle} cursor-default">
+                    ${catLabel}
+                </span>
+
+            </div>
+
+            ${cmd.isDM !== false ? `
+            <div class="relative group inline-block">
+
+                <span class="text-[11px] font-bold px-3 py-1 rounded-full bg-amber-200 text-amber-800 cursor-default">
+                    DMs
+                </span>
+
+                <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 hidden group-hover:block bg-black text-white text-[12px] font-semibold px-3 py-1.5 rounded-lg whitespace-nowrap z-50 pointer-events-none transition-all duration-200">
+                    
+                    You can use this command in DMs
+                    
+                    <div class="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-black"></div>
+
+                </div>
+
+            </div>
+            ` : ''}
+
+        </div>
+    `;
+
+                listEl.appendChild(card);
+            });
+        }
+
+        function toggleSubcmds(btn) {
+            const cardId = btn.getAttribute('data-card');
+            const shown = btn.getAttribute('data-shown') === 'true';
+            const extras = document.querySelectorAll(`.subcmd-extra[data-card="${cardId}"]`);
+            const icon = btn.querySelector('i');
+            const labelSpan = btn.querySelector('span');
+            const total = parseInt(btn.getAttribute('data-total'));
+            const hiddenCount = total - 2;
+
+            if (shown) {
+                extras.forEach(el => el.classList.add('hidden'));
+                btn.setAttribute('data-shown', 'false');
+                icon.style.transform = 'rotate(0deg)';
+                labelSpan.textContent = `Show ${hiddenCount} more`;
+            } else {
+                extras.forEach(el => el.classList.remove('hidden'));
+                btn.setAttribute('data-shown', 'true');
+                icon.style.transform = 'rotate(180deg)';
+                labelSpan.textContent = 'Show less';
+            }
+        }
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 15) {
+                headerFade.classList.remove('opacity-0');
+                headerFade.classList.add('opacity-100');
+            } else {
+                headerFade.classList.remove('opacity-100');
+                headerFade.classList.add('opacity-0');
+            }
+
+            if (window.scrollY > 250) {
+                floatingNav.classList.remove('translate-y-32', 'opacity-0', 'pointer-events-none');
+            } else {
+                floatingNav.classList.add('translate-y-32', 'opacity-0', 'pointer-events-none');
+            }
+        });
+
+        const searchInput = document.getElementById('command-search');
+        const clearBtn = document.getElementById('clear-search');
+
+        searchInput.addEventListener('input', renderCommands);
+        clearBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            renderCommands();
+            searchInput.focus();
+        });
+
+        const pageCategoryTitle = document.getElementById('page-category-title');
+        const categoryTitles = {
+            all: 'Commands',
+            nations: 'Nations Commands',
+            player: 'Player Commands',
+            spawn: 'Spawn Commands',
+            rarity: 'Rarity Commands',
+            misc: 'Miscellaneous Commands'
+        };
+
+        document.querySelectorAll('.nav-category-link').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.nav-category-link').forEach(b => {
+                    b.className = 'nav-category-link text-gray-500 hover:text-black dark:text-[#94a3b8] dark:hover:text-white px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-[#1a2436]/50 transition-colors whitespace-nowrap cursor-pointer';
+                });
+                btn.className = 'nav-category-link font-bold text-black dark:text-white bg-[#f4f4f5] dark:bg-[#1a2436] px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap cursor-pointer';
+
+                currentCategory = btn.getAttribute('data-category');
+                pageCategoryTitle.textContent = categoryTitles[currentCategory] || 'Commands';
+                renderCommands();
+            });
+        });
+
+        fetchCommands();
+
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,hi,pt',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+
+        (function initLanguageSelector() {
+            document.querySelectorAll('i, .material-icons-outlined, [class^="ri-"], [class*=" ri-"], .slash-command, code, svg').forEach(el => {
+                el.classList.add('notranslate');
+                el.setAttribute('translate', 'no');
+            });
+
+            const langSelector = document.getElementById('langSelector');
+            const langDropdown = document.getElementById('langDropdown');
+            const currentLangSpan = document.getElementById('currentLang');
+
+            const langNames = {
+                'en': 'English (United States)',
+                'hi': 'Hindi (नमस्ते)',
+                'pt': 'Brazilian (Português)',
+                'pt-br': 'Brazilian (Português)'
+            };
+
+            const savedLang = localStorage.getItem('ndex_lang') || 'en';
+            if (currentLangSpan && langNames[savedLang]) {
+                currentLangSpan.textContent = langNames[savedLang];
+            }
+
+            if (langSelector && langDropdown) {
+                langSelector.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    langDropdown.classList.toggle('show');
+                });
+
+                document.addEventListener('click', () => {
+                    langDropdown.classList.remove('show');
+                });
+
+                document.querySelectorAll('.lang-option').forEach(opt => {
+                    opt.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const rawLang = opt.getAttribute('data-lang');
+                        const targetLang = (rawLang === 'pt-br' || rawLang === 'pt') ? 'pt' : rawLang;
+
+                        localStorage.setItem('ndex_lang', rawLang);
+
+                        if (targetLang === 'en') {
+                            document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                            document.cookie = "googtrans=/en/en; path=/;";
+                        } else {
+                            document.cookie = "googtrans=/en/" + targetLang + "; path=/;";
+                            document.cookie = "googtrans=/en/" + targetLang + "; path=/; domain=" + window.location.hostname + ";";
+                        }
+
+                        langDropdown.classList.remove('show');
+                        window.location.reload();
+                    });
+                });
+            }
+        })();
+    </script>
+    <script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="../assets/js/cookies.js"></script>
+</body>
+
+</html>

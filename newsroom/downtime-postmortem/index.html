@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en" :class="{ 'dark': $store.theme.isDark }" x-cloak x-data>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>July 2026 Outage Postmortem | Nationdex Newsroom</title>
+    <meta name="description"
+        content="A detailed postmortem analysis regarding the outage experienced in late July 2026 and our infrastructure upgrade.">
+    <meta name="keywords"
+        content="Nationdex outage postmortem, Nationdex downtime, Nationdex status, Nationdex infrastructure">
+    <meta name="author" content="Nationdex Team">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="application-name" content="Nationdex">
+    <meta name="apple-mobile-web-app-title" content="Nationdex">
+    <link rel="canonical" href="https://nationdex.com/newsroom/downtime-postmortem/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://nationdex.com/newsroom/downtime-postmortem/">
+    <meta property="og:title" content="July 2026 Outage Postmortem | Nationdex Newsroom">
+    <meta property="og:description"
+        content="A detailed postmortem analysis regarding the outage experienced in late July 2026 and our infrastructure upgrade.">
+    <meta property="og:image" content="https://nationdex.com/assets/bg/announce.svg">
+    <meta property="og:image:alt" content="Nationdex Downtime Postmortem Preview">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Nationdex">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://nationdex.com/newsroom/downtime-postmortem/">
+    <meta name="twitter:title" content="July 2026 Outage Postmortem | Nationdex Newsroom">
+    <meta name="twitter:description"
+        content="A detailed postmortem analysis regarding the outage experienced in late July 2026 and our infrastructure upgrade.">
+    <meta name="twitter:image" content="https://nationdex.com/assets/bg/announce.svg">
+    <meta name="twitter:creator" content="@NationdexBot">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "July 2026 Outage Postmortem",
+      "url": "https://nationdex.com/newsroom/downtime-postmortem/",
+      "description": "A detailed postmortem analysis regarding the outage experienced in late July 2026 and our infrastructure upgrade.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Nationdex",
+        "url": "https://nationdex.com/"
+      }
+    }
+    </script>
+    <link rel="icon" href="/assets/ndexlogo.png">
+    <link rel="apple-touch-icon" href="/assets/ndexlogo.png">
+    <meta name="theme-color" content="#1b2d48">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        pagebg: '#1b2d48',
+                        textgray: '#71717a',
+                        textblack: '#18181b',
+                        brand: '#8B5CF6',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #1b2d48;
+            min-height: 100vh;
+            padding: 0;
+        }
+
+        @media (min-width: 768px) {
+            body {
+                padding: 2.5rem;
+            }
+
+            body.is-window-full {
+                padding: 0 !important;
+            }
+
+            body.is-window-full #app-container {
+                max-width: 100% !important;
+                border-radius: 0 !important;
+                min-height: 100vh !important;
+            }
+
+            body.is-window-full #main-header {
+                top: 0 !important;
+                border-top-left-radius: 0 !important;
+                border-top-right-radius: 0 !important;
+            }
+
+            body.is-window-full #top-fixed-bar {
+                display: none !important;
+            }
+
+            body.is-window-full .corner-mask-tl,
+            body.is-window-full .corner-mask-tr {
+                display: none !important;
+            }
+        }
+
+        html,
+        body {
+            -ms-overflow-style: none !important;
+            scrollbar-width: none !important;
+        }
+
+        ::-webkit-scrollbar {
+            display: none !important;
+            width: 0 !important;
+            height: 0 !important;
+        }
+
+        .corner-mask-tl {
+            background-image: radial-gradient(circle at 100% 100%, transparent calc(1.5rem - 0.5px), #1b2d48 1.5rem);
+        }
+
+        .corner-mask-tr {
+            background-image: radial-gradient(circle at 0 100%, transparent calc(2.5rem - 0.5px), #1b2d48 2.5rem);
+        }
+
+        @media (min-width: 768px) {
+            .corner-mask-tl {
+                background-image: radial-gradient(circle at 100% 100%, transparent calc(2.5rem - 0.5px), #1b2d48 2.5rem);
+            }
+
+            .corner-mask-tr {
+                background-image: radial-gradient(circle at 0 100%, transparent calc(2.5rem - 0.5px), #1b2d48 2.5rem);
+            }
+        }
+
+        .page-title {
+            letter-spacing: -0.03em;
+        }
+
+        [x-cloak] {
+            display: none !important;
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            bottom: 100%;
+            right: 0;
+            background: white;
+            border-radius: 8px;
+            padding: 8px 0;
+            margin-bottom: 8px;
+            display: none;
+            z-index: 3000;
+            min-width: 160px;
+        }
+
+        .lang-dropdown.show {
+            display: block;
+        }
+
+        .lang-option {
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #3c4043;
+        }
+
+        .lang-option:hover {
+            background: #f1f3f4;
+        }
+
+        .dark .lang-dropdown {
+            background: #1a2436;
+        }
+
+        .dark .lang-option {
+            color: #cbd5e1;
+        }
+
+        .dark .lang-option:hover {
+            background: #253248;
+        }
+
+        html {
+            margin-top: 0px !important;
+        }
+
+        body {
+            top: 0px !important;
+            position: static !important;
+        }
+
+        .goog-te-banner-frame,
+        .goog-te-banner-frame.skiptranslate,
+        .goog-te-balloon-frame,
+        #goog-gt-tt,
+        .goog-te-spinner-pos,
+        #goog-gt-vt,
+        .goog-te-menu-frame,
+        .goog-te-menu2,
+        .goog-tooltip,
+        .goog-tooltip:hover {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+        }
+
+        /* Keep worker iframe active in DOM for Google Translate JS engine, but render 0px off-screen */
+        iframe[class*="VIpgJd"],
+        iframe[id*=":"],
+        iframe.skiptranslate,
+        .VIpgJd-ZVi9od-ORHb-OEVmcd {
+            position: absolute !important;
+            top: -9999px !important;
+            left: -9999px !important;
+            width: 0px !important;
+            height: 0px !important;
+            border: none !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+
+        .goog-text-highlight {
+            background-color: transparent !important;
+            box-shadow: none !important;
+            border: none !important;
+        }
+
+        #google_translate_element {
+            display: none !important;
+        }
+
+        font[style*="vertical-align: inherit;"] {
+            vertical-align: inherit !important;
+        }
+    </style>
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.store('theme', {
+                isDark: localStorage.getItem('theme') === 'dark' ||
+                    (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches),
+                toggle() {
+                    this.isDark = !this.isDark;
+                    localStorage.setItem('theme', this.isDark ? 'dark' : 'light');
+                }
+            });
+
+            Alpine.store('windowMode', {
+                isFull: localStorage.getItem('ndex_window_full') === 'true',
+                init() {
+                    this.apply();
+                },
+                toggle() {
+                    this.isFull = !this.isFull;
+                    localStorage.setItem('ndex_window_full', this.isFull);
+                    this.apply();
+                },
+                apply() {
+                    if (this.isFull) {
+                        document.body.classList.add('is-window-full');
+                    } else {
+                        document.body.classList.remove('is-window-full');
+                    }
+                }
+            });
+            Alpine.store('windowMode').init();
+        });
+    </script>
+</head>
+
+<body
+    class="text-textblack dark:text-[#f3f4f6] antialiased font-sans flex justify-center w-full m-0 box-border transition-all duration-300 ease-in-out">
+
+    <div id="top-fixed-bar" class="hidden md:block fixed top-0 left-0 w-full h-[2.5rem] bg-[#1b2d48] z-[80]"></div>
+
+    <div id="app-container"
+        class="bg-white dark:bg-[#101929] w-full max-w-[1200px] rounded-none md:rounded-[2.5rem] flex flex-col min-h-screen md:min-h-[calc(100vh-5rem)] pb-6 transition-all duration-300 ease-in-out">
+
+        <header id="main-header"
+            class="sticky top-0 md:top-10 z-[60] flex flex-wrap justify-between items-center px-4 pt-4 pb-4 md:px-16 lg:px-24 md:pt-8 md:pb-6 lg:pt-10 mb-4 md:mb-6 bg-white dark:bg-[#101929] rounded-t-none md:rounded-t-[2.5rem] transition-all duration-300 ease-in-out">
+            <div class="hidden md:block absolute top-0 left-0 w-[2.5rem] h-[2.5rem] corner-mask-tl pointer-events-none">
+            </div>
+            <div
+                class="hidden md:block absolute top-0 right-0 w-[2.5rem] h-[2.5rem] corner-mask-tr pointer-events-none">
+            </div>
+
+            <div class="flex items-center w-full justify-between">
+                <a href="/"
+                    class="font-bold text-xl md:text-2xl tracking-tighter cursor-pointer flex items-center gap-2 text-[#18181b] dark:text-white">
+                    <img src="/assets/ndexlogo.png" alt="Nationdex Logo" class="w-8 h-8 rounded-full object-cover">
+                    Nationdex
+                </a>
+
+                <div class="flex items-center gap-2 md:gap-3">
+                    <button
+                        class="hidden md:inline-flex items-center justify-center rounded-full p-2.5 w-10 h-10 hover:bg-gray-200 dark:hover:bg-[#253248] dark:text-[#cbd5e1] text-gray-700"
+                        type="button" @click="$store.windowMode.toggle()" title="Toggle full window layout">
+                        <span class="sr-only">Toggle full window layout</span>
+                        <i class="text-xl"
+                            :class="$store.windowMode.isFull ? 'ri-collapse-diagonal-line' : 'ri-expand-diagonal-line'"></i>
+                    </button>
+                    <button
+                        class="items-center inline-flex justify-center rounded-full p-2.5 hover:bg-gray-200 dark:hover:bg-[#253248] dark:text-[#cbd5e1] text-gray-700"
+                        type="button" @click="$store.theme.toggle()">
+                        <span class="sr-only">Toggle theme mode</span>
+                        <svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg" :class="{ 'hidden': !($store.theme.isDark) }" x-cloak>
+                            <path
+                                d="M12 18C8.68629 18 6 15.3137 6 12C6 8.68629 8.68629 6 12 6C15.3137 6 18 8.68629 18 12C18 15.3137 15.3137 18 12 18ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16ZM11 1H13V4H11V1ZM11 20H13V23H11V20ZM3.51472 4.92893L4.92893 3.51472L7.05025 5.63604L5.63604 7.05025L3.51472 4.92893ZM16.9497 18.364L18.364 16.9497L20.4853 19.0711L19.0711 20.4853L16.9497 18.364ZM19.0711 3.51472L20.4853 4.92893L18.364 7.05025L16.9497 5.63604L19.0711 3.51472ZM5.63604 16.9497L7.05025 18.364L4.92893 20.4853L3.51472 19.0711L5.63604 16.9497ZM23 11V13H20V11H23ZM4 11V13H1V11H4Z">
+                            </path>
+                        </svg>
+                        <svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg" :class="{ 'hidden': $store.theme.isDark }" x-cloak>
+                            <path
+                                d="M10 6C10 10.4183 13.5817 14 18 14C19.4386 14 20.7885 13.6203 21.9549 12.9556C21.4738 18.0302 17.2005 22 12 22C6.47715 22 2 17.5228 2 12C2 6.79948 5.9698 2.52616 11.0444 2.04507C10.3797 3.21152 10.3797 4.56142 10 6ZM4 12C4 16.4183 7.58172 20 12 20C14.9654 20 17.5757 18.3788 18.9571 15.9546C18.6407 15.9848 18.3214 16 18 16C12.4772 16 8 11.5228 8 6C8 5.67863 8.01524 5.35933 8.04536 5.04293C5.62119 6.42426 4 9.03458 4 12ZM18.1642 2.29104L19 2.5V3.5L18.1642 3.70896C17.4476 3.8881 16.8881 4.4476 16.709 5.16417L16.5 6H15.5L15.291 5.16417C15.1119 4.4476 14.5524 3.8881 13.8358 3.70896L13 3.5V2.5L13.8358 2.29104C14.5524 2.1119 15.1119 1.5524 15.291 0.835829L15.5 0H16.5L16.709 0.835829C16.8881 1.5524 17.4476 2.1119 18.1642 2.29104ZM23.1642 7.29104L24 7.5V8.5L23.1642 8.70896C22.4476 8.8881 21.8881 9.4476 21.709 10.1642L21.5 11H20.5L20.291 10.1642C20.1119 9.4476 19.5524 8.8881 18.8358 8.70896L18 8.5V7.5L18.8358 7.29104C19.5524 7.1119 20.1119 6.5524 20.291 5.83583L20.5 5H21.5L21.709 5.83583C21.8881 6.5524 22.4476 7.1119 23.1642 7.29104Z">
+                            </path>
+                        </svg>
+                    </button>
+                    <div id="header-nav" class="hidden md:flex gap-6 items-center">
+                        <a href="//discord.gg/tKh3n5uVnm"
+                            class="w-full sm:w-auto bg-[#8B5CF6] hover:bg-[#7c3aed] text-white px-2 py-2 md:px-4 rounded-[2rem] font-bold text-[15px] md:text-[16px] tracking-wide flex items-center justify-center gap-2">
+                            Nationdex HQ <span class="material-icons-outlined text-[1rem]">arrow_outward</span>
+                        </a>
+                        <a href="//discord.com/api/oauth2/authorize?client_id=1207017704096141312&scope=bot+applications.commands&permissions=537259009"
+                            class="w-full sm:w-auto bg-[#8B5CF6] hover:bg-[#7c3aed] text-white px-2 py-2 md:px-4 rounded-[2rem] font-bold text-[15px] md:text-[16px] tracking-wide flex items-center justify-center gap-2">
+                            Invite Me <span class="material-icons-outlined text-[1rem]">arrow_outward</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div id="mobile-toc-bar"
+            class="hidden lg:hidden sticky top-[56px] z-40 mb-6 bg-white dark:bg-[#101929] px-6 md:px-16 py-3 border-b border-gray-200/50 dark:border-white/10 select-none transition-all duration-300 opacity-0 pointer-events-none"
+            x-data="{ open: false }">
+            <button @click="open = !open"
+                class="w-full flex items-center justify-between text-xs font-bold text-gray-900 dark:text-white">
+                <span id="mobile-toc-active-title" class="truncate pr-2">Incident Overview</span>
+                <i class="ri-arrow-down-s-line text-base transition-transform duration-200"
+                    :class="{ 'rotate-180': open }"></i>
+            </button>
+
+            <div x-show="open" @click.outside="open = false" x-cloak
+                class="mt-3 pt-3 space-y-3 text-xs font-medium border-t border-gray-200/30 dark:border-white/10 bg-white dark:bg-[#101929]">
+                <a @click="open = false" href="#incident-overview"
+                    class="mobile-toc-link block text-gray-500 dark:text-[#94a3b8] hover:text-black dark:hover:text-white transition-colors">Incident
+                    Overview</a>
+                <a @click="open = false" href="#root-cause-analysis"
+                    class="mobile-toc-link block text-gray-500 dark:text-[#94a3b8] hover:text-black dark:hover:text-white transition-colors">Root
+                    Cause Analysis</a>
+                <a @click="open = false" href="#recovery-actions"
+                    class="mobile-toc-link block text-gray-500 dark:text-[#94a3b8] hover:text-black dark:hover:text-white transition-colors">Recovery
+                    Actions & Migration</a>
+                <a @click="open = false" href="#prevention-roadmap"
+                    class="mobile-toc-link block text-gray-500 dark:text-[#94a3b8] hover:text-black dark:hover:text-white transition-colors">Prevention
+                    & Reliability Roadmap</a>
+            </div>
+        </div>
+
+        <div class="px-6 md:px-16 lg:px-24 flex-1 flex flex-col pb-6 w-full">
+
+            <div class="mb-8 flex items-center gap-2 text-xs font-semibold text-gray-500 dark:text-[#94a3b8]">
+                <a href="/newsroom" class="hover:text-black dark:hover:text-white transition-colors">Newsroom</a>
+                <i class="ri-arrow-right-s-line text-sm"></i>
+                <span class="text-gray-900 dark:text-white">July 2026 Outage Postmortem</span>
+            </div>
+
+            <div class="mb-10 text-center w-full max-w-3xl mx-auto">
+
+                <div
+                    class="text-xs md:text-sm font-semibold text-gray-500 dark:text-[#94a3b8] flex items-center justify-center gap-2.5 mb-3">
+                    <span>July 31, 2026</span>
+                    <span class="opacity-40">•</span>
+                    <span class="text-black dark:text-white font-bold">Announcement</span>
+                </div>
+
+                <h1
+                    class="page-title text-3xl md:text-5xl lg:text-6xl font-extrabold text-[#18181b] dark:text-white tracking-tight leading-tight mb-4">
+                    July 2026 Outage Postmortem & Infrastructure Upgrade
+                </h1>
+
+                <p
+                    class="text-base md:text-xl font-normal text-gray-500 dark:text-[#94a3b8] leading-relaxed max-w-2xl mx-auto">
+                    Technical lessons, root cause analysis, and details regarding our high-performance dedicated hosting
+                    migration.
+                </p>
+
+                <div class="flex items-center justify-center gap-3 mt-8 py-3 select-none">
+                    <button id="tts-idle-btn"
+                        class="flex items-center gap-2.5 bg-[#f4f4f5] dark:bg-[#1a2436] text-gray-900 dark:text-white text-xs font-semibold px-4 py-2 rounded-full cursor-pointer hover:opacity-90 transition-opacity">
+                        <i class="ri-play-fill text-sm"></i>
+                        <span>Listen to article</span>
+                        <span class="text-gray-300 dark:text-gray-600">|</span>
+                        <span id="tts-idle-duration" class="font-normal text-gray-500 dark:text-[#94a3b8]">1:15</span>
+                    </button>
+
+                    <div id="tts-active-bar"
+                        class="hidden flex items-center gap-3 bg-[#f4f4f5] dark:bg-[#1a2436] text-gray-900 dark:text-white px-4 py-1.5 rounded-full transition-all">
+                        <button id="tts-play-pause-btn"
+                            class="w-7 h-7 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 flex items-center justify-center hover:scale-105 transition-transform cursor-pointer shrink-0">
+                            <i id="tts-active-icon" class="ri-pause-fill text-base"></i>
+                        </button>
+
+                        <span id="tts-live-timer"
+                            class="font-semibold text-xs text-gray-900 dark:text-white min-w-[32px] text-center">0:00</span>
+
+                        <div class="w-[1px] h-3.5 bg-gray-300 dark:bg-gray-700"></div>
+
+                        <button id="tts-rewind-btn"
+                            class="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white cursor-pointer transition-colors p-1 flex items-center justify-center rounded-md hover:bg-gray-200/60 dark:hover:bg-gray-800"
+                            title="Rewind 15 seconds">
+                            <i class="ri-replay-15-line text-lg"></i>
+                        </button>
+
+                        <button id="tts-forward-btn"
+                            class="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white cursor-pointer transition-colors p-1 flex items-center justify-center rounded-md hover:bg-gray-200/60 dark:hover:bg-gray-800"
+                            title="Forward 15 seconds">
+                            <i class="ri-forward-15-line text-lg"></i>
+                        </button>
+
+                        <div class="w-[1px] h-3.5 bg-gray-300 dark:bg-gray-700"></div>
+
+                        <button id="tts-speed-btn"
+                            class="px-2 py-0.5 rounded-md text-xs font-bold text-gray-900 dark:text-white bg-gray-200/80 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors cursor-pointer">
+                            1x
+                        </button>
+                    </div>
+
+                    <button id="share-btn"
+                        class="flex items-center gap-1.5 text-xs font-semibold text-gray-600 dark:text-[#cbd5e1] hover:text-black dark:hover:text-white cursor-pointer px-3.5 py-2 rounded-full transition-colors bg-[#f4f4f5] dark:bg-[#1a2436]">
+                        <i id="share-icon" class="ri-share-box-fill text-sm"></i>
+                        <span id="share-label">Share</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="flex flex-col lg:flex-row items-start gap-12 lg:gap-16 w-full max-w-5xl mx-auto relative">
+
+                <div class="w-64 shrink-0 hidden lg:block sticky top-36 select-none">
+                    <nav class="space-y-3.5 text-xs font-semibold">
+                        <a href="#incident-overview"
+                            class="toc-link block text-gray-500 dark:text-[#94a3b8] hover:text-black dark:hover:text-white transition-colors leading-snug">
+                            Incident Overview
+                        </a>
+                        <a href="#root-cause-analysis"
+                            class="toc-link block text-gray-500 dark:text-[#94a3b8] hover:text-black dark:hover:text-white transition-colors leading-snug">
+                            Root Cause Analysis
+                        </a>
+                        <a href="#recovery-actions"
+                            class="toc-link block text-gray-500 dark:text-[#94a3b8] hover:text-black dark:hover:text-white transition-colors leading-snug">
+                            Recovery Actions & Migration
+                        </a>
+                        <a href="#prevention-roadmap"
+                            class="toc-link block text-gray-500 dark:text-[#94a3b8] hover:text-black dark:hover:text-white transition-colors leading-snug">
+                            Prevention & Reliability Roadmap
+                        </a>
+                    </nav>
+                </div>
+
+                <div id="article-body"
+                    class="flex-1 min-w-0 max-w-2xl mx-auto lg:mx-0 prose dark:prose-invert prose-h2:text-xl prose-h2:font-bold prose-h2:text-gray-900 dark:prose-h2:text-white prose-h2:mt-10 prose-h2:mb-3 prose-h2:scroll-mt-28 md:prose-h2:scroll-mt-36 prose-p:text-base prose-p:text-gray-700 dark:prose-p:text-[#94a3b8] prose-p:leading-relaxed prose-p:mb-5 prose-li:text-base prose-li:text-gray-700 dark:prose-li:text-[#94a3b8]">
+
+                    <h2 id="incident-overview" class="scroll-mt-28 md:scroll-mt-36">Incident Overview</h2>
+                    <p>
+                        In late July 2026, Nationdex experienced unexpected downtime resulting in spawn and interaction
+                        delays across connected servers. We want to be completely transparent about what happened, why
+                        it occurred, and how we upgraded our infrastructure to guarantee uninterrupted service.
+                    </p>
+
+                    <h2 id="root-cause-analysis" class="scroll-mt-28 md:scroll-mt-36">Root Cause Analysis</h2>
+                    <p>
+                        The downtime was primarily driven by hosting provider node failures and network interface
+                        throttling during peak traffic hours:
+                    </p>
+                    <ul class="list-disc list-inside space-y-2 my-4 pl-1">
+                        <li>Unexpected hardware node maintenance from our previous VPS hosting vendor.</li>
+                        <li>High concurrent spawn events exceeding single-instance IOPS limits.</li>
+                        <li>Database query queuing under peak network socket congestion.</li>
+                    </ul>
+
+                    <h2 id="recovery-actions" class="scroll-mt-28 md:scroll-mt-36">Recovery Actions & Migration</h2>
+                    <p>
+                        To resolve the issue permanently, our team executed a complete emergency migration to
+                        high-performance dedicated cloud instances:
+                    </p>
+                    <ul class="list-disc list-inside space-y-2 my-4 pl-1">
+                        <li>Migrated core bot operations to dedicated high-frequency CPU instances.</li>
+                        <li>Upgraded database cluster with instant read replicas and automated failover.</li>
+                        <li>Implemented low-latency socket pooling for instant Discord interaction responses.</li>
+                    </ul>
+
+                    <h2 id="prevention-roadmap" class="scroll-mt-28 md:scroll-mt-36">Prevention & Reliability Roadmap
+                    </h2>
+                    <p>
+                        We sincerely apologize for any inconvenience caused during the outage. With our new
+                        infrastructure fully operational, players can enjoy sub-10ms command execution and 99.9%
+                        guaranteed uptime.
+                    </p>
+                </div>
+            </div>
+
+            <footer class="mt-auto pt-12 w-full px-4 md:px-12">
+                <div
+                    class="flex flex-wrap items-center justify-center md:justify-start gap-3 md:gap-4 font-medium pt-4 mb-10 w-full">
+                    <span class="font-semibold text-lg whitespace-nowrap" data-t="follow_us">Follow us</span>
+                    <a href="//www.youtube.com/@nationdexbot"><i
+                            class="ri-youtube-fill text-3xl text-gray-700 dark:text-[#94a3b8] cursor-pointer"></i></a>
+                    <a href="//github.com/nationdex"><i
+                            class="ri-github-fill text-3xl text-gray-700 dark:text-[#94a3b8] cursor-pointer"></i></a>
+                    <a href="//discord.gg/hVvD8gUXjQ"><i
+                            class="ri-discord-fill text-3xl text-gray-700 dark:text-[#94a3b8] cursor-pointer"></i></a>
+                </div>
+
+                <div
+                    class="border-t border-gray-200 dark:border-[#223047] pt-10 pb-12 grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-6 text-left w-full px-2 md:px-0">
+                    <div class="space-y-5">
+                        <h2 class="font-bold text-textblack dark:text-white text-lg tracking-tight">Resources</h2>
+                        <ul class="space-y-4 font-semibold text-[15px] text-gray-500 dark:text-[#94a3b8]">
+                            <li><a href="/commands"
+                                    class="hover:text-black dark:hover:text-white transition-colors block">Commands</a>
+                            </li>
+                            <li><a href="/changelog"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Changelog</a>
+                            </li>
+                            <li><a href="/guides"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Guides</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-5">
+                        <h2 class="font-bold text-textblack dark:text-white text-lg tracking-tight">Community</h2>
+                        <ul class="space-y-4 font-semibold text-[15px] text-gray-500 dark:text-[#94a3b8]">
+                            <li><a href="//discord.gg/tKh3n5uVnm"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Discord</a>
+                            </li>
+                            <li><a href="/newsroom"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">News</a>
+                            </li>
+                            <li><a href="//www.youtube.com/@nationdexbot"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Youtube</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-5">
+                        <h2 class="font-bold text-textblack dark:text-white text-lg tracking-tight">Team</h2>
+                        <ul class="space-y-4 font-semibold text-[15px] text-gray-500 dark:text-[#94a3b8]">
+                            <li><a href="/team"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Developers</a>
+                            </li>
+                            <li><a href="/privacy"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Privacy</a>
+                            </li>
+                            <li><a href="/terms"
+                                    class="hover:text-black dark:hover:text-white transition-colors block">Terms</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-5">
+                        <h2 class="font-bold text-textblack dark:text-white text-lg tracking-tight">Support</h2>
+                        <ul class="space-y-4 font-semibold text-[15px] text-gray-500 dark:text-[#94a3b8]">
+                            <li><a href="//github.com/nationdex/bot/issues"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Report
+                                    Issue</a></li>
+                            <li><a href="//discord.gg/tKh3n5uVnm"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div
+                    class="border-t border-gray-200 dark:border-[#223047] pt-6 pb-8 flex flex-col lg:flex-row items-center justify-between gap-6 text-[14px] md:text-[15px] text-gray-500 dark:text-[#94a3b8] font-semibold tracking-tight px-2 md:px-0 w-full">
+                    <div class="flex flex-wrap items-center justify-center gap-4 md:gap-6">
+                        <div class="flex items-center gap-2 mr-2 shrink-0">
+                            <img src="https://cdn.soloist.ai/a0b2d163-78b6-4db3-9381-96d7635d18b1/logo/1210c387-b5e7-4bee-bf84-451755fe908c.png"
+                                class="w-6 h-6 rounded-full p-0.5 grayscale">
+                            <span class="font-bold text-textblack dark:text-white">Nationdex Team <span> &copy;
+                                    2022-2026</span></span>
+                        </div>
+                    </div>
+
+                    <div class="relative flex bg-white/90 dark:bg-[#1a2436]/90 rounded-lg p-2 border dark:border-none items-center gap-2 cursor-pointer dark:text-[#cbd5e1]"
+                        id="langSelector">
+                        <i class="ri-global-line"></i>
+                        <span id="currentLang">English (United States)</span>
+                        <i class="ri-arrow-down-s-line"></i>
+                        <div class="lang-dropdown" id="langDropdown">
+                            <div class="lang-option" data-lang="en">English (United States)</div>
+                            <div class="lang-option" data-lang="hi">Hindi (नमस्ते)</div>
+                            <div class="lang-option" data-lang="pt-br">Brazilian (Português)</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="google_translate_element" style="display:none;"></div>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        const ttsIdleBtn = document.getElementById('tts-idle-btn');
+        const ttsActiveBar = document.getElementById('tts-active-bar');
+        const ttsPlayPauseBtn = document.getElementById('tts-play-pause-btn');
+        const ttsActiveIcon = document.getElementById('tts-active-icon');
+        const ttsLiveTimer = document.getElementById('tts-live-timer');
+        const ttsRewindBtn = document.getElementById('tts-rewind-btn');
+        const ttsForwardBtn = document.getElementById('tts-forward-btn');
+        const ttsSpeedBtn = document.getElementById('tts-speed-btn');
+        const articleBody = document.getElementById('article-body');
+
+        if (!('speechSynthesis' in window) || !articleBody) {
+            if (ttsIdleBtn) ttsIdleBtn.style.display = 'none';
+        } else {
+            let isPlaying = false;
+            let isPaused = false;
+            let timerInterval = null;
+
+            const speeds = [1.0, 1.25, 1.5, 2.0];
+            let speedIndex = 0;
+
+            let sentences = [];
+            let sentenceStartTimes = [];
+            let totalArticleDuration = 75;
+            let currentSentenceIndex = 0;
+            let audioElapsedSeconds = 0;
+
+            function parseSentences() {
+                const text = articleBody.innerText || articleBody.textContent;
+                sentences = text
+                    .split(/(?<=[.?!])\s+/)
+                    .map(s => s.trim())
+                    .filter(s => s.length > 3);
+
+                sentenceStartTimes = [];
+                let accum = 0;
+                for (let i = 0; i < sentences.length; i++) {
+                    sentenceStartTimes.push(accum);
+                    const wordCount = sentences[i].split(/\s+/).length;
+                    const sentenceDuration = Math.max(1.5, wordCount / 2.5);
+                    accum += sentenceDuration;
+                }
+                totalArticleDuration = Math.max(10, accum);
+
+                const ttsIdleDuration = document.getElementById('tts-idle-duration');
+                if (ttsIdleDuration) {
+                    ttsIdleDuration.textContent = formatTime(Math.round(totalArticleDuration));
+                }
+            }
+
+            function formatTime(sec) {
+                const m = Math.floor(sec / 60);
+                const s = Math.floor(sec % 60);
+                return `${m}:${s < 10 ? '0' : ''}${s}`;
+            }
+
+            function updateTimerUI() {
+                const clampedSec = Math.min(totalArticleDuration, Math.max(0, audioElapsedSeconds));
+                ttsLiveTimer.textContent = formatTime(Math.floor(clampedSec));
+            }
+
+            function startTimer() {
+                stopTimer();
+                timerInterval = setInterval(() => {
+                    if (isPlaying && !isPaused) {
+                        audioElapsedSeconds += 1;
+                        if (audioElapsedSeconds >= totalArticleDuration) {
+                            audioElapsedSeconds = totalArticleDuration;
+                        }
+                        updateTimerUI();
+                    }
+                }, 1000);
+            }
+
+            function stopTimer() {
+                if (timerInterval) {
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                }
+            }
+
+            let currentSpeechToken = 0;
+
+            function resetPlayer() {
+                currentSpeechToken++;
+                window.speechSynthesis.cancel();
+                stopTimer();
+                isPlaying = false;
+                isPaused = false;
+                currentSentenceIndex = 0;
+                audioElapsedSeconds = 0;
+                ttsLiveTimer.textContent = '0:00';
+                ttsActiveBar.classList.add('hidden');
+                ttsActiveBar.style.display = 'none';
+                ttsIdleBtn.classList.remove('hidden');
+            }
+
+            function speakCurrentSentence() {
+                window.speechSynthesis.cancel();
+                if (currentSentenceIndex >= sentences.length) {
+                    resetPlayer();
+                    return;
+                }
+
+                if (sentenceStartTimes[currentSentenceIndex] !== undefined) {
+                    audioElapsedSeconds = sentenceStartTimes[currentSentenceIndex];
+                    updateTimerUI();
+                }
+
+                const token = ++currentSpeechToken;
+                const sentenceText = sentences[currentSentenceIndex];
+                const utterance = new SpeechSynthesisUtterance(sentenceText);
+                utterance.rate = speeds[speedIndex];
+
+                utterance.onend = () => {
+                    if (token !== currentSpeechToken) return;
+                    if (isPlaying && !isPaused) {
+                        currentSentenceIndex++;
+                        if (currentSentenceIndex < sentences.length) {
+                            speakCurrentSentence();
+                        } else {
+                            resetPlayer();
+                        }
+                    }
+                };
+
+                utterance.onerror = (e) => {
+                    if (token !== currentSpeechToken) return;
+                    if (e.error !== 'canceled') {
+                        resetPlayer();
+                    }
+                };
+
+                window.speechSynthesis.speak(utterance);
+            }
+
+            ttsIdleBtn.addEventListener('click', () => {
+                parseSentences();
+                if (!sentences.length) return;
+
+                ttsIdleBtn.classList.add('hidden');
+                ttsActiveBar.classList.remove('hidden');
+                ttsActiveBar.style.display = 'flex';
+
+                currentSentenceIndex = 0;
+                audioElapsedSeconds = 0;
+                isPlaying = true;
+                isPaused = false;
+
+                ttsActiveIcon.className = 'ri-pause-fill text-base';
+                updateTimerUI();
+                startTimer();
+                speakCurrentSentence();
+            });
+
+            ttsPlayPauseBtn.addEventListener('click', () => {
+                if (!isPlaying) {
+                    ttsIdleBtn.click();
+                    return;
+                }
+
+                if (isPaused) {
+                    window.speechSynthesis.resume();
+                    isPaused = false;
+                    ttsActiveIcon.className = 'ri-pause-fill text-base';
+                    startTimer();
+                } else {
+                    window.speechSynthesis.pause();
+                    isPaused = true;
+                    ttsActiveIcon.className = 'ri-play-fill text-base';
+                    stopTimer();
+                }
+            });
+
+            ttsRewindBtn.addEventListener('click', () => {
+                if (!sentences.length) parseSentences();
+                currentSentenceIndex = Math.max(0, currentSentenceIndex - 3);
+                audioElapsedSeconds = sentenceStartTimes[currentSentenceIndex] || 0;
+                updateTimerUI();
+                if (isPlaying) {
+                    isPaused = false;
+                    ttsActiveIcon.className = 'ri-pause-fill text-base';
+                    speakCurrentSentence();
+                }
+            });
+
+            ttsForwardBtn.addEventListener('click', () => {
+                if (!sentences.length) parseSentences();
+                currentSentenceIndex += 3;
+                if (currentSentenceIndex >= sentences.length) {
+                    resetPlayer();
+                    return;
+                }
+                audioElapsedSeconds = sentenceStartTimes[currentSentenceIndex] || 0;
+                updateTimerUI();
+                if (isPlaying) {
+                    isPaused = false;
+                    ttsActiveIcon.className = 'ri-pause-fill text-base';
+                    speakCurrentSentence();
+                }
+            });
+
+            ttsSpeedBtn.addEventListener('click', () => {
+                speedIndex = (speedIndex + 1) % speeds.length;
+                const speed = speeds[speedIndex];
+                ttsSpeedBtn.textContent = `${speed}x`;
+
+                if (isPlaying) {
+                    speakCurrentSentence();
+                }
+            });
+        }
+
+        const shareBtn = document.getElementById('share-btn');
+        const shareIcon = document.getElementById('share-icon');
+        const shareLabel = document.getElementById('share-label');
+
+        shareBtn.addEventListener('click', async () => {
+            try {
+                await navigator.clipboard.writeText(window.location.href);
+                shareIcon.className = 'ri-check-line text-sm text-green-500';
+                shareLabel.textContent = 'Link copied!';
+                setTimeout(() => {
+                    shareIcon.className = 'ri-share-box-fill text-sm';
+                    shareLabel.textContent = 'Share';
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy URL:', err);
+            }
+        });
+
+        function updateActiveToc() {
+            const headings = Array.from(document.querySelectorAll('#article-body h2[id]'));
+            const mobileTocBar = document.getElementById('mobile-toc-bar');
+            if (!headings.length) return;
+
+            const threshold = 180;
+            let currentActive = null;
+
+            for (let i = 0; i < headings.length; i++) {
+                const rect = headings[i].getBoundingClientRect();
+                if (rect.top <= threshold) {
+                    currentActive = headings[i].id;
+                }
+            }
+
+            const isAtBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 50);
+            if (isAtBottom && headings.length > 0) {
+                currentActive = headings[headings.length - 1].id;
+            }
+
+            if (mobileTocBar) {
+                const articleBodyNode = document.getElementById('article-body');
+                const articleTop = articleBodyNode ? articleBodyNode.getBoundingClientRect().top : 9999;
+
+                if (articleTop <= 180) {
+                    mobileTocBar.classList.remove('hidden', 'opacity-0', 'pointer-events-none');
+                    mobileTocBar.classList.add('opacity-100', 'pointer-events-auto');
+                } else {
+                    mobileTocBar.classList.add('hidden', 'opacity-0', 'pointer-events-none');
+                    mobileTocBar.classList.remove('opacity-100', 'pointer-events-auto');
+                }
+            }
+
+            document.querySelectorAll('.toc-link').forEach(link => {
+                const targetId = link.getAttribute('href').replace('#', '');
+                if (targetId === currentActive) {
+                    link.className = 'toc-link block text-black dark:text-white font-bold leading-snug';
+                } else {
+                    link.className = 'toc-link block text-gray-500 dark:text-[#94a3b8] hover:text-black dark:hover:text-white transition-colors leading-snug';
+                }
+            });
+
+            const mobileTitle = document.getElementById('mobile-toc-active-title');
+            document.querySelectorAll('.mobile-toc-link').forEach(link => {
+                const targetId = link.getAttribute('href').replace('#', '');
+                if (targetId === currentActive) {
+                    link.className = 'mobile-toc-link block font-bold text-black dark:text-white transition-colors';
+                    if (mobileTitle) {
+                        mobileTitle.textContent = link.textContent.trim();
+                    }
+                } else {
+                    link.className = 'mobile-toc-link block text-gray-500 dark:text-[#94a3b8] hover:text-black dark:hover:text-white transition-colors';
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveToc, { passive: true });
+        window.addEventListener('resize', updateActiveToc);
+        document.addEventListener('DOMContentLoaded', updateActiveToc);
+        setTimeout(updateActiveToc, 100);
+
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,hi,pt',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+
+        (function initLanguageSelector() {
+            document.querySelectorAll('i, .material-icons-outlined, [class^="ri-"], [class*=" ri-"], .slash-command, code, svg').forEach(el => {
+                el.classList.add('notranslate');
+                el.setAttribute('translate', 'no');
+            });
+
+            const langSelector = document.getElementById('langSelector');
+            const langDropdown = document.getElementById('langDropdown');
+            const currentLangSpan = document.getElementById('currentLang');
+
+            const langNames = {
+                'en': 'English (United States)',
+                'hi': 'Hindi (नमस्ते)',
+                'pt': 'Brazilian (Português)',
+                'pt-br': 'Brazilian (Português)'
+            };
+
+            const savedLang = localStorage.getItem('ndex_lang') || 'en';
+            if (currentLangSpan && langNames[savedLang]) {
+                currentLangSpan.textContent = langNames[savedLang];
+            }
+
+            if (langSelector && langDropdown) {
+                langSelector.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    langDropdown.classList.toggle('show');
+                });
+
+                document.addEventListener('click', () => {
+                    langDropdown.classList.remove('show');
+                });
+
+                document.querySelectorAll('.lang-option').forEach(opt => {
+                    opt.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const rawLang = opt.getAttribute('data-lang');
+                        const targetLang = (rawLang === 'pt-br' || rawLang === 'pt') ? 'pt' : rawLang;
+
+                        localStorage.setItem('ndex_lang', rawLang);
+
+                        if (targetLang === 'en') {
+                            document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                            document.cookie = "googtrans=/en/en; path=/;";
+                        } else {
+                            document.cookie = "googtrans=/en/" + targetLang + "; path=/;";
+                            document.cookie = "googtrans=/en/" + targetLang + "; path=/; domain=" + window.location.hostname + ";";
+                        }
+
+                        langDropdown.classList.remove('show');
+                        window.location.reload();
+                    });
+                });
+            }
+        })();
+    </script>
+    <script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="../../assets/js/cookies.js"></script>
+</body>
+
+</html>

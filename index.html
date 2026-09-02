@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="en" :class="{ 'dark': $store.theme.isDark }" x-cloak x-data>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nationdex | Home</title>
+    <meta name="description"
+        content="Nationdex is the best Discord countryball bot. Catch 200+ unique nation cards, collect rare shiny foils, trade with friends, build your empire, and climb global leaderboards. Add Nationdex to your Discord server today!">
+    <meta name="keywords"
+        content="Nationdex, nationdex bot, countryball bot, discord countryball bot, discord nation dex, catch nations, discord trading bot, countryball card game, nationdex discord, discord bots">
+    <meta name="author" content="Nationdex Team">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="application-name" content="Nationdex">
+    <meta name="apple-mobile-web-app-title" content="Nationdex">
+    <link rel="canonical" href="https://nationdex.com/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nationdex.com/">
+    <meta property="og:title" content="Nationdex — Best Discord Countryball Bot">
+    <meta property="og:description"
+        content="Catch, collect, trade, and battle over 200+ unique country cards in your Discord server. Join 134K+ players worldwide!">
+    <meta property="og:image" content="https://nationdex.com/assets/bg/ndexguide.jpg">
+    <meta property="og:image:alt" content="Nationdex Discord Bot Preview">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Nationdex">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://nationdex.com/">
+    <meta name="twitter:title" content="Nationdex — Best Discord Countryball Bot">
+    <meta name="twitter:description"
+        content="Catch, collect, trade, and battle over 200+ unique country cards in your Discord server. Join 134K+ players worldwide!">
+    <meta name="twitter:image" content="https://nationdex.com/assets/bg/ndexguide.jpg">
+    <meta name="twitter:creator" content="@NationdexBot">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "url": "https://nationdex.com/",
+          "name": "Nationdex",
+          "description": "Nationdex is the best Discord countryball bot. Catch 200+ unique nation cards, collect rare shiny foils, trade with friends, build your empire, and climb global leaderboards.",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Nationdex Team",
+            "url": "https://nationdex.com/",
+            "logo": "https://nationdex.com/assets/ndexlogo.png",
+            "sameAs": [
+              "https://discord.gg/tKh3n5uVnm",
+              "https://youtube.com/@nationdexbot",
+              "https://github.com/nationdex"
+            ]
+          },
+          "hasPart": [
+            {
+              "@type": "WebPage",
+              "name": "Commands",
+              "url": "https://nationdex.com/commands",
+              "description": "List of all Nationdex Discord bot commands for catching, trading, and managing nation cards."
+            },
+            {
+              "@type": "WebPage",
+              "name": "Changelog",
+              "url": "https://nationdex.com/changelog",
+              "description": "Latest updates, release notes, and patch details for Nationdex."
+            },
+            {
+              "@type": "WebPage",
+              "name": "Guides",
+              "url": "https://nationdex.com/guides",
+              "description": "Setup guides, leaderboards breakdown, and tutorials for Nationdex Discord bot."
+            },
+            {
+              "@type": "WebPage",
+              "name": "Newsroom",
+              "url": "https://nationdex.com/newsroom",
+              "description": "Official announcements, postmortems, and news from the Nationdex team."
+            },
+            {
+              "@type": "WebPage",
+              "name": "Team",
+              "url": "https://nationdex.com/team",
+              "description": "Meet the developers and staff behind Nationdex."
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://nationdex.com/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How do I add Nationdex to my Discord server?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Click the 'Add to Discord' or 'Invite me today' button on nationdex.com to authorize Nationdex with standard bot permissions, then use /setup to initialize your server's collection settings."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How can I customize Nationdex options?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Head over to the Customization section to set aliases, modify spawn traits, and manage server economy settings."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What are the spawn mechanics in Nationdex?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Nations drop randomly based on chat activity density. Active Discord channels have a higher chance of triggering nation encounters."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does Nationdex store my server data?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Nationdex only stores essential metadata required for player inventories and server drop configurations, prioritizing privacy and security."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <link rel="icon" href="/assets/ndexlogo.png">
+    <link rel="apple-touch-icon" href="/assets/ndexlogo.png">
+    <meta name="theme-color" content="#1b2d48">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        pagebg: '#1b2d48',
+                        textgray: '#71717a',
+                        textblack: '#18181b',
+                        brand: '#8B5CF6',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #1b2d48;
+            min-height: 100vh;
+            padding: 0;
+        }
+
+        @media (min-width: 768px) {
+            body {
+                padding: 2.5rem;
+            }
+
+            body.is-window-full {
+                padding: 0 !important;
+            }
+
+            body.is-window-full #app-container {
+                max-width: 100% !important;
+                border-radius: 0 !important;
+                min-height: 100vh !important;
+            }
+
+            body.is-window-full #main-header {
+                top: 0 !important;
+                border-top-left-radius: 0 !important;
+                border-top-right-radius: 0 !important;
+            }
+
+            body.is-window-full #top-fixed-bar {
+                display: none !important;
+            }
+
+            body.is-window-full .corner-mask-tl,
+            body.is-window-full .corner-mask-tr {
+                display: none !important;
+            }
+        }
+
+        html,
+        body {
+            -ms-overflow-style: none !important;
+            scrollbar-width: none !important;
+        }
+
+        ::-webkit-scrollbar {
+            display: none !important;
+            width: 0 !important;
+            height: 0 !important;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .corner-mask-tl {
+            background-image: radial-gradient(circle at 100% 100%, transparent calc(1.5rem - 0.5px), #1b2d48 1.5rem);
+        }
+
+        .corner-mask-tr {
+            background-image: radial-gradient(circle at 0 100%, transparent calc(1.5rem - 0.5px), #1b2d48 1.5rem);
+        }
+
+        @media (min-width: 768px) {
+            .corner-mask-tl {
+                background-image: radial-gradient(circle at 100% 100%, transparent calc(2.5rem - 0.5px), #1b2d48 2.5rem);
+            }
+
+            .corner-mask-tr {
+                background-image: radial-gradient(circle at 0 100%, transparent calc(2.5rem - 0.5px), #1b2d48 2.5rem);
+            }
+        }
+
+        .page-title {
+            letter-spacing: -0.03em;
+        }
+
+        .bento-card {
+            background-color: #f4f4f5;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            bottom: 100%;
+            right: 0;
+            background: white;
+            border-radius: 8px;
+            padding: 8px 0;
+            margin-bottom: 8px;
+            display: none;
+            z-index: 3000;
+            min-width: 160px;
+        }
+
+        .lang-dropdown.show {
+            display: block;
+        }
+
+        .lang-option {
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #3c4043;
+        }
+
+        .lang-option:hover {
+            background: #f1f3f4;
+        }
+
+        .bg {
+            -webkit-mask: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 37%) add;
+            background-color: var(--token-aa400f50-bb31-43da-bd7e-ccb203a60033, #f4f2f1);
+            flex: none;
+            gap: 0px;
+            height: 1024px;
+            left: -120px;
+            mask: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 37%) add;
+            overflow: visible;
+            position: absolute;
+            right: -120px;
+            top: 0;
+            z-index: 1
+        }
+
+        .dark .bento-card {
+            background-color: #1a2436;
+        }
+
+        .dark .lang-dropdown {
+            background: #1a2436;
+            border-color: #223047;
+        }
+
+        .dark .lang-option {
+            color: #cbd5e1;
+        }
+
+        .dark .lang-option:hover {
+            background: #253248;
+        }
+
+        html {
+            margin-top: 0px !important;
+        }
+
+        body {
+            top: 0px !important;
+            position: static !important;
+        }
+
+        .goog-te-banner-frame,
+        .goog-te-banner-frame.skiptranslate,
+        .goog-te-balloon-frame,
+        #goog-gt-tt,
+        .goog-te-spinner-pos,
+        #goog-gt-vt,
+        .goog-te-menu-frame,
+        .goog-te-menu2,
+        .goog-tooltip,
+        .goog-tooltip:hover {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+        }
+
+        iframe[class*="VIpgJd"],
+        iframe[id*=":"],
+        iframe.skiptranslate,
+        .VIpgJd-ZVi9od-ORHb-OEVmcd {
+            position: absolute !important;
+            top: -9999px !important;
+            left: -9999px !important;
+            width: 0px !important;
+            height: 0px !important;
+            border: none !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+
+        .goog-text-highlight {
+            background-color: transparent !important;
+            box-shadow: none !important;
+            border: none !important;
+        }
+
+        #google_translate_element {
+            display: none !important;
+        }
+
+        font[style*="vertical-align: inherit;"] {
+            vertical-align: inherit !important;
+        }
+
+        .dark .material-icons-outlined.text-textblack {
+            color: white;
+        }
+
+        @keyframes marqueeLeft {
+            0% {
+                transform: translateX(0%);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        @keyframes marqueeRight {
+            0% {
+                transform: translateX(-50%);
+            }
+
+            100% {
+                transform: translateX(0%);
+            }
+        }
+
+        .animate-marquee-left {
+            display: flex;
+            width: max-content;
+            animation: marqueeLeft 35s linear infinite;
+            will-change: transform;
+        }
+
+        .animate-marquee-right {
+            display: flex;
+            width: max-content;
+            animation: marqueeRight 35s linear infinite;
+            will-change: transform;
+        }
+
+        .animate-marquee-left:hover,
+        .animate-marquee-right:hover {
+            animation-play-state: paused;
+        }
+
+        .marquee-mask {
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+        }
+    </style>
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.store('theme', {
+                isDark: localStorage.getItem('theme') === 'dark' ||
+                    (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches),
+                toggle() {
+                    this.isDark = !this.isDark;
+                    localStorage.setItem('theme', this.isDark ? 'dark' : 'light');
+                }
+            });
+
+            Alpine.store('windowMode', {
+                isFull: localStorage.getItem('ndex_window_full') === 'true',
+                init() {
+                    this.apply();
+                },
+                toggle() {
+                    this.isFull = !this.isFull;
+                    localStorage.setItem('ndex_window_full', this.isFull);
+                    this.apply();
+                },
+                apply() {
+                    if (this.isFull) {
+                        document.body.classList.add('is-window-full');
+                    } else {
+                        document.body.classList.remove('is-window-full');
+                    }
+                }
+            });
+            Alpine.store('windowMode').init();
+        });
+    </script>
+</head>
+
+<body
+    class="text-textblack dark:text-[#f3f4f6] antialiased font-sans flex justify-center w-full m-0 box-border transition-all duration-300 ease-in-out">
+
+    <div id="top-fixed-bar" class="hidden md:block fixed top-0 left-0 w-full h-[2.5rem] bg-[#1b2d48] z-[80]"></div>
+
+    <div id="app-container"
+        class="bg-white dark:bg-[#101929] w-full max-w-[1200px] rounded-none md:rounded-[2.5rem] shadow-[0_4px_24px_rgba(0,0,0,0.02)] flex flex-col min-h-screen md:min-h-[calc(100vh-5rem)] pb-6 transition-all duration-300 ease-in-out">
+
+        <header id="main-header"
+            class="sticky top-0 md:top-10 z-[60] flex flex-wrap justify-between items-center px-4 pt-4 pb-4 md:px-16 lg:px-24 md:pt-8 md:pb-6 lg:pt-10 mb-4 md:mb-8 bg-white dark:bg-[#101929] rounded-t-none md:rounded-t-[2.5rem] transition-all duration-300 ease-in-out">
+            <div class="hidden md:block absolute top-0 left-0 w-[2.5rem] h-[2.5rem] corner-mask-tl pointer-events-none">
+            </div>
+            <div
+                class="hidden md:block absolute top-0 right-0 w-[2.5rem] h-[2.5rem] corner-mask-tr pointer-events-none">
+            </div>
+
+            <div class="flex items-center w-full justify-between">
+                <a href="#"
+                    class="font-bold text-xl md:text-2xl tracking-tighter cursor-pointer flex items-center gap-2 text-[#18181b] dark:text-white">
+                    <img src="assets/ndexlogo.png" alt="Nationdex Logo" class="w-8 h-8 rounded-full object-cover">
+                    Nationdex
+                </a>
+
+                <div class="flex items-center gap-2 md:gap-3">
+                    <div id="header-nav"
+                        class="hidden md:flex gap-6 items-center transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]">
+                        <a href="//discord.gg/tKh3n5uVnm"
+                            class="w-full sm:w-auto bg-[#8B5CF6] hover:bg-[#7c3aed] text-white px-2 py-2 md:px-4 rounded-[2rem] font-bold text-[15px] md:text-[16px] tracking-wide transition-colors duration-300 flex items-center justify-center gap-2">
+                            Nationdex HQ <span class="material-icons-outlined text-[1rem]">arrow_outward</span>
+                        </a>
+                        <a href="//discord.com/api/oauth2/authorize?client_id=1207017704096141312&scope=bot+applications.commands&permissions=537259009"
+                            class="w-full sm:w-auto bg-[#8B5CF6] hover:bg-[#7c3aed] text-white px-2 py-2 md:px-4 rounded-[2rem] font-bold text-[15px] md:text-[16px] tracking-wide transition-colors duration-300 flex items-center justify-center gap-2">
+                            Invite Me <span class="material-icons-outlined text-[1rem]">arrow_outward</span>
+                        </a>
+                    </div>
+
+                    <button
+                        class="hidden md:inline-flex items-center justify-center rounded-full transition p-2.5 w-10 h-10 hover:bg-gray-200 dark:hover:bg-[#253248] dark:text-[#cbd5e1] text-gray-700"
+                        type="button" @click="$store.windowMode.toggle()" title="Toggle full window layout">
+                        <span class="sr-only">Toggle full window layout</span>
+                        <i class="text-xl"
+                            :class="$store.windowMode.isFull ? 'ri-collapse-diagonal-line' : 'ri-expand-diagonal-line'"></i>
+                    </button>
+
+                    <button
+                        class="items-center inline-flex justify-center rounded-full transition p-2.5 hover:bg-gray-200 dark:hover:bg-[#253248] dark:text-[#cbd5e1] text-gray-700"
+                        type="button" @click="$store.theme.toggle()">
+                        <span class="sr-only">Toggle theme mode</span>
+                        <svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg" :class="{ 'hidden': !($store.theme.isDark) }" x-cloak>
+                            <path
+                                d="M12 18C8.68629 18 6 15.3137 6 12C6 8.68629 8.68629 6 12 6C15.3137 6 18 8.68629 18 12C18 15.3137 15.3137 18 12 18ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16ZM11 1H13V4H11V1ZM11 20H13V23H11V20ZM3.51472 4.92893L4.92893 3.51472L7.05025 5.63604L5.63604 7.05025L3.51472 4.92893ZM16.9497 18.364L18.364 16.9497L20.4853 19.0711L19.0711 20.4853L16.9497 18.364ZM19.0711 3.51472L20.4853 4.92893L18.364 7.05025L16.9497 5.63604L19.0711 3.51472ZM5.63604 16.9497L7.05025 18.364L4.92893 20.4853L3.51472 19.0711L5.63604 16.9497ZM23 11V13H20V11H23ZM4 11V13H1V11H4Z">
+                            </path>
+                        </svg>
+                        <svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg" :class="{ 'hidden': $store.theme.isDark }" x-cloak>
+                            <path
+                                d="M10 6C10 10.4183 13.5817 14 18 14C19.4386 14 20.7885 13.6203 21.9549 12.9556C21.4738 18.0302 17.2005 22 12 22C6.47715 22 2 17.5228 2 12C2 6.79948 5.9698 2.52616 11.0444 2.04507C10.3797 3.21152 10 4.56142 10 6ZM4 12C4 16.4183 7.58172 20 12 20C14.9654 20 17.5757 18.3788 18.9571 15.9546C18.6407 15.9848 18.3214 16 18 16C12.4772 16 8 11.5228 8 6C8 5.67863 8.01524 5.35933 8.04536 5.04293C5.62119 6.42426 4 9.03458 4 12ZM18.1642 2.29104L19 2.5V3.5L18.1642 3.70896C17.4476 3.8881 16.8881 4.4476 16.709 5.16417L16.5 6H15.5L15.291 5.16417C15.1119 4.4476 14.5524 3.8881 13.8358 3.70896L13 3.5V2.5L13.8358 2.29104C14.5524 2.1119 15.1119 1.5524 15.291 0.835829L15.5 0H16.5L16.709 0.835829C16.8881 1.5524 17.4476 2.1119 18.1642 2.29104ZM23.1642 7.29104L24 7.5V8.5L23.1642 8.70896C22.4476 8.8881 21.8881 9.4476 21.709 10.1642L21.5 11H20.5L20.291 10.1642C20.1119 9.4476 19.5524 8.8881 18.8358 8.70896L18 8.5V7.5L18.8358 7.29104C19.5524 7.1119 20.1119 6.5524 20.291 5.83583L20.5 5H21.5L21.709 5.83583C21.8881 6.5524 22.4476 7.1119 23.1642 7.29104ZM23.1642 7.29104L24 7.5V8.5L23.1642 8.70896C22.4476 8.8881 21.8881 9.4476 21.709 10.1642L21.5 11H20.5L20.291 10.1642C20.1119 9.4476 19.5524 8.8881 18.8358 8.70896L18 8.5V7.5L18.8358 7.29104C19.5524 7.1119 20.1119 6.5524 20.291 5.83583L20.5 5H21.5L21.709 5.83583C21.8881 6.5524 22.4476 7.1119 23.1642 7.29104Z">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div id="header-fade"
+                class="absolute top-[99%] left-0 w-full h-16 md:h-24 bg-gradient-to-b from-white dark:from-[#101929] to-white/0 dark:to-transparent pointer-events-none z-[-1] opacity-0 transition-opacity duration-300">
+            </div>
+        </header>
+
+        <div id="floating-nav"
+            class="fixed bottom-6 md:bottom-10 left-1/2 transform -translate-x-1/2 translate-y-32 opacity-0 pointer-events-none w-max max-w-[95%] bg-[#18181b] rounded-[2rem] px-2 py-2 flex items-center justify-between gap-3 md:gap-8 z-[100] transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] shadow-2xl">
+            <a href="#" class="flex pl-1 shrink-0">
+                <img src="assets/ndexlogo.png" alt="Nationdex" class="w-8 h-8 md:w-9 md:h-9 rounded-full">
+            </a>
+            <div class="flex items-center px-1 md:px-4 gap-6 md:gap-10">
+                <nav class="hidden md:flex items-center gap-8 text-[14px] font-semibold text-gray-400">
+                    <a href="/about" class="text-white">About</a>
+                    <a href="/commands" class="hover:text-white">Commands</a>
+                    <a href="//discord.gg/tKh3n5uVnm" class="hover:text-white">Contact</a>
+                </nav>
+            </div>
+
+            <a href="//discord.com/api/oauth2/authorize?client_id=1207017704096141312&scope=bot+applications.commands&permissions=537259009"
+                class="bg-brand text-white text-[13px] md:text-[14px] font-bold px-4 py-2 rounded-[1.5rem] flex items-center gap-2 whitespace-nowrap shrink-0">
+                Add to Discord
+            </a>
+        </div>
+
+        <div class="px-6 md:px-16 lg:px-24 flex-1 flex flex-col w-full">
+            <div class="pt-12 md:pt-20 pb-16 w-full flex flex-col items-center text-center">
+                <h1
+                    class="page-title text-[4rem] md:text-[5.5rem] lg:text-[7rem] leading-[0.95] font-extrabold mb-8 tracking-tighter text-textblack dark:text-white px-4">
+                    Collect Nations.<br>
+                    Build Collection.<br>
+                </h1>
+
+                <p
+                    class="text-[1rem] md:text-[1.125rem] font-medium text-gray-500 dark:text-[#94a3b8] text-center max-w-2xl mx-auto mb-10 leading-relaxed px-6 text-balance">
+                    Encounter wild nations, capture them, trade with friends, and complete the global index.
+                </p>
+
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-3 w-auto px-6">
+                    <a href="//github.com/nationdex" target="_blank"
+                        class="w-auto bg-[#18181b] hover:bg-black dark:bg-[#1e293b] dark:hover:bg-[#334155] text-white px-5 py-2.5 rounded-[2rem] text-[15px] md:text-[16px] tracking-wide transition-colors duration-300 flex items-center justify-center gap-2 shadow-sm">
+                        <i class="ri-github-fill text-xl"></i> Follow on Github <i
+                            class="ri-arrow-right-up-line text-lg"></i>
+                    </a>
+                    <a href="//discord.gg/tKh3n5uVnm" target="_blank"
+                        class="sm:hidden w-auto bg-[#8B5CF6] hover:bg-[#7c3aed] text-white px-5 py-2.5 rounded-[2rem] text-[15px] tracking-wide transition-colors duration-300 flex items-center justify-center gap-2 shadow-sm">
+                        Join Nationdex HQ <span class="material-icons-outlined text-[1rem]">arrow_outward</span>
+                    </a>
+                </div>
+            </div>
+
+            <div id="collect" class="w-full py-12 md:py-20 relative max-w-5xl mx-auto overflow-hidden">
+
+                <div class="absolute inset-0 pointer-events-none hidden md:flex justify-center items-center">
+                    <svg class="w-full h-full max-w-3xl" viewBox="0 0 800 2000" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 200,60
+        C 700,250 900,400 700,620
+        C 100,750 100,850 100,1280
+        C 760,2000 760,2050 500,1900" class="stroke-gray-300 dark:stroke-white/20" stroke-width="3"
+                            stroke-dasharray="8 8" stroke-linecap="round" />
+                    </svg>
+                </div>
+
+                <div class="flex flex-col gap-10 md:gap-16 relative z-10">
+
+                    <div class="grid grid-cols-1 md:grid-cols-12 items-center gap-6 md:gap-8">
+                        <div class="md:col-span-6">
+                            <div class="bento-card flex flex-col gap-4">
+                                <h3 class="text-2xl md:text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                    A wild nation appeared!
+                                </h3>
+                                <p class="text-gray-600 dark:text-[#94a3b8] font-medium leading-relaxed">
+                                    Catch nations, build collection, flex on your friends, enjoy the dex community.
+                                </p>
+                                <div>
+                                    <img class="rounded-2xl w-full mt-2" src="assets/walk/catch.png"
+                                        alt="Catch wild nations in Discord with Nationdex bot">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hidden md:block md:col-span-6"></div>
+                    </div>
+
+                    <div id="economy" class="grid grid-cols-1 md:grid-cols-12 items-center gap-6 md:gap-8">
+                        <div class="hidden md:block md:col-span-6"></div>
+                        <div class="md:col-span-6">
+                            <div class="bento-card flex flex-col gap-4">
+                                <div class="flex items-center justify-between">
+                                    <h3
+                                        class="text-2xl md:text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                        Gift Freely & Collect.
+                                    </h3>
+                                    <span
+                                        class="material-icons-outlined text-3xl text-gray-400 dark:text-[#475569]">sync_alt</span>
+                                </div>
+                                <p class="text-gray-600 dark:text-[#94a3b8] font-medium leading-relaxed">
+                                    Gift duplicate nations to your friends and help them complete their
+                                    collection or flex rare finds with your friends.
+                                </p>
+                                <div>
+                                    <img class="rounded-2xl w-full mt-2" src="assets/walk/gift.png"
+                                        alt="Gift duplicate country cards to friends in Nationdex bot">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="database" class="grid grid-cols-1 md:grid-cols-12 items-center gap-6 md:gap-8">
+                        <div class="md:col-span-6">
+                            <div class="bento-card flex flex-col gap-4">
+                                <div class="flex items-center justify-between">
+                                    <h3
+                                        class="text-2xl md:text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                        Browse the Dex.
+                                    </h3>
+                                    <span
+                                        class="material-icons-outlined text-3xl text-gray-400 dark:text-[#475569]">inventory_2</span>
+                                </div>
+                                <p class="text-gray-600 dark:text-[#94a3b8] font-medium leading-relaxed">
+                                    Track progression and read historical context directly through special image cards
+                                    and detailed player statistics.
+                                </p>
+                                <div>
+                                    <img class="rounded-2xl w-full mt-2" src="assets/walk/info.png"
+                                        alt="Browse nation stats and card database in Nationdex bot">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hidden md:block md:col-span-6"></div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-12 items-center gap-6 md:gap-8">
+                        <div class="hidden md:block md:col-span-6"></div>
+                        <div class="md:col-span-6">
+                            <div class="bento-card flex flex-col gap-4">
+                                <div class="flex items-center justify-between">
+                                    <h3
+                                        class="text-2xl md:text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                        Project Nationdex 2026
+                                    </h3>
+                                    <span
+                                        class="material-icons-outlined text-3xl text-gray-400 dark:text-[#475569]">trending_up</span>
+                                </div>
+                                <p class="text-gray-600 dark:text-[#94a3b8] font-medium leading-relaxed">
+                                    Our team is persistent and we are already finishing to create a new codebase in
+                                    TypeScript, marking Nationdex's return to the dex community on <strong>7th September
+                                        2026</strong>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="stats" class="w-full py-12 md:py-20 relative overflow-hidden my-4">
+
+                <div
+                    class="hidden md:flex absolute inset-0 items-center justify-center pointer-events-none z-0 overflow-hidden">
+                    <canvas id="cobe-globe"
+                        class="w-[500px] h-[500px] md:w-[650px] md:h-[650px] max-w-full pointer-events-none opacity-85 dark:opacity-95"></canvas>
+                </div>
+
+                <div class="relative z-10 text-center mb-10">
+                    <h2
+                        class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-textblack dark:text-white mb-2">
+                        <span id="stat-hero-count">100K+ Users</span>
+                    </h2>
+                    <p id="stat-hero-subtitle"
+                        class="text-lg md:text-xl font-semibold text-gray-600 dark:text-gray-400">
+                        across the world
+                    </p>
+                </div>
+
+                <div class="relative z-10 grid grid-cols-1 md:grid-cols-6 gap-4 max-w-5xl mx-auto">
+                    <div
+                        class="bg-[#dedede] dark:bg-[#130826] md:col-span-2 flex items-center justify-between py-6 px-3 sm:px-4 md:px-5 rounded-2xl relative overflow-hidden group">
+                        <img src="assets/pfps/Aditya.png" alt="Aditya"
+                            class="h-11 sm:h-13 md:h-15 w-auto object-contain z-10 shrink-0">
+
+                        <div class="relative flex flex-col items-center justify-center text-center z-10 mx-1 sm:mx-2">
+
+                            <div class="relative w-12 h-12 md:w-14 md:h-14 cursor-pointer mb-1 [perspective:1000px]"
+                                onclick="this.querySelector('.flip-card-inner').classList.toggle('[transform:rotateY(180deg)]')"
+                                title="Click to flip!">
+                                <div
+                                    class="flip-card-inner relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d]">
+                                    <div
+                                        class="absolute inset-0 flex items-center justify-center [backface-visibility:hidden]">
+                                        <div id="stat-languages"
+                                            class="text-4xl md:text-5xl font-extrabold text-[#0284c7] dark:text-[#38bdf8] tracking-tight">
+                                            3</div>
+                                    </div>
+                                    <div
+                                        class="absolute inset-0 flex items-center justify-center [backface-visibility:hidden] [transform:rotateY(180deg)]">
+                                        <img src="assets/pfps/ArielAram.png" alt="ArielAram"
+                                            class="w-full h-full object-contain">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                class="text-gray-700 dark:text-white font-bold text-sm sm:text-base md:text-lg whitespace-nowrap">
+                                Team Members</div>
+                        </div>
+
+                        <img src="assets/pfps/Ayansh.png" alt="Ayansh"
+                            class="h-11 sm:h-13 md:h-15 w-auto object-contain z-10 shrink-0">
+                    </div>
+                    <div
+                        class="bg-[#dedede] dark:bg-[#130826]   md:col-span-2 flex flex-col justify-center items-center py-8 px-6 rounded-2xl">
+                        <div id="stat-servers" class="text-4xl md:text-5xl font-extrabold mb-2 tracking-tight">
+                            <span class="text-[#0284c7] dark:text-[#38bdf8]">5</span><span
+                                class="text-[#7c3aed] dark:text-[#8b5cf6]">44</span>
+                        </div>
+                        <div class="text-gray-700 dark:text-white text-lg flex items-center gap-2">
+                            <i class="ri-discord-fill text-2xl text-[#5865F2]"></i> <span
+                                class="font-bold">Servers</span>
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-[#dedede] dark:bg-[#130826]   md:col-span-2 flex flex-col justify-center items-center py-8 px-6 rounded-2xl">
+                        <div id="stat-users" class="text-4xl md:text-5xl font-extrabold mb-2 tracking-tight">
+                            <span class="text-[#0284c7] dark:text-[#38bdf8]">134</span><span
+                                class="text-[#7c3aed] dark:text-[#8b5cf6]">,578</span>
+                        </div>
+                        <div class="text-gray-700 dark:text-white font-bold text-lg">Users</div>
+                    </div>
+
+                    <div
+                        class="bg-[#dedede] dark:bg-[#130826]   md:col-span-2 flex flex-col justify-center items-center py-8 px-6 rounded-2xl">
+                        <div id="stat-commands" class="text-4xl md:text-5xl font-extrabold mb-2 tracking-tight">
+                            <span class="text-[#0284c7] dark:text-[#38bdf8]">10k</span><span
+                                class="text-[#7c3aed] dark:text-[#8b5cf6]">+</span>
+                        </div>
+                        <div class="text-gray-700 dark:text-white text-sm md:text-base font-bold">daily commands ran
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-[#dedede] dark:bg-[#130826] md:col-span-4 flex items-center justify-between py-6 px-4 sm:px-6 md:px-8 rounded-2xl relative overflow-hidden group">
+
+                        <div class="flex items-center -space-x-4 sm:-space-x-6 md:-space-x-8 shrink-0 z-10">
+                            <img src="assets/country/LL0093.png" alt="Nation Card LL0093"
+                                class="h-16 sm:h-20 md:h-28 w-auto object-contain">
+
+                            <img src="assets/country/LL0090.png" alt="Nation Card LL0090"
+                                class="hidden sm:block h-16 sm:h-20 md:h-28 w-auto object-contain">
+                        </div>
+
+                        <div class="flex flex-col items-center justify-center text-center z-10 px-1 sm:px-2">
+                            <div id="stat-nations"
+                                class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-1 tracking-tight">
+                                <span class="text-[#0284c7] dark:text-[#38bdf8]">120</span><span
+                                    class="text-[#7c3aed] dark:text-[#8b5cf6]">+</span>
+                            </div>
+                            <div class="text-gray-700 dark:text-white font-bold text-base sm:text-lg whitespace-nowrap">
+                                Nations
+                            </div>
+                        </div>
+
+                        <div class="flex items-center -space-x-4 sm:-space-x-6 md:-space-x-8 shrink-0 z-10">
+                            <img src="assets/country/LL0094.png" alt="Nation Card LL0094"
+                                class="h-16 sm:h-20 md:h-28 w-auto object-contain">
+
+                            <img src="assets/country/MM0069.png" alt="Nation Card MM0069"
+                                class="hidden sm:block h-16 sm:h-20 md:h-28 w-auto object-contain">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div id="faq" class="w-full py-16 md:py-24">
+                <h2
+                    class="text-3xl md:text-5xl font-bold tracking-tighter mb-12 text-textblack dark:text-white text-center">
+                    Frequently
+                    asked questions</h2>
+                <div class="max-w-3xl mx-auto px-4 text-left">
+
+                    <div class="border-b border-gray-200 dark:border-[#223047]">
+                        <button class="w-full text-left py-6 flex justify-between items-center bg-transparent group"
+                            onclick="toggleFaq(this)">
+                            <span
+                                class="font-bold text-[1.15rem] text-gray-600 dark:text-[#94a3b8] group-hover:text-textblack dark:group-hover:text-white transition-colors">How
+                                do I add Nationdex to my server?</span>
+                            <span
+                                class="material-icons-outlined text-gray-400 dark:text-[#475569] transition-transform duration-300 transform group-hover:text-textblack dark:group-hover:text-white origin-center">add</span>
+                        </button>
+                        <div
+                            class="faq-content overflow-hidden max-h-0 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]">
+                            <p
+                                class="text-[1rem] text-gray-500 dark:text-[#94a3b8] font-medium leading-relaxed pb-8 pr-12">
+                                Invite the bot
+                                with standard permissions or <a
+                                    href="https://discord.com/api/oauth2/authorize?client_id=1126622360684494979&permissions=8&scope=bot"
+                                    target="_blank" class="text-blue-500 hover:underline cursor-pointer">Click
+                                    here</a> to
+                                invite the bot.</p>
+                        </div>
+                    </div>
+
+                    <div class="border-b border-gray-200 dark:border-[#223047]">
+                        <button class="w-full text-left py-6 flex justify-between items-center bg-transparent group"
+                            onclick="toggleFaq(this)">
+                            <span
+                                class="font-bold text-[1.15rem] text-gray-600 dark:text-[#94a3b8] group-hover:text-textblack dark:group-hover:text-white transition-colors">How
+                                can I check nation spawn options?</span>
+                            <span
+                                class="material-icons-outlined text-gray-400 dark:text-[#475569] transition-transform duration-300 transform group-hover:text-textblack dark:group-hover:text-white origin-center">add</span>
+                        </button>
+                        <div
+                            class="faq-content overflow-hidden max-h-0 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]">
+                            <p
+                                class="text-[1rem] text-gray-500 dark:text-[#94a3b8] font-medium leading-relaxed pb-8 pr-12">
+                                Head over to the /spawn configs command.</p>
+                        </div>
+                    </div>
+
+                    <div class="border-b border-gray-200 dark:border-[#223047]">
+                        <button class="w-full text-left py-6 flex justify-between items-center bg-transparent group"
+                            onclick="toggleFaq(this)">
+                            <span
+                                class="font-bold text-[1.15rem] text-gray-600 dark:text-[#94a3b8] group-hover:text-textblack dark:group-hover:text-white transition-colors">What
+                                are the spawn mechanics?</span>
+                            <span
+                                class="material-icons-outlined text-gray-400 dark:text-[#475569] transition-transform duration-300 transform group-hover:text-textblack dark:group-hover:text-white origin-center">add</span>
+                        </button>
+                        <div
+                            class="faq-content overflow-hidden max-h-0 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]">
+                            <p
+                                class="text-[1rem] text-gray-500 dark:text-[#94a3b8] font-medium leading-relaxed pb-8 pr-12">
+                                Nations drop
+                                randomly based on activity density. Active channels have a higher chance of triggering
+                                encounters.</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <button class="w-full text-left py-6 flex justify-between items-center bg-transparent group"
+                            onclick="toggleFaq(this)">
+                            <span
+                                class="font-bold text-[1.15rem] text-gray-600 dark:text-[#94a3b8] group-hover:text-textblack dark:group-hover:text-white transition-colors">Does
+                                Nationdex store my server data?</span>
+                            <span
+                                class="material-icons-outlined text-gray-400 dark:text-[#475569] transition-transform duration-300 transform group-hover:text-textblack dark:group-hover:text-white origin-center">add</span>
+                        </button>
+                        <div
+                            class="faq-content overflow-hidden max-h-0 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]">
+                            <p
+                                class="text-[1rem] text-gray-500 dark:text-[#94a3b8] font-medium leading-relaxed pb-8 pr-12">
+                                We only store
+                                essential metadata required for player inventories and server drop configurations.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="w-full max-w-7xl mx-auto my-12 grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 items-stretch">
+
+                <div id="history"
+                    class="lg:col-span-7 bg-[#dedede] dark:bg-[#1a2436] rounded-2xl md:rounded-3xl p-6 md:p-8 flex flex-col justify-between">
+                    <div class="w-full aspect-video rounded-xl md:rounded-2xl overflow-hidden bg-black/20 mb-4">
+                        <iframe class="w-full h-full"
+                            src="https://www.youtube.com/embed/TB52ACiEvxQ?si=jITzE89hOO9ttq2Z"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <h3
+                        class="text-2xl md:text-3xl text-center font-extrabold tracking-tight text-gray-900 dark:text-white">
+                        The History of Nationdex
+                    </h3>
+                </div>
+
+                <div
+                    class="lg:col-span-5 flex flex-col justify-between gap-4 lg:pl-8 lg:border-l border-gray-300/40 dark:border-white/10">
+
+                    <a href="/changelog/" id="latest-changelog-card"
+                        class="flex-1 bg-[#dedede] dark:bg-[#1a2436] bg-cover bg-center rounded-2xl md:rounded-3xl p-6 md:p-8 flex items-center justify-center min-h-[135px] md:min-h-[155px] hover:opacity-90 transition-all group relative overflow-hidden shadow-sm"
+                        style="background-image: url('assets/bg/ndexchangelog.png');">
+                        <div
+                            class="absolute inset-0 bg-black/35 dark:bg-black/45 group-hover:bg-black/25 transition-colors">
+                        </div>
+                        <h4 id="latest-changelog-title"
+                            class="text-xl md:text-2xl font-bold text-white text-center relative z-10 drop-shadow-sm">
+                            Check out the latest release!
+                        </h4>
+                    </a>
+
+                    <a href="/guides" id="latest-guide-card"
+                        class="flex-1 bg-[#dedede] dark:bg-[#1a2436] bg-cover bg-center rounded-2xl md:rounded-3xl p-6 md:p-8 flex items-center justify-center min-h-[135px] md:min-h-[155px] hover:opacity-90 transition-all group relative overflow-hidden shadow-sm"
+                        style="background-image: url('assets/bg/ndexguide.png');">
+                        <div
+                            class="absolute inset-0 bg-black/35 dark:bg-black/45 group-hover:bg-black/25 transition-colors">
+                        </div>
+                        <h4 id="latest-guide-title"
+                            class="text-xl md:text-2xl font-bold text-white text-center relative z-10 drop-shadow-sm">
+                            New Guide: How to Setup Nationdex
+                        </h4>
+                    </a>
+
+                    <a href="/newsroom"
+                        class="bg-[#dedede] dark:bg-[#1a2436] rounded-xl md:rounded-2xl py-4 px-3 flex items-center justify-center shrink-0 hover:opacity-90 transition-opacity group">
+                        <span class="text-base font-bold text-gray-900 dark:text-white text-center">
+                            Visit the Newsroom for Updates <i
+                                class="ri-arrow-right-up-line text-gray-900 dark:text-white"></i>
+                        </span>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div id="servers-on-the-rise" class="w-full my-12 md:my-16 overflow-hidden">
+                <h2
+                    class="text-2xl md:text-3xl lg:text-4xl font-bold text-center text-gray-900 dark:text-white tracking-tight mb-8 md:mb-10">
+                    Servers Supporting Nationdex
+                </h2>
+
+                <div class="marquee-mask flex flex-col gap-4 overflow-hidden py-2 select-none">
+                    <div class="overflow-hidden flex">
+                        <div id="server-row-1" class="animate-marquee-left flex gap-4 pr-4"></div>
+                    </div>
+
+                    <div class="overflow-hidden flex">
+                        <div id="server-row-2" class="animate-marquee-right flex gap-4 pr-4"></div>
+                    </div>
+
+                    <div class="overflow-hidden flex">
+                        <div id="server-row-3" class="animate-marquee-left flex gap-4 pr-4"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-center mt-1 md:mt-2">
+                <a href="https://discord.com/oauth2/authorize?client_id=1118965941221466194&permissions=274878024768&scope=bot%20applications.commands"
+                    target="_blank"
+                    class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm  text-white bg-[#5865F2] hover:bg-[#4752C4] transition-all shadow-sm group">
+                    <i class="ri-discord-fill text-4xl"></i>
+                    <span class="text-2xl md:text-3xl">Invite me today!</span>
+                    <i class="ri-arrow-right-line text-4xl text-white/80"></i>
+                </a>
+            </div>
+
+            <footer class="mt-auto pt-12 w-full px-4 md:px-12">
+                <div
+                    class="flex flex-wrap items-center justify-center md:justify-start gap-3 md:gap-4 font-medium pt-4 mb-10 w-full">
+                    <span class="font-semibold text-lg whitespace-nowrap" data-t="follow_us">Follow us</span>
+                    <a href="//www.youtube.com/@nationdexbot"><i
+                            class="ri-youtube-fill text-3xl text-gray-700 dark:text-[#94a3b8] cursor-pointer"></i></a>
+                    <a href="//github.com/nationdex"><i
+                            class="ri-github-fill text-3xl text-gray-700 dark:text-[#94a3b8] cursor-pointer"></i></a>
+                    <a href="//discord.gg/hVvD8gUXjQ"><i
+                            class="ri-discord-fill text-3xl text-gray-700 dark:text-[#94a3b8] cursor-pointer"></i></a>
+                </div>
+
+                <div
+                    class="border-t border-gray-200 dark:border-[#223047] pt-10 pb-12 grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-6 text-left w-full px-2 md:px-0">
+                    <div class="space-y-5">
+                        <h2 class="font-bold text-textblack dark:text-white text-lg tracking-tight">Resources</h2>
+                        <ul class="space-y-4 font-semibold text-[15px] text-gray-500 dark:text-[#94a3b8]">
+                            <li><a href="/commands"
+                                    class="hover:text-black dark:hover:text-white transition-colors block">Commands</a>
+                            </li>
+                            <li><a href="/changelog"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Changelog</a>
+                            </li>
+                            <li><a href="/guides"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Guides</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-5">
+                        <h2 class="font-bold text-textblack dark:text-white text-lg tracking-tight">Community</h2>
+                        <ul class="space-y-4 font-semibold text-[15px] text-gray-500 dark:text-[#94a3b8]">
+                            <li><a href="//discord.gg/tKh3n5uVnm"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Discord</a>
+                            </li>
+                            <li><a href="/newsroom"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">News</a>
+                            </li>
+                            <li><a href="//www.youtube.com/@nationdexbot"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Youtube</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-5">
+                        <h2 class="font-bold text-textblack dark:text-white text-lg tracking-tight">Team</h2>
+                        <ul class="space-y-4 font-semibold text-[15px] text-gray-500 dark:text-[#94a3b8]">
+                            <li><a href="/team"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Developers</a>
+                            </li>
+                            <li><a href="/privacy"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Privacy</a>
+                            </li>
+                            <li><a href="/terms"
+                                    class="hover:text-black dark:hover:text-white transition-colors block">Terms</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-5">
+                        <h2 class="font-bold text-textblack dark:text-white text-lg tracking-tight">Support</h2>
+                        <ul class="space-y-4 font-semibold text-[15px] text-gray-500 dark:text-[#94a3b8]">
+                            <li><a href="//github.com/nationdex/bot/issues"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Report
+                                    Issue</a></li>
+                            <li><a href="//discord.gg/tKh3n5uVnm"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div
+                    class="border-t border-gray-200 dark:border-[#223047] pt-6 pb-8 flex flex-col lg:flex-row items-center justify-between gap-6 text-[14px] md:text-[15px] text-gray-500 dark:text-[#94a3b8] font-semibold tracking-tight px-2 md:px-0 w-full">
+                    <div class="flex flex-wrap items-center justify-center gap-4 md:gap-6">
+                        <div class="flex items-center gap-2 mr-2 shrink-0">
+                            <img src="https://cdn.soloist.ai/a0b2d163-78b6-4db3-9381-96d7635d18b1/logo/1210c387-b5e7-4bee-bf84-451755fe908c.png"
+                                class="w-6 h-6 rounded-full p-0.5 grayscale">
+                            <span class="font-bold text-textblack dark:text-white">Nationdex Team <span> &copy;
+                                    2022-2026</span></span>
+                        </div>
+                    </div>
+
+                    <div class="relative flex bg-white/90 dark:bg-[#1a2436]/90 rounded-lg p-2 border dark:border-none items-center gap-2 cursor-pointer dark:text-[#cbd5e1]"
+                        id="langSelector">
+                        <i class="ri-global-line"></i>
+                        <span id="currentLang">English (United States)</span>
+                        <i class="ri-arrow-down-s-line"></i>
+                        <div class="lang-dropdown" id="langDropdown">
+                            <div class="lang-option" data-lang="en">English (United States)</div>
+                            <div class="lang-option" data-lang="hi">Hindi (नमस्ते)</div>
+                            <div class="lang-option" data-lang="pt-br">Brazilian (Português)</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="google_translate_element" style="display:none;"></div>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        const risingServersData = [
+            [
+                { name: "CodeRealm [ OLD } !!", members: 9274, icon: "https://cdn.discordapp.com/icons/1124304256518848543/e21ce56dedcb01b2b2b09603fab2124c.png?size=1024" },
+                { name: "𝓞𝓷𝓵𝔂𝓑𝓸𝓽𝓼", members: 7577, icon: "https://cdn.discordapp.com/icons/898561725857685524/a261c03b0f4e2a5aa202983288054917.png?size=1024" },
+                { name: "HistoryDex Hub", members: 3044, icon: "https://cdn.discordapp.com/icons/1120877467255717999/628d513d168be7df54d84ab392a9ea29.png?size=1024" },
+                { name: "ADRIANO.CC X SHERAZ ULTIMATE SERVER #1500", members: 1319, icon: "https://cdn.discordapp.com/icons/1349776276340346910/683aba63a8cee6a6d47628f2c2476fc2.png?size=1024" },
+                { name: "FCDex", members: 1146, icon: "https://cdn.discordapp.com/icons/1462526346533273775/1e55bd364d1455a6bdced52d6b294f3c.png?size=1024" },
+                { name: "ChemistryDex Official Server", members: 794, icon: "https://cdn.discordapp.com/icons/1245633464691200012/a3fd6452ac702fa738629bd9edcaed82.png?size=1024" }
+            ],
+            [
+                { name: "Hypixel Exploiters, Dupers, Trolls (EDT)", members: 786, icon: "https://cdn.discordapp.com/icons/1193847841223868498/4f8b060d7bdbb133e615703c8cd68561.png?size=1024" },
+                { name: "LoneDuck :( 🪿", members: 631, icon: "https://cdn.discordapp.com/icons/1404854276798283847/a_474e3924283c394c7e6fcd689df3df22.gif?size=1024" },
+                { name: "The Scorpceltic Empire", members: 564, icon: "https://cdn.discordapp.com/icons/1178349957477048370/6069b8c1c60001bcd2a3729b04ba7dbf.png?size=1024" },
+                { name: "Nationdex HQ", members: 490, icon: "https://cdn.discordapp.com/icons/1118965941221466194/7d333a169f894e5a7e971170239eda69.png?size=1024" },
+                { name: "Empireballs Reboot", members: 420, icon: "https://cdn.discordapp.com/icons/1499490957035307018/b0774c7ec6a9c5541447c3dced1a619b.png?size=1024" },
+                { name: "my tree", members: 418, icon: "https://cdn.discordapp.com/icons/1110410721650557069/a91b3ce406a87dae42115b690fc7f48b.png?size=1024" }
+            ],
+            [
+                { name: "Footballclub Dex Official Server", members: 381, icon: "https://cdn.discordapp.com/icons/1368325092089790605/3010a4e5c1c64a3d2818b8f39cfcc50e.png?size=1024" },
+                { name: "Fcdex Legacy server 🏟🔮", members: 355, icon: "https://cdn.discordapp.com/icons/1152750129351237642/53127d8407cf0bf18c542e22728c2022.png?size=1024" },
+                { name: "MongolianDex™", members: 346, icon: "https://cdn.discordapp.com/icons/1136449803287543899/8f977de74d9664e243237d7efb4bf514.png?size=1024" },
+                { name: "countballs rehab hub", members: 343, icon: "https://cdn.discordapp.com/icons/1165663613063811162/51eb7c65df2df84eb6152b1fe0a84aef.png?size=1024" },
+                { name: "Sixteenth and Seventeenth Republic of Krameria Archives", members: 334, icon: "https://cdn.discordapp.com/icons/1407911910342398053/bb70d0d3b4453d0ca5ac6c6f35dbb327.png?size=1024" },
+                { name: "Institutum Indicum", members: 321, icon: "https://cdn.discordapp.com/icons/1418576088849977477/fbc72b051b84972a1d015376e2f64e78.png?size=1024" },
+                { name: "CivDex Official Server", members: 308, icon: "https://cdn.discordapp.com/icons/1287498671948300449/8426cd4e3eea7ab35d310b8b604c4bc7.png?size=1024" },
+                { name: "Ultra World 🌈", members: 306, icon: "https://cdn.discordapp.com/icons/1031939948812709948/363f2133efd0ef7deaa03ea52431b8a0.png?size=1024" }
+            ]
+        ];
+
+        function createServerCardHTML(server) {
+            return `
+                        <div class="bg-[#dedede] dark:bg-[#130826] rounded-2xl px-4 py-3 flex items-center gap-3.5 min-w-[230px] sm:min-w-[260px] shrink-0">
+                            <img src="${server.icon}" alt="${server.name}" class="w-10 h-10 md:w-11 md:h-11 rounded-xl object-cover shrink-0" onError="this.src='ndexlogo.png'">
+                            <div class="flex flex-col min-w-0">
+                                <span class="font-bold text-gray-900 dark:text-white text-sm md:text-base leading-tight truncate">${server.name}</span>
+                                <span class="text-xs font-semibold text-gray-500 dark:text-gray-400 mt-0.5">${server.members} members</span>
+                            </div>
+                        </div>
+                    `;
+        }
+
+        function populateServerRows(dataRows) {
+            dataRows.forEach((rowServers, index) => {
+                const container = document.getElementById(`server-row-${index + 1}`);
+                if (!container) return;
+                const fullList = [...rowServers, ...rowServers];
+                container.innerHTML = fullList.map(createServerCardHTML).join('');
+            });
+        }
+
+        populateServerRows(risingServersData);
+
+        async function loadLatestChangelog() {
+            try {
+                let response = await fetch('/changelog/data.json');
+                if (!response.ok) {
+                    response = await fetch('changelog/data.json');
+                }
+                if (!response.ok) return;
+                const data = await response.json();
+                if (data && data.length > 0) {
+                    const latest = data[0];
+                    const cardLink = document.getElementById('latest-changelog-card');
+                    const cardTitle = document.getElementById('latest-changelog-title');
+                    if (cardLink && cardTitle) {
+                        cardLink.href = `/changelog/#${latest.version}`;
+                        cardTitle.textContent = `Check out the ${latest.version} released recently!`;
+                    }
+                }
+            } catch (err) {
+                console.warn('Could not auto-fetch latest changelog:', err);
+            }
+        }
+        loadLatestChangelog();
+
+        async function loadLatestGuide() {
+            try {
+                let response = await fetch('/guides/data.json');
+                if (!response.ok) {
+                    response = await fetch('guides/data.json');
+                }
+                if (!response.ok) return;
+                const data = await response.json();
+                if (data && data.length > 0) {
+                    const latest = data[0];
+                    const cardLink = document.getElementById('latest-guide-card');
+                    const cardTitle = document.getElementById('latest-guide-title');
+                    if (cardLink && cardTitle) {
+                        cardLink.href = latest.url || `/guides/${latest.id}/`;
+                        cardTitle.textContent = `New Guide: ${latest.title}`;
+                    }
+                }
+            } catch (err) {
+                console.warn('Could not auto-fetch latest guide:', err);
+            }
+        }
+        loadLatestGuide();
+
+        function toggleFaq(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('.material-icons-outlined');
+
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                icon.style.transform = 'rotate(0deg)';
+                icon.classList.remove('text-textblack');
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+                icon.style.transform = 'rotate(45deg)';
+                icon.classList.add('text-textblack');
+            }
+        }
+
+        const headerFade = document.getElementById('header-fade');
+        const headerNav = document.getElementById('header-nav');
+        const floatingNav = document.getElementById('floating-nav');
+        const history = document.getElementById('history');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 15) {
+                headerFade.classList.remove('opacity-0');
+                headerFade.classList.add('opacity-100');
+            } else {
+                headerFade.classList.remove('opacity-100');
+                headerFade.classList.add('opacity-0');
+            }
+
+            let showFloating = false;
+            if (window.scrollY > 250) {
+                showFloating = true;
+            }
+            if (history && window.scrollY > (history.offsetTop - window.innerHeight - 50)) {
+                showFloating = false;
+            }
+            if (showFloating) {
+                headerNav.classList.add('opacity-0', '-translate-y-4', 'pointer-events-none');
+                floatingNav.classList.remove('translate-y-32', 'opacity-0', 'pointer-events-none');
+            } else {
+                headerNav.classList.remove('opacity-0', '-translate-y-4', 'pointer-events-none');
+                floatingNav.classList.add('translate-y-32', 'opacity-0', 'pointer-events-none');
+            }
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+            anchor.addEventListener('click', function (e) {
+                var targetId = this.getAttribute('href');
+                if (targetId === '#') {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    return;
+                }
+                var target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,hi,pt',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+
+        (function initLanguageSelector() {
+            document.querySelectorAll('i, .material-icons-outlined, [class^="ri-"], [class*=" ri-"], .slash-command, code, svg').forEach(el => {
+                el.classList.add('notranslate');
+                el.setAttribute('translate', 'no');
+            });
+
+            const langSelector = document.getElementById('langSelector');
+            const langDropdown = document.getElementById('langDropdown');
+            const currentLangSpan = document.getElementById('currentLang');
+
+            const langNames = {
+                'en': 'English (United States)',
+                'hi': 'Hindi (नमस्ते)',
+                'pt': 'Brazilian (Português)',
+                'pt-br': 'Brazilian (Português)'
+            };
+
+            const savedLang = localStorage.getItem('ndex_lang') || 'en';
+            if (currentLangSpan && langNames[savedLang]) {
+                currentLangSpan.textContent = langNames[savedLang];
+            }
+
+            if (langSelector && langDropdown) {
+                langSelector.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    langDropdown.classList.toggle('show');
+                });
+
+                document.addEventListener('click', () => {
+                    langDropdown.classList.remove('show');
+                });
+
+                document.querySelectorAll('.lang-option').forEach(opt => {
+                    opt.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const rawLang = opt.getAttribute('data-lang');
+                        const targetLang = (rawLang === 'pt-br' || rawLang === 'pt') ? 'pt' : rawLang;
+
+                        localStorage.setItem('ndex_lang', rawLang);
+
+                        if (targetLang === 'en') {
+                            document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                            document.cookie = "googtrans=/en/en; path=/;";
+                        } else {
+                            document.cookie = "googtrans=/en/" + targetLang + "; path=/;";
+                            document.cookie = "googtrans=/en/" + targetLang + "; path=/; domain=" + window.location.hostname + ";";
+                        }
+
+                        langDropdown.classList.remove('show');
+                        window.location.reload();
+                    });
+                });
+            }
+        })();
+    </script>
+    <script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="module">
+        import createGlobe from 'https://cdn.jsdelivr.net/npm/cobe@0.6.3/+esm';
+
+        const canvas = document.getElementById('cobe-globe');
+        if (canvas) {
+            let phi = 0;
+            let globe = null;
+            let isVisible = false;
+
+            const visibilityObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    isVisible = entry.isIntersecting;
+                });
+            }, { threshold: 0.01 });
+
+            visibilityObserver.observe(canvas);
+
+            function init() {
+                if (window.innerWidth < 768) {
+                    if (globe) {
+                        globe.destroy();
+                        globe = null;
+                    }
+                    return;
+                }
+
+                if (globe) {
+                    globe.destroy();
+                    globe = null;
+                }
+
+                const isDark = document.documentElement.classList.contains('dark');
+                const width = canvas.offsetWidth || 600;
+                const dpr = Math.min(window.devicePixelRatio || 1, 1.25);
+
+                canvas.width = width * dpr;
+                canvas.height = width * dpr;
+
+                globe = createGlobe(canvas, {
+                    devicePixelRatio: dpr,
+                    width: width * dpr,
+                    height: width * dpr,
+                    phi: phi,
+                    theta: 0.2,
+                    dark: isDark ? 1 : 0,
+                    diffuse: 1.2,
+                    mapSamples: 8000,
+                    mapBrightness: isDark ? 6 : 3.5,
+                    baseColor: isDark ? [0.1, 0.05, 0.22] : [0.92, 0.9, 0.98],
+                    markerColor: [0.14, 0.65, 0.95],
+                    glowColor: isDark ? [0.45, 0.25, 0.85] : [0.7, 0.6, 0.95],
+                    markers: [
+                        { location: [37.7749, -122.4194], size: 0.05 },
+                        { location: [40.7128, -74.0060], size: 0.05 },
+                        { location: [51.5074, -0.1278], size: 0.05 },
+                        { location: [35.6762, 139.6503], size: 0.05 },
+                        { location: [28.6139, 77.2090], size: 0.05 },
+                        { location: [-33.8688, 151.2093], size: 0.05 },
+                        { location: [48.8566, 2.3522], size: 0.05 }
+                    ],
+                    onRender: (state) => {
+                        if (!isVisible) return;
+                        state.phi = phi;
+                        phi += 0.008;
+                    }
+                });
+            }
+
+            init();
+
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(init, 200);
+            });
+
+            const themeObserver = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    if (mutation.attributeName === 'class') {
+                        init();
+                    }
+                });
+            });
+            themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+        }
+
+        (function initLive() {
+            const DEFAULT_SERVERS = 550;
+            const DEFAULT_USERS = 137588;
+            const DEFAULT_COMMANDS = 11673;
+
+            const OFFSET = 69;
+
+            let storedServers = parseInt(localStorage.getItem('ndex_servers'));
+            let storedUsers = parseInt(localStorage.getItem('ndex_users'));
+            let storedCommands = parseInt(localStorage.getItem('ndex_commands'));
+
+            let currentServers = (isNaN(storedServers) || storedServers >= DEFAULT_SERVERS) ? (DEFAULT_SERVERS - OFFSET) : storedServers;
+            let currentUsers = (isNaN(storedUsers) || storedUsers >= DEFAULT_USERS) ? (DEFAULT_USERS - OFFSET) : storedUsers;
+            let currentCommands = (isNaN(storedCommands) || storedCommands >= DEFAULT_COMMANDS) ? (DEFAULT_COMMANDS - OFFSET) : storedCommands;
+
+            function formatDualColor(num, suffix = '') {
+                const str = num.toLocaleString();
+                let cutIndex = Math.ceil(str.length / 2);
+                if (str[cutIndex] === ',') cutIndex++;
+                const part1 = str.slice(0, cutIndex);
+                const part2 = str.slice(cutIndex);
+                return `<span class="text-[#0284c7] dark:text-[#38bdf8]">${part1}</span><span class="text-[#7c3aed] dark:text-[#8b5cf6]">${part2}${suffix}</span>`;
+            }
+
+            let displayServers = Math.max(0, currentServers - 20);
+            let displayUsers = Math.max(0, currentUsers - 20);
+            let displayCommands = Math.max(0, currentCommands - 20);
+
+            const elServers = document.getElementById('stat-servers');
+            const elUsers = document.getElementById('stat-users');
+            const elCommands = document.getElementById('stat-commands');
+            const elHero = document.getElementById('stat-hero-count');
+
+            function renderDOM() {
+                if (elServers) elServers.innerHTML = formatDualColor(Math.round(displayServers));
+                if (elUsers) elUsers.innerHTML = formatDualColor(Math.round(displayUsers));
+                if (elCommands) elCommands.innerHTML = formatDualColor(Math.round(displayCommands), '+');
+                if (elHero) elHero.textContent = `${Math.floor(displayUsers / 1000)}K+ Users`;
+            }
+
+            function animateStep() {
+                let diffS = (currentServers - displayServers) * 0.08;
+                let diffU = (currentUsers - displayUsers) * 0.08;
+                let diffC = (currentCommands - displayCommands) * 0.08;
+
+                if (Math.abs(diffS) < 0.1) displayServers = currentServers;
+                else displayServers += diffS;
+
+                if (Math.abs(diffU) < 0.1) displayUsers = currentUsers;
+                else displayUsers += diffU;
+
+                if (Math.abs(diffC) < 0.1) displayCommands = currentCommands;
+                else displayCommands += diffC;
+
+                renderDOM();
+
+                if (displayServers !== currentServers || displayUsers !== currentUsers || displayCommands !== currentCommands) {
+                    requestAnimationFrame(animateStep);
+                }
+            }
+
+            renderDOM();
+            requestAnimationFrame(animateStep);
+
+            setInterval(() => {
+                let updated = false;
+
+                if (currentServers < DEFAULT_SERVERS) {
+                    currentServers += 3;
+                    if (currentServers > DEFAULT_SERVERS) currentServers = DEFAULT_SERVERS;
+                    updated = true;
+                }
+
+                if (currentUsers < DEFAULT_USERS) {
+                    currentUsers += 10;
+                    if (currentUsers > DEFAULT_USERS) currentUsers = DEFAULT_USERS;
+                    updated = true;
+                }
+
+                if (currentCommands < DEFAULT_COMMANDS) {
+                    currentCommands += 13;
+                    if (currentCommands > DEFAULT_COMMANDS) currentCommands = DEFAULT_COMMANDS;
+                    updated = true;
+                }
+
+                if (updated) {
+                    localStorage.setItem('ndex_servers', currentServers);
+                    localStorage.setItem('ndex_users', currentUsers);
+                    localStorage.setItem('ndex_commands', currentCommands);
+                    requestAnimationFrame(animateStep);
+                }
+            }, 3000);
+        })();
+    </script>
+    <script src="assets/js/cookies.js"></script>
+</body>
+
+</html>

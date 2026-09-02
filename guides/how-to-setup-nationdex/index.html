@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en" :class="{ 'dark': $store.theme.isDark }" x-cloak x-data>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Setup Nationdex | Nationdex Guides</title>
+    <meta name="description"
+        content="A complete step-by-step walkthrough on inviting Nationdex to your Discord server, configuring spawn channels, and setting manager permissions.">
+    <meta name="keywords"
+        content="how to setup nationdex, nationdex setup guide, nationdex discord bot invite, nationdex channels, nationdex permissions">
+    <meta name="author" content="Nationdex Team">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="application-name" content="Nationdex">
+    <meta name="apple-mobile-web-app-title" content="Nationdex">
+    <link rel="canonical" href="https://nationdex.com/guides/how-to-setup-nationdex/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://nationdex.com/guides/how-to-setup-nationdex/">
+    <meta property="og:title" content="How to Setup Nationdex | Step-by-Step Guide">
+    <meta property="og:description"
+        content="A complete step-by-step walkthrough on inviting Nationdex to your Discord server, configuring spawn channels, and setting manager permissions.">
+    <meta property="og:image" content="https://nationdex.com/assets/bg/ndexguide.jpg">
+    <meta property="og:image:alt" content="How to Setup Nationdex Guide Preview">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Nationdex">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://nationdex.com/guides/how-to-setup-nationdex/">
+    <meta name="twitter:title" content="How to Setup Nationdex | Step-by-Step Guide">
+    <meta name="twitter:description"
+        content="A complete step-by-step walkthrough on inviting Nationdex to your Discord server, configuring spawn channels, and setting manager permissions.">
+    <meta name="twitter:image" content="https://nationdex.com/assets/bg/ndexguide.jpg">
+    <meta name="twitter:creator" content="@NationdexBot">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "How to Setup Nationdex",
+      "url": "https://nationdex.com/guides/how-to-setup-nationdex/",
+      "description": "A complete step-by-step walkthrough on inviting Nationdex to your Discord server, configuring spawn channels, and setting manager permissions.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Nationdex",
+        "url": "https://nationdex.com/"
+      }
+    }
+    </script>
+    <link rel="icon" href="/assets/ndexlogo.png">
+    <link rel="apple-touch-icon" href="/assets/ndexlogo.png">
+    <meta name="theme-color" content="#1b2d48">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        pagebg: '#1b2d48',
+                        textgray: '#71717a',
+                        textblack: '#18181b',
+                        brand: '#8B5CF6',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #1b2d48;
+            min-height: 100vh;
+            padding: 0;
+        }
+
+        @media (min-width: 768px) {
+            body {
+                padding: 2.5rem;
+            }
+        }
+
+        html,
+        body {
+            -ms-overflow-style: none !important;
+            scrollbar-width: none !important;
+        }
+
+        ::-webkit-scrollbar {
+            display: none !important;
+            width: 0 !important;
+            height: 0 !important;
+        }
+
+        .corner-mask-tl {
+            background-image: radial-gradient(circle at 100% 100%, transparent calc(1.5rem - 0.5px), #1b2d48 1.5rem);
+        }
+
+        .corner-mask-tr {
+            background-image: radial-gradient(circle at 0 100%, transparent calc(2.5rem - 0.5px), #1b2d48 1.5rem);
+        }
+
+        @media (min-width: 768px) {
+            .corner-mask-tl {
+                background-image: radial-gradient(circle at 100% 100%, transparent calc(2.5rem - 0.5px), #1b2d48 2.5rem);
+            }
+
+            .corner-mask-tr {
+                background-image: radial-gradient(circle at 0 100%, transparent calc(2.5rem - 0.5px), #1b2d48 2.5rem);
+            }
+        }
+
+        .page-title {
+            letter-spacing: -0.03em;
+        }
+
+        .slash-command {
+            display: inline-flex;
+            align-items: center;
+            height: 22px;
+            padding: 0 7px;
+            border-radius: 5px;
+            background: #3b3f66;
+            color: #ccd6ff;
+            font-size: 13px;
+            font-weight: 600;
+            line-height: 22px;
+            letter-spacing: -0.1px;
+            box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .18);
+            font-family: 'Inter', sans-serif;
+            vertical-align: middle;
+            margin: 0 2px;
+        }
+
+        .slash-command .slash {
+            opacity: .8;
+            margin-right: 1px;
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            bottom: 100%;
+            right: 0;
+            background: white;
+            border-radius: 8px;
+            padding: 8px 0;
+            margin-bottom: 8px;
+            display: none;
+            z-index: 3000;
+            min-width: 160px;
+        }
+
+        .lang-dropdown.show {
+            display: block;
+        }
+
+        .lang-option {
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #3c4043;
+        }
+
+        .lang-option:hover {
+            background: #f1f3f4;
+        }
+
+        .dark .lang-dropdown {
+            background: #1a2436;
+            border-color: #223047;
+        }
+
+        .dark .lang-option {
+            color: #cbd5e1;
+        }
+
+        .dark .lang-option:hover {
+            background: #253248;
+        }
+
+        html {
+            margin-top: 0px !important;
+        }
+
+        body {
+            top: 0px !important;
+            position: static !important;
+        }
+
+        .goog-te-banner-frame,
+        .goog-te-banner-frame.skiptranslate,
+        .goog-te-balloon-frame,
+        #goog-gt-tt,
+        .goog-te-spinner-pos,
+        #goog-gt-vt,
+        .goog-te-menu-frame,
+        .goog-te-menu2,
+        .goog-tooltip,
+        .goog-tooltip:hover {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+        }
+
+        /* Keep worker iframe active in DOM for Google Translate JS engine, but render 0px off-screen */
+        iframe[class*="VIpgJd"],
+        iframe[id*=":"],
+        iframe.skiptranslate,
+        .VIpgJd-ZVi9od-ORHb-OEVmcd {
+            position: absolute !important;
+            top: -9999px !important;
+            left: -9999px !important;
+            width: 0px !important;
+            height: 0px !important;
+            border: none !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+
+        .goog-text-highlight {
+            background-color: transparent !important;
+            box-shadow: none !important;
+            border: none !important;
+        }
+
+        #google_translate_element {
+            display: none !important;
+        }
+
+        font[style*="vertical-align: inherit;"] {
+            vertical-align: inherit !important;
+        }
+
+        [x-cloak] {
+            display: none !important;
+        }
+
+        @media (min-width: 768px) {
+            body {
+                padding: 2.5rem;
+            }
+
+            body.is-window-full {
+                padding: 0 !important;
+            }
+
+            body.is-window-full #app-container {
+                max-width: 100% !important;
+                border-radius: 0 !important;
+                min-height: 100vh !important;
+            }
+
+            body.is-window-full #main-header {
+                top: 0 !important;
+                border-top-left-radius: 0 !important;
+                border-top-right-radius: 0 !important;
+            }
+
+            body.is-window-full #top-fixed-bar {
+                display: none !important;
+            }
+
+            body.is-window-full .corner-mask-tl,
+            body.is-window-full .corner-mask-tr {
+                display: none !important;
+            }
+        }
+    </style>
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.store('theme', {
+                isDark: localStorage.getItem('theme') === 'dark' ||
+                    (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches),
+                toggle() {
+                    this.isDark = !this.isDark;
+                    localStorage.setItem('theme', this.isDark ? 'dark' : 'light');
+                }
+            });
+
+            Alpine.store('windowMode', {
+                isFull: localStorage.getItem('ndex_window_full') === 'true',
+                init() {
+                    this.apply();
+                },
+                toggle() {
+                    this.isFull = !this.isFull;
+                    localStorage.setItem('ndex_window_full', this.isFull);
+                    this.apply();
+                },
+                apply() {
+                    if (this.isFull) {
+                        document.body.classList.add('is-window-full');
+                    } else {
+                        document.body.classList.remove('is-window-full');
+                    }
+                }
+            });
+            Alpine.store('windowMode').init();
+        });
+    </script>
+</head>
+
+<body
+    class="text-textblack dark:text-[#f3f4f6] antialiased font-sans flex justify-center w-full m-0 box-border transition-all duration-300 ease-in-out">
+
+    <div id="top-fixed-bar" class="hidden md:block fixed top-0 left-0 w-full h-[2.5rem] bg-[#1b2d48] z-[80]"></div>
+
+    <div id="app-container"
+        class="bg-white dark:bg-[#101929] w-full max-w-[1200px] rounded-none md:rounded-[2.5rem] shadow-[0_4px_24px_rgba(0,0,0,0.02)] flex flex-col min-h-screen md:min-h-[calc(100vh-5rem)] pb-6 transition-all duration-300 ease-in-out">
+
+        <header id="main-header"
+            class="sticky top-0 md:top-10 z-[60] flex flex-wrap justify-between items-center px-4 pt-4 pb-4 md:px-16 lg:px-24 md:pt-8 md:pb-6 lg:pt-10 mb-4 md:mb-8 bg-white dark:bg-[#101929] rounded-t-none md:rounded-t-[2.5rem] transition-all duration-300 ease-in-out">
+            <div class="hidden md:block absolute top-0 left-0 w-[2.5rem] h-[2.5rem] corner-mask-tl pointer-events-none">
+            </div>
+            <div
+                class="hidden md:block absolute top-0 right-0 w-[2.5rem] h-[2.5rem] corner-mask-tr pointer-events-none">
+            </div>
+
+            <div class="flex items-center w-full justify-between">
+                <a href="/"
+                    class="font-bold text-xl md:text-2xl tracking-tighter cursor-pointer flex items-center gap-2 text-[#18181b] dark:text-white">
+                    <img src="/assets/ndexlogo.png" alt="Nationdex Logo" class="w-8 h-8 rounded-full object-cover">
+                    Nationdex
+                </a>
+
+                <div class="flex items-center gap-2 md:gap-3">
+                    <button
+                        class="hidden md:inline-flex items-center justify-center rounded-full transition p-2.5 w-10 h-10 hover:bg-gray-200 dark:hover:bg-[#253248] dark:text-[#cbd5e1] text-gray-700"
+                        type="button" @click="$store.windowMode.toggle()" title="Toggle full window layout">
+                        <span class="sr-only">Toggle full window layout</span>
+                        <i class="text-xl"
+                            :class="$store.windowMode.isFull ? 'ri-collapse-diagonal-line' : 'ri-expand-diagonal-line'"></i>
+                    </button>
+                    <button
+                        class="items-center inline-flex justify-center rounded-full transition p-2.5 hover:bg-gray-200 dark:hover:bg-[#253248] dark:text-[#cbd5e1] text-gray-700"
+                        type="button" @click="$store.theme.toggle()">
+                        <span class="sr-only">Toggle theme mode</span>
+                        <svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg" :class="{ 'hidden': !($store.theme.isDark) }" x-cloak>
+                            <path
+                                d="M12 18C8.68629 18 6 15.3137 6 12C6 8.68629 8.68629 6 12 6C15.3137 6 18 8.68629 18 12C18 15.3137 15.3137 18 12 18ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16ZM11 1H13V4H11V1ZM11 20H13V23H11V20ZM3.51472 4.92893L4.92893 3.51472L7.05025 5.63604L5.63604 7.05025L3.51472 4.92893ZM16.9497 18.364L18.364 16.9497L20.4853 19.0711L19.0711 20.4853L16.9497 18.364ZM19.0711 3.51472L20.4853 4.92893L18.364 7.05025L16.9497 5.63604L19.0711 3.51472ZM5.63604 16.9497L7.05025 18.364L4.92893 20.4853L3.51472 19.0711L5.63604 16.9497ZM23 11V13H20V11H23ZM4 11V13H1V11H4Z">
+                            </path>
+                        </svg>
+                        <svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg" :class="{ 'hidden': $store.theme.isDark }" x-cloak>
+                            <path
+                                d="M10 6C10 10.4183 13.5817 14 18 14C19.4386 14 20.7885 13.6203 21.9549 12.9556C21.4738 18.0302 17.2005 22 12 22C6.47715 22 2 17.5228 2 12C2 6.79948 5.9698 2.52616 11.0444 2.04507C10.3797 3.21152 10.3797 4.56142 10 6ZM4 12C4 16.4183 7.58172 20 12 20C14.9654 20 17.5757 18.3788 18.9571 15.9546C18.6407 15.9848 18.3214 16 18 16C12.4772 16 8 11.5228 8 6C8 5.67863 8.01524 5.35933 8.04536 5.04293C5.62119 6.42426 4 9.03458 4 12ZM18.1642 2.29104L19 2.5V3.5L18.1642 3.70896C17.4476 3.8881 16.8881 4.4476 16.709 5.16417L16.5 6H15.5L15.291 5.16417C15.1119 4.4476 14.5524 3.8881 13.8358 3.70896L13 3.5V2.5L13.8358 2.29104C14.5524 2.1119 15.1119 1.5524 15.291 0.835829L15.5 0H16.5L16.709 0.835829C16.8881 1.5524 17.4476 2.1119 18.1642 2.29104ZM23.1642 7.29104L24 7.5V8.5L23.1642 8.70896C22.4476 8.8881 21.8881 9.4476 21.709 10.1642L21.5 11H20.5L20.291 10.1642C20.1119 9.4476 19.5524 8.8881 18.8358 8.70896L18 8.5V7.5L18.8358 7.29104C19.5524 7.1119 20.1119 6.5524 20.291 5.83583L20.5 5H21.5L21.709 5.83583C21.8881 6.5524 22.4476 7.1119 23.1642 7.29104Z">
+                            </path>
+                        </svg>
+                    </button>
+                    <div id="header-nav"
+                        class="hidden md:flex gap-6 items-center transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]">
+                        <a href="//discord.gg/tKh3n5uVnm"
+                            class="w-full sm:w-auto bg-[#8B5CF6] hover:bg-[#7c3aed] text-white px-2 py-2 md:px-4 rounded-[2rem] font-bold text-[15px] md:text-[16px] tracking-wide transition-colors duration-300 flex items-center justify-center gap-2">
+                            Nationdex HQ <span class="material-icons-outlined text-[1rem]">arrow_outward</span>
+                        </a>
+                        <a href="//discord.com/api/oauth2/authorize?client_id=1207017704096141312&scope=bot+applications.commands&permissions=537259009"
+                            class="w-full sm:w-auto bg-[#8B5CF6] hover:bg-[#7c3aed] text-white px-2 py-2 md:px-4 rounded-[2rem] font-bold text-[15px] md:text-[16px] tracking-wide transition-colors duration-300 flex items-center justify-center gap-2">
+                            Invite Me <span class="material-icons-outlined text-[1rem]">arrow_outward</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="px-6 md:px-16 lg:px-24 flex-1 flex flex-col pb-6 w-full">
+
+            <div class="mb-6 flex items-center gap-2 text-sm font-semibold text-gray-500 dark:text-[#94a3b8]">
+                <a href="/guides" class="hover:text-black dark:hover:text-white transition-colors">Guides</a>
+                <i class="ri-arrow-right-s-line"></i>
+                <span class="text-gray-900 dark:text-white">How to Setup Nationdex</span>
+            </div>
+
+            <div class="mb-10 text-left w-full max-w-4xl">
+                <h1 class="page-title text-[2.5rem] md:text-5xl font-bold mb-4 dark:text-white leading-tight">
+                    How to Setup Nationdex
+                </h1>
+                <div
+                    class="flex items-center gap-3 text-xs md:text-sm font-semibold text-gray-500 dark:text-[#94a3b8] flex-wrap">
+                    <span
+                        class="bg-gray-200/80 dark:bg-[#141b1f] text-gray-800 dark:text-[#f3f4f6] px-3 py-1 rounded-full">August
+                        11, 2026</span>
+                    <span id="read-time-badge"
+                        class="bg-gray-200/80 dark:bg-[#141b1f] text-gray-800 dark:text-[#f3f4f6] px-3 py-1 rounded-full">2
+                        min read</span>
+                    <span
+                        class="bg-gray-200/80 dark:bg-[#141b1f] text-gray-800 dark:text-[#f3f4f6] pl-1 pr-3 py-1 rounded-full flex items-center gap-1.5">
+                        <img src="https://avatars.githubusercontent.com/u/105863819"
+                            class="w-4 h-4 rounded-full object-cover">
+                        adi
+                    </span>
+                </div>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-12 lg:gap-24 w-full">
+
+                <div class="lg:w-[35%] lg:order-2">
+                    <div id="desktop-toc" class="sticky top-[120px] md:top-[160px] pb-8 pr-2">
+                        <h3
+                            class="text-[1.15rem] font-bold mb-4 border-b border-gray-100 dark:border-[#223047] pb-3 dark:text-white">
+                            Table of contents
+                        </h3>
+                        <nav>
+                            <ol
+                                class="space-y-3 px-0 text-[13px] md:text-sm font-medium text-textblack dark:text-[#cbd5e1] list-decimal list-inside marker:text-textblack marker:dark:text-white marker:font-semibold [&_a]:underline [&_a]:underline-offset-[3px] [&_a]:decoration-gray-300 dark:[&_a]:decoration-zinc-700 hover:[&_a]:decoration-gray-600 dark:hover:[&_a]:decoration-zinc-400 [&_a]:transition-colors">
+                                <li><a href="#1">Inviting Nationdex</a></li>
+                                <li><a href="#2">Basic Configuration & Permissions</a></li>
+                                <li><a href="#3">Setting Up Spawn Channels</a></li>
+                                <li><a href="#4">Spawns & Catching</a></li>
+                            </ol>
+                        </nav>
+                        <div class="mt-8 border-t border-gray-100 dark:border-[#223047] pt-6 hidden lg:block">
+                            <a href="#"
+                                class="text-xs font-semibold text-textblack dark:text-[#cbd5e1] hover:text-gray-500 dark:hover:text-white transition-colors flex items-center gap-1">
+                                Back to top <span class="material-icons-outlined text-[14px]">arrow_upward</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="lg:w-[65%] lg:order-1 prose dark:prose-invert max-w-none prose-h2:text-[1.125rem] prose-h2:font-bold prose-h2:text-textblack dark:prose-h2:text-white prose-h2:mt-10 prose-h2:mb-3 prose-h2:scroll-mt-[140px] prose-p:text-[0.9375rem] prose-p:text-gray-600 dark:prose-p:text-[#94a3b8] prose-p:leading-relaxed prose-p:mb-5 prose-li:text-[0.9375rem] prose-li:text-gray-600 dark:prose-li:text-[#94a3b8] prose-li:leading-relaxed">
+
+                    <h2 id="1" class="!mt-0">1. Inviting Nationdex</h2>
+                    <p>
+                        To add Nationdex to your Discord server, click the <strong
+                            class="font-bold text-gray-900 dark:text-white">Invite Me</strong> button at the top of the
+                        website or use our official OAuth authorization link. Make sure you have <strong
+                            class="font-bold text-gray-900 dark:text-white">Manage Server</strong> permissions in the
+                        target Discord server.
+                    </p>
+
+                    <div class="flex justify-center mt-1 md:mt-2">
+                        <a href="https://discord.com/oauth2/authorize?client_id=1118965941221466194&permissions=274878024768&scope=bot%20applications.commands"
+                            target="_blank"
+                            class="inline-flex no-underline items-center gap-2 px-5 py-2.5 rounded-xl text-sm text-white bg-[#5865F2] hover:bg-[#4752C4] transition-all shadow-sm group">
+                            <i class="ri-discord-fill text-4xl"></i>
+                            <span class="text-2xl md:text-3xl">Invite me now!</span>
+                            <i class="ri-arrow-right-line text-4xl text-white/80"></i>
+                        </a>
+                    </div>
+
+                    <h2 id="2">2. Basic Configuration & Permissions</h2>
+                    <p>
+                        Once Nationdex joins your server, ensure the bot role has the following required permissions
+                        enabled:
+                    </p>
+                    <ul class="list-disc list-inside space-y-2 my-4 pl-1">
+                        <li>View Channels & Send Messages</li>
+                        <li>Embed Links & Attach Files</li>
+                        <li>Use External Emojis & Add Reactions</li>
+                    </ul>
+
+                    <h2 id="3">3. Setting Up Spawn Channels</h2>
+                    <p>
+                        Use the <span class="slash-command"><span class="slash">/</span>spawn channel</span> command to
+                        bind
+                        Nationdex spawns to specific text channels. This keeps your general conversation channels clean
+                        while keeping active collectors engaged in designated channels.
+                    </p>
+                    <img class="my-5 w-25 h-25 rounded-3xl" src="/assets/walk/setup1.png">
+
+                    <h2 id="4">4. Spawns & Catching</h2>
+                    <p>
+                        When a wild nation appears in your spawn channel, type nation's <strong
+                            class="font-bold text-gray-900 dark:text-white">name</strong> to collect it into
+                        your
+                        inventory! You can view your collected nations anytime using <span class="slash-command"><span
+                                class="slash">/</span>inventory</span>.
+                    </p>
+                    <img class="my-5 w-25 h-25 rounded-3xl" src="/assets/walk/catch.png">
+
+                    <h3 class="text-gray-700 dark:text-[#94a3b8]">By adding Nationdex.bot in your server, you have to
+                        confirm if you have given the necessary
+                        permissions for the bot to operate in your server, and when you start configuring the spawn,
+                        make sure to choose the desired spawning channel and accept the guidelines for Nationdex
+                        accordingly.</h3>
+                </div>
+            </div>
+
+            <footer class="mt-auto pt-12 w-full px-4 md:px-12">
+                <div
+                    class="flex flex-wrap items-center justify-center md:justify-start gap-3 md:gap-4 font-medium pt-4 mb-10 w-full">
+                    <span class="font-semibold text-lg whitespace-nowrap" data-t="follow_us">Follow us</span>
+                    <a href="//www.youtube.com/@nationdexbot"><i
+                            class="ri-youtube-fill text-3xl text-gray-700 dark:text-[#94a3b8] cursor-pointer"></i></a>
+                    <a href="//github.com/nationdex"><i
+                            class="ri-github-fill text-3xl text-gray-700 dark:text-[#94a3b8] cursor-pointer"></i></a>
+                    <a href="//discord.gg/hVvD8gUXjQ"><i
+                            class="ri-discord-fill text-3xl text-gray-700 dark:text-[#94a3b8] cursor-pointer"></i></a>
+                </div>
+
+                <div
+                    class="border-t border-gray-200 dark:border-[#223047] pt-10 pb-12 grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-6 text-left w-full px-2 md:px-0">
+                    <div class="space-y-5">
+                        <h2 class="font-bold text-textblack dark:text-white text-lg tracking-tight">Resources</h2>
+                        <ul class="space-y-4 font-semibold text-[15px] text-gray-500 dark:text-[#94a3b8]">
+                            <li><a href="/commands"
+                                    class="hover:text-black dark:hover:text-white transition-colors block">Commands</a>
+                            </li>
+                            <li><a href="/changelog"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Changelog</a>
+                            </li>
+                            <li><a href="/guides"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Guides</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-5">
+                        <h2 class="font-bold text-textblack dark:text-white text-lg tracking-tight">Community</h2>
+                        <ul class="space-y-4 font-semibold text-[15px] text-gray-500 dark:text-[#94a3b8]">
+                            <li><a href="//discord.gg/tKh3n5uVnm"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Discord</a>
+                            </li>
+                            <li><a href="/newsroom"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">News</a>
+                            </li>
+                            <li><a href="//www.youtube.com/@nationdexbot"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Youtube</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-5">
+                        <h2 class="font-bold text-textblack dark:text-white text-lg tracking-tight">Team</h2>
+                        <ul class="space-y-4 font-semibold text-[15px] text-gray-500 dark:text-[#94a3b8]">
+                            <li><a href="/team"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Developers</a>
+                            </li>
+                            <li><a href="/privacy"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Privacy</a>
+                            </li>
+                            <li><a href="/terms"
+                                    class="hover:text-black dark:hover:text-white transition-colors block">Terms</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-5">
+                        <h2 class="font-bold text-textblack dark:text-white text-lg tracking-tight">Support</h2>
+                        <ul class="space-y-4 font-semibold text-[15px] text-gray-500 dark:text-[#94a3b8]">
+                            <li><a href="//github.com/nationdex/bot/issues"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Report
+                                    Issue</a></li>
+                            <li><a href="//discord.gg/tKh3n5uVnm"
+                                    class="hover:text-textblack dark:hover:text-white transition-colors block">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div
+                    class="border-t border-gray-200 dark:border-[#223047] pt-6 pb-8 flex flex-col lg:flex-row items-center justify-between gap-6 text-[14px] md:text-[15px] text-gray-500 dark:text-[#94a3b8] font-semibold tracking-tight px-2 md:px-0 w-full">
+                    <div class="flex flex-wrap items-center justify-center gap-4 md:gap-6">
+                        <div class="flex items-center gap-2 mr-2 shrink-0">
+                            <img src="https://cdn.soloist.ai/a0b2d163-78b6-4db3-9381-96d7635d18b1/logo/1210c387-b5e7-4bee-bf84-451755fe908c.png"
+                                class="w-6 h-6 rounded-full p-0.5 grayscale">
+                            <span class="font-bold text-textblack dark:text-white">Nationdex Team <span> &copy;
+                                    2022-2026</span></span>
+                        </div>
+                    </div>
+
+                    <div class="relative flex bg-white/90 dark:bg-[#1a2436]/90 rounded-lg p-2 border dark:border-none items-center gap-2 cursor-pointer dark:text-[#cbd5e1]"
+                        id="langSelector">
+                        <i class="ri-global-line"></i>
+                        <span id="currentLang">English (United States)</span>
+                        <i class="ri-arrow-down-s-line"></i>
+                        <div class="lang-dropdown" id="langDropdown">
+                            <div class="lang-option" data-lang="en">English (United States)</div>
+                            <div class="lang-option" data-lang="hi">Hindi (नमस्ते)</div>
+                            <div class="lang-option" data-lang="pt-br">Brazilian (Português)</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="google_translate_element" style="display:none;"></div>
+            </footer>
+        </div>
+    </div>
+    <script>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,hi,pt',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+
+        (function initLanguageSelector() {
+            document.querySelectorAll('i, .material-icons-outlined, [class^="ri-"], [class*=" ri-"], .slash-command, code, svg').forEach(el => {
+                el.classList.add('notranslate');
+                el.setAttribute('translate', 'no');
+            });
+
+            const langSelector = document.getElementById('langSelector');
+            const langDropdown = document.getElementById('langDropdown');
+            const currentLangSpan = document.getElementById('currentLang');
+
+            const langNames = {
+                'en': 'English (United States)',
+                'hi': 'Hindi (नमस्ते)',
+                'pt': 'Brazilian (Português)',
+                'pt-br': 'Brazilian (Português)'
+            };
+
+            const savedLang = localStorage.getItem('ndex_lang') || 'en';
+            if (currentLangSpan && langNames[savedLang]) {
+                currentLangSpan.textContent = langNames[savedLang];
+            }
+
+            if (langSelector && langDropdown) {
+                langSelector.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    langDropdown.classList.toggle('show');
+                });
+
+                document.addEventListener('click', () => {
+                    langDropdown.classList.remove('show');
+                });
+
+                document.querySelectorAll('.lang-option').forEach(opt => {
+                    opt.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const rawLang = opt.getAttribute('data-lang');
+                        const targetLang = (rawLang === 'pt-br' || rawLang === 'pt') ? 'pt' : rawLang;
+
+                        localStorage.setItem('ndex_lang', rawLang);
+
+                        if (targetLang === 'en') {
+                            document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                            document.cookie = "googtrans=/en/en; path=/;";
+                        } else {
+                            document.cookie = "googtrans=/en/" + targetLang + "; path=/;";
+                            document.cookie = "googtrans=/en/" + targetLang + "; path=/; domain=" + window.location.hostname + ";";
+                        }
+
+                        langDropdown.classList.remove('show');
+                        window.location.reload();
+                    });
+                });
+            }
+        })();
+
+        function calculateReadTime() {
+            const prose = document.querySelector('.prose');
+            const badge = document.getElementById('read-time-badge');
+            if (prose && badge) {
+                const words = prose.innerText.trim().split(/\s+/).filter(w => w.length > 0).length;
+                const minutes = Math.max(1, Math.ceil(words / 200));
+                badge.textContent = `${minutes} min read`;
+            }
+        }
+        calculateReadTime();
+    </script>
+    <script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="../../assets/js/cookies.js"></script>
+</body>
+
+</html>
