@@ -39,9 +39,9 @@
     ],
     "staff": [
         {
-            "name": "Mr. Lore",
-            "pfp": "https://cdn.discordapp.com/avatars/1093162537312329738/9b04e79072ea47a7e269ed373b553490.png",
-            "discord": "https://discord.com/users/1093162537312329738"
+            "name": "AhmedTheWarrior",
+            "pfp": "https://cdn.discordapp.com/avatars/799067298643050497/dab0e560d484ff0518af5a45cabcac87.png",
+            "discord": "https://discord.com/users/799067298643050497"
         },
         {
             "name": "BloxyBlitz",
@@ -54,14 +54,14 @@
             "discord": "https://discord.com/users/1192610041564500060"
         },
         {
-            "name": "Hiboman",
+            "name": "HiboMan",
             "pfp": "https://cdn.discordapp.com/avatars/692006179957637132/9cc3b72cb7acf024dd4b481062916f8e.png",
             "discord": "https://discord.com/users/692006179957637132"
         },
         {
-            "name": "AhmedTheWarrior",
-            "pfp": "https://cdn.discordapp.com/avatars/799067298643050497/dab0e560d484ff0518af5a45cabcac87.png",
-            "discord": "https://discord.com/users/799067298643050497"
+            "name": "Mr. Lore",
+            "pfp": "https://cdn.discordapp.com/avatars/1093162537312329738/9b04e79072ea47a7e269ed373b553490.png",
+            "discord": "https://discord.com/users/1093162537312329738"
         }
     ]
 }
