@@ -719,7 +719,40 @@
                 'pt-br': 'Brazilian (Português)'
             };
 
+            function clearGoogtransCookies() {
+                const hostname = window.location.hostname;
+                const pathname = window.location.pathname;
+                const parts = hostname.split('.');
+                const domains = ['', hostname, '.' + hostname];
+                if (parts.length > 1) {
+                    domains.push('.' + parts.slice(-2).join('.'));
+                }
+                const paths = ['/', pathname, pathname + '/'];
+                const pathParts = pathname.split('/').filter(Boolean);
+                let currentPath = '';
+                pathParts.forEach(p => {
+                    currentPath += '/' + p;
+                    paths.push(currentPath);
+                    paths.push(currentPath + '/');
+                });
+                const pastDate = 'Thu, 01 Jan 1970 00:00:00 UTC';
+                domains.forEach(d => {
+                    paths.forEach(p => {
+                        const domStr = d ? '; domain=' + d : '';
+                        document.cookie = 'googtrans=; expires=' + pastDate + '; path=' + p + domStr;
+                    });
+                });
+            }
+
             const savedLang = localStorage.getItem('ndex_lang') || 'en';
+            if (savedLang === 'en') {
+                clearGoogtransCookies();
+                document.cookie = "googtrans=/en/en; path=/;";
+                if (window.location.hostname) {
+                    document.cookie = "googtrans=/en/en; path=/; domain=" + window.location.hostname + ";";
+                }
+            }
+
             if (currentLangSpan && langNames[savedLang]) {
                 currentLangSpan.textContent = langNames[savedLang];
             }
@@ -741,13 +774,20 @@
                         const targetLang = (rawLang === 'pt-br' || rawLang === 'pt') ? 'pt' : rawLang;
 
                         localStorage.setItem('ndex_lang', rawLang);
+                        clearGoogtransCookies();
 
                         if (targetLang === 'en') {
-                            document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                             document.cookie = "googtrans=/en/en; path=/;";
+                            if (window.location.hostname) {
+                                document.cookie = "googtrans=/en/en; path=/; domain=" + window.location.hostname + ";";
+                                document.cookie = "googtrans=/en/en; path=/; domain=." + window.location.hostname + ";";
+                            }
                         } else {
                             document.cookie = "googtrans=/en/" + targetLang + "; path=/;";
-                            document.cookie = "googtrans=/en/" + targetLang + "; path=/; domain=" + window.location.hostname + ";";
+                            if (window.location.hostname) {
+                                document.cookie = "googtrans=/en/" + targetLang + "; path=/; domain=" + window.location.hostname + ";";
+                                document.cookie = "googtrans=/en/" + targetLang + "; path=/; domain=." + window.location.hostname + ";";
+                            }
                         }
 
                         langDropdown.classList.remove('show');
